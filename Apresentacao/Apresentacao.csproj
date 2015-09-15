@@ -1,0 +1,289 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{65822B09-45BE-4671-8597-584CCBE755D5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Apresentacao</RootNamespace>
+    <AssemblyName>Apresentacao</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>14E6DDBCB11C51B0B87236B2F08296FAE595F738</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Apresentacao_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="EnumDecoracao.cs" />
+    <Compile Include="EnumeradorBrinquedo.cs" />
+    <Compile Include="EnumeradorCliente.cs" />
+    <Compile Include="EnumeradorEvento.cs" />
+    <Compile Include="EnumeradorServico.cs" />
+    <Compile Include="EnumOperadora.cs" />
+    <Compile Include="FrmAgendaEventos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAgendaEventos.Designer.cs">
+      <DependentUpon>FrmAgendaEventos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAjusteBrinquedo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAjusteBrinquedo.Designer.cs">
+      <DependentUpon>frmAjusteBrinquedo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAjusteCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAjusteCliente.Designer.cs">
+      <DependentUpon>FrmAjusteCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAjusteDecoracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAjusteDecoracao.Designer.cs">
+      <DependentUpon>FrmAjusteDecoracao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAjusteServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAjusteServico.Designer.cs">
+      <DependentUpon>FrmAjusteServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCadastroBrinquedo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastroBrinquedo.Designer.cs">
+      <DependentUpon>FrmCadastroBrinquedo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCadastroCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastroCliente.Designer.cs">
+      <DependentUpon>FrmCadastroCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCadastroDecoracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCadastroDecoracao.Designer.cs">
+      <DependentUpon>frmCadastroDecoracao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCadastroEvento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastroEvento.Designer.cs">
+      <DependentUpon>FrmCadastroEvento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCadastroEventoBuscarCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastroEventoBuscarCliente.Designer.cs">
+      <DependentUpon>FrmCadastroEventoBuscarCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCadastroServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCadastroServico.Designer.cs">
+      <DependentUpon>FrmCadastroServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPrincipal.Designer.cs">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmVisualizadorContrato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmVisualizadorContrato.Designer.cs">
+      <DependentUpon>FrmVisualizadorContrato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Contrato\RelContrato.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RelContrato.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FrmAgendaEventos.resx">
+      <DependentUpon>FrmAgendaEventos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAjusteBrinquedo.resx">
+      <DependentUpon>frmAjusteBrinquedo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAjusteCliente.resx">
+      <DependentUpon>FrmAjusteCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAjusteDecoracao.resx">
+      <DependentUpon>FrmAjusteDecoracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmAjusteServico.resx">
+      <DependentUpon>FrmAjusteServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadastroBrinquedo.resx">
+      <DependentUpon>FrmCadastroBrinquedo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadastroCliente.resx">
+      <DependentUpon>FrmCadastroCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCadastroDecoracao.resx">
+      <DependentUpon>frmCadastroDecoracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadastroEvento.resx">
+      <DependentUpon>FrmCadastroEvento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadastroEventoBuscarCliente.resx">
+      <DependentUpon>FrmCadastroEventoBuscarCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCadastroServico.resx">
+      <DependentUpon>FrmCadastroServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPrincipal.resx">
+      <DependentUpon>FrmPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmVisualizadorContrato.resx">
+      <DependentUpon>FrmVisualizadorContrato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Contrato\RelContrato.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RelContrato.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AcessoBancoDados\AcessoBancoDados.csproj">
+      <Project>{9359b18e-3b77-4f2d-8383-39df192353bf}</Project>
+      <Name>AcessoBancoDados</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Negocio\Negocio.csproj">
+      <Project>{239060fc-66f8-4ece-98a5-065d321affe3}</Project>
+      <Name>Negocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ObjetoTransferencia\ObjetoTransferencia.csproj">
+      <Project>{ca83e8f4-7094-4a29-b6ef-7d49eacbd42f}</Project>
+      <Name>ObjetoTransferencia</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disquete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
