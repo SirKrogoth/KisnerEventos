@@ -49,15 +49,18 @@ namespace Negocio
             try
             {
                 acessaDados.limparParametro();
+                acessaDados.adicionarParametro("@codEvento", evento.codEvento);
+                acessaDados.adicionarParametro("@codCliente", evento.codCliente);
                 acessaDados.adicionarParametro("@nome", evento.nome);
                 acessaDados.adicionarParametro("@local", evento.localEvento);
                 acessaDados.adicionarParametro("@data_evento", evento.data_evento);
+                acessaDados.adicionarParametro("@cidade", evento.cidadeEvento);
                 acessaDados.adicionarParametro("@inicio", evento.inicio);
                 acessaDados.adicionarParametro("@termino", evento.termino);
                 acessaDados.adicionarParametro("@tema", evento.tema);
-                acessaDados.adicionarParametro("@codCliente", evento.codCliente);
-                acessaDados.adicionarParametro("@referencia", evento.observacao);
-                acessaDados.adicionarParametro("@codEvento", evento.codEvento);
+                acessaDados.adicionarParametro("@observacao", evento.observacao);
+                acessaDados.adicionarParametro("@totalEvento", evento.totalEvento);
+                acessaDados.adicionarParametro("@codParametro", evento.parametro);
 
                 string codEvento = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_ALTERAR_EVENTO").ToString();
 
@@ -306,7 +309,37 @@ namespace Negocio
                 return e.Message;
             }
         }
+        //Método utilizado para atualizar as informações de Brinquedos
+        public void AlterarEventoBrinquedo(EventoBrinquedoColecao eventoBrinquedoColecao, int codEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
 
+            try
+            {
+                conexao.Open();
+                //Primeiramente precisamos excluir todos os dados do evento
+                string sqlZerarBrinquedo = "DELETE FROM tblEventoBrinquedo WHERE codEvento = " + codEvento;
+                SqlCommand cmdZerarBrinquedo = new SqlCommand(sqlZerarBrinquedo, conexao);
+                cmdZerarBrinquedo.ExecuteReader();
+
+                //Aqui, vamos inserir os novos dados desejados pelo cliente
+                for(int i = 0; i < eventoBrinquedoColecao.Count; i++)
+                {
+                    string sqlBrinquedo = "INSERT INTO tblEventoBrinquedo(codEvento,codBrinquedo) " +
+                        "VALUES(" + codEvento +",'"+eventoBrinquedoColecao[i].codBrinquedo+"')";
+                    SqlCommand cmd = new SqlCommand(sqlBrinquedo, conexao);
+                    cmd.ExecuteReader();
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
         public void EventoConcluir(Evento evento)
         {
             SqlConnection conexao = acessaDados.criarConexaoBanco();
@@ -379,6 +412,72 @@ namespace Negocio
                 cmd.ExecuteNonQuery();
             }
             catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public BrinquedoColecao BuscarEventoBrinquedo(int codEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+            try
+            {
+                BrinquedoColecao brinquedoColecao = new BrinquedoColecao();
+
+                conexao.Open();
+                string sql = "SELECT b.codBrinquedo, b.nome, b.dataCadastro, b.ativo, b.valor FROM tblBrinquedo AS b " +
+                    "INNER JOIN tblEventoBrinquedo AS eb " +
+                    "ON b.codBrinquedo = eb.codBrinquedo " +
+                    "WHERE codEvento = " + codEvento;
+                SqlCommand cmd = new SqlCommand(sql, conexao);
+                SqlDataReader dataReader = cmd.ExecuteReader();
+
+                DataTable dataTable = new DataTable();
+                dataTable.Load(dataReader);
+
+                foreach(DataRow linha in dataTable.Rows)
+                {
+                    Brinquedo brinquedo = new Brinquedo();
+
+                    brinquedo.codBrinquedo = Convert.ToInt32(linha["codBrinquedo"]);
+                    brinquedo.nome = linha["nome"].ToString();
+                    brinquedo.cadastro = Convert.ToDateTime(linha["dataCadastro"]);
+                    brinquedo.ativo = Convert.ToBoolean(linha["ativo"]);
+                    brinquedo.valor = Convert.ToDouble(linha["valor"]);
+
+                    brinquedoColecao.Add(brinquedo);
+                }
+
+                return brinquedoColecao;
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public object BuscarValorTotalEvento(int codEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+
+            try
+            {
+                conexao.Open();
+                string sql = "SELECT totalEvento FROM tblEvento WHERE codEvento = " + codEvento;
+                SqlCommand cmd = new SqlCommand(sql, conexao);
+                object retorno = cmd.ExecuteScalar();
+                return retorno;
+                
+            }
+            catch(Exception e)
             {
                 throw new Exception(e.Message);
             }

@@ -62,6 +62,7 @@
             this.txtComplementar = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.tabPageExtrato = new System.Windows.Forms.TabPage();
+            this.txtExtrato = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.tabPageValores = new System.Windows.Forms.TabPage();
             this.btnAcrescimo = new System.Windows.Forms.Button();
@@ -70,7 +71,6 @@
             this.btnAplicarDesconto = new System.Windows.Forms.Button();
             this.txtValorEvento = new System.Windows.Forms.TextBox();
             this.txtDesconto = new System.Windows.Forms.TextBox();
-            this.txtTotalEvento = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -80,7 +80,7 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
-            this.txtExtrato = new System.Windows.Forms.TextBox();
+            this.txtTotalEvento = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPagePrincipal.SuspendLayout();
             this.tabPageDadosEvento.SuspendLayout();
@@ -421,6 +421,17 @@
             this.tabPageExtrato.TabIndex = 5;
             this.tabPageExtrato.Text = "Extrato";
             // 
+            // txtExtrato
+            // 
+            this.txtExtrato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.txtExtrato.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtExtrato.Location = new System.Drawing.Point(37, 42);
+            this.txtExtrato.Multiline = true;
+            this.txtExtrato.Name = "txtExtrato";
+            this.txtExtrato.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtExtrato.Size = new System.Drawing.Size(383, 188);
+            this.txtExtrato.TabIndex = 2;
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -517,17 +528,6 @@
             this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtDesconto.Click += new System.EventHandler(this.txtDesconto_Click);
             this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
-            // 
-            // txtTotalEvento
-            // 
-            this.txtTotalEvento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalEvento.Location = new System.Drawing.Point(289, 173);
-            this.txtTotalEvento.Name = "txtTotalEvento";
-            this.txtTotalEvento.ReadOnly = true;
-            this.txtTotalEvento.Size = new System.Drawing.Size(100, 26);
-            this.txtTotalEvento.TabIndex = 6;
-            this.txtTotalEvento.Text = "0,00";
-            this.txtTotalEvento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // label14
             // 
@@ -634,16 +634,17 @@
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
             // 
-            // txtExtrato
+            // txtTotalEvento
             // 
-            this.txtExtrato.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.txtExtrato.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtExtrato.Location = new System.Drawing.Point(37, 42);
-            this.txtExtrato.Multiline = true;
-            this.txtExtrato.Name = "txtExtrato";
-            this.txtExtrato.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtExtrato.Size = new System.Drawing.Size(383, 188);
-            this.txtExtrato.TabIndex = 2;
+            this.txtTotalEvento.AllowDrop = true;
+            this.txtTotalEvento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalEvento.Location = new System.Drawing.Point(289, 173);
+            this.txtTotalEvento.Name = "txtTotalEvento";
+            this.txtTotalEvento.ReadOnly = true;
+            this.txtTotalEvento.Size = new System.Drawing.Size(100, 26);
+            this.txtTotalEvento.TabIndex = 6;
+            this.txtTotalEvento.Text = "0,00";
+            this.txtTotalEvento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // FrmCadastroEvento
             // 
@@ -712,7 +713,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtValorEvento;
         private System.Windows.Forms.TextBox txtDesconto;
-        private System.Windows.Forms.TextBox txtTotalEvento;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnGravar;
@@ -733,5 +733,6 @@
         private System.Windows.Forms.TabPage tabPageExtrato;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.TextBox txtExtrato;
+        private System.Windows.Forms.TextBox txtTotalEvento;
     }
 }

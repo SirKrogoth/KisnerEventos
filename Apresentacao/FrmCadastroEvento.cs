@@ -24,66 +24,74 @@ namespace Apresentacao
         ServicoNegocio servicoNegocio = new ServicoNegocio();
 
         public Cliente clienteSelecionado = null;
+        public int codCliente = 0;
         public double valorTotal = 0;
         public double desconto = 0;
         public double acrescimo = 0;
+        public double auxiliarDescontoAcrescimo = 0;
         public double auxiliarBrinquedo = 0;
         public double auxiliarDecoracao = 0;
         public double auxiliarServico = 0;
         public string codEvento = null;
 
-        //Método construtor
-        public FrmCadastroEvento(EnumeradorEvento acao, Evento objEvento, EventoBrinquedoColecao eventoBrinquedoColecao, EventoDecoracaoColecao eventoDecoracaoColecao, EventoServicoColecao eventoServicoColecao)
+        //Método construtor para o evento de alterar
+        public FrmCadastroEvento(EnumeradorEvento acao, Evento eventoSelecionado)
         {
             InitializeComponent();
 
-            //Preenchendo checkList de todos os brinquedos
-            brinquedoColecao = brinquedoNegocio.ConsultarNomeBrinquedo("");            
-
-            int i;
-
-            for (i = 0; i < brinquedoColecao.Count; i++)
-            {                
-                checkedListBoxBrinquedos.Items.Add(brinquedoColecao[i].nome);                
-            }
-
-            decoracaoColecao = decoracaoNegocio.ConsultarNomeDecoracao("");
-
-            for (i = 0; i < decoracaoColecao.Count; i++)
+            if (acao == EnumeradorEvento.Alterar)
             {
-                checkedListBoxDecoracao.Items.Add(decoracaoColecao[i].nome);
-            }
+                EventoNegocio eventoNegocio = new EventoNegocio();
 
-            servicoColecao = servicoNegocio.ConsultarNome("");
-            //Mesmo processo usado acima, apenas com a diferença de estar usando o foreach 
-            //para fins didaticos
-            foreach (Servico linha in servicoColecao)
-            {
-                checkedListBoxServicos.Items.Add(linha.descricao);
-            }
+                txtCodigo.Text = eventoSelecionado.codEvento.ToString();
+                txtCliente.Text = eventoSelecionado.nomeCliente;
+                codCliente = eventoSelecionado.codCliente;
+                txtAniversariante.Text = eventoSelecionado.nome;
+                txtLocal.Text = eventoSelecionado.localEvento;
+                txtCidadeEvento.Text = eventoSelecionado.cidadeEvento;
+                dateTimePickerDataEvento.Value = Convert.ToDateTime(eventoSelecionado.data_evento);
+                maskedTextBoxInicio.Text = eventoSelecionado.inicio.ToString();
+                maskedTextBoxTermino.Text = eventoSelecionado.termino.ToString();
+                txtTema.Text = eventoSelecionado.tema;                
+                btnGravar.Text = "Alterar";
+                btnLimpar.Enabled = false;
+                btnNovo.Enabled = false;
+                btnCancelarEvento.Enabled = true;
+                //Pegar os dados e inserir no checkedListBoxBrinquedos
+                BrinquedoColecao brinquedoColecaoGenerico = new BrinquedoColecao();
+                brinquedoColecaoGenerico = eventoNegocio.BuscarEventoBrinquedo(eventoSelecionado.codEvento);
 
-            if(acao == EnumeradorEvento.Alterar)
-            {
-                txtCliente.Text = clienteSelecionado.nome;
-                txtAniversariante.Text = objEvento.nome;
-                txtLocal.Text = objEvento.localEvento;
-                txtCidadeEvento.Text = objEvento.cidadeEvento;
-                dateTimePickerDataEvento.Text = objEvento.data_evento.ToString();
-                maskedTextBoxInicio.Text = objEvento.inicio.ToString();
-                maskedTextBoxTermino.Text = objEvento.termino.ToString();
-                txtTema.Text = objEvento.tema;
+                brinquedoColecao = brinquedoNegocio.ConsultarNomeBrinquedo("");
 
-                for (i = 0; i < brinquedoColecao.Count; i++)
-                {                    
-                    for(int x = 0; x < eventoBrinquedoColecao.Count; x++)
+                for (int i = 0; i < brinquedoColecao.Count; i++)
+                {
+                    checkedListBoxBrinquedos.Items.Add(brinquedoColecao[i].nome);
+                }
+
+                double auxiliarPrecoTotalBrinquedo = 0;
+
+                for (int i = 0; i < brinquedoColecaoGenerico.Count; i++)
+                {
+                    for (int x = 0; x < brinquedoColecao.Count; x++)
                     {
-                        if(brinquedoColecao[i].codBrinquedo == eventoBrinquedoColecao[x].codBrinquedo)
+                        if (brinquedoColecaoGenerico[i].nome == brinquedoColecao[x].nome)
                         {
-                            checkedListBoxBrinquedos.Items.Add(eventoBrinquedoColecao[i]);
+                            checkedListBoxBrinquedos.SetItemChecked(x, true);
+                            auxiliarPrecoTotalBrinquedo += brinquedoColecaoGenerico[i].valor;
                         }
                     }
-                }                
+                }
+                //Código para buscar apenas o total do (evento + acrescimos) - descontos
+                object retorno = eventoNegocio.BuscarValorTotalEvento(eventoSelecionado.codEvento);
+
+                auxiliarDescontoAcrescimo = Convert.ToDouble(retorno);
+                auxiliarDescontoAcrescimo = auxiliarDescontoAcrescimo - auxiliarBrinquedo;
+
+                txtTotalEvento.Text = retorno.ToString();                    
+                txtValorEvento.Text = auxiliarPrecoTotalBrinquedo.ToString();
             }
+            else
+                MessageBox.Show("Erro ao carregar dados.\nContate o Administrador do sistema.","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public FrmCadastroEvento()
@@ -91,7 +99,6 @@ namespace Apresentacao
             InitializeComponent();
 
             //Preenchendo checkList de brinquedo
-
             brinquedoColecao = brinquedoNegocio.ConsultarNomeBrinquedo("");
 
             int i;
@@ -155,7 +162,7 @@ namespace Apresentacao
                 evento.termino = TimeSpan.Parse(maskedTextBoxTermino.Text);
                 evento.tema = txtTema.Text;
                 evento.observacao = txtComplementar.Text;
-                evento.totalEvento = (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo) - desconto;
+                evento.totalEvento = (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo) - desconto;                
                 evento.parametro = 1;
                 //inserido o codigo do evento gravado
                 codEvento = eventoNegocio.InserirEvento(evento);
@@ -231,12 +238,24 @@ namespace Apresentacao
         //Método para contar os listar os brinquedos "Checados" pelo usuário
         private void checkedListBoxBrinquedos_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            int i = checkedListBoxBrinquedos.SelectedIndex;
-            //ele irá verificar o status do item(antes de ser clicado), se estiver marcado, retorna true
-            if(checkedListBoxBrinquedos.GetItemChecked(i) == false)
-                auxiliarBrinquedo = auxiliarBrinquedo + brinquedoColecao[i].valor;
+            if(btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
+            {
+                int i = e.Index;
+                //ele irá verificar o status do item(antes de ser clicado), se estiver marcado, retorna true
+                if (checkedListBoxBrinquedos.GetItemChecked(i) == false)
+                    auxiliarBrinquedo = auxiliarBrinquedo + brinquedoColecao[i].valor;
+                else
+                    auxiliarBrinquedo = auxiliarBrinquedo - brinquedoColecao[i].valor;
+            }
             else
-                auxiliarBrinquedo = auxiliarBrinquedo - brinquedoColecao[i].valor;
+            {
+                int i = checkedListBoxBrinquedos.SelectedIndex;
+                //ele irá verificar o status do item(antes de ser clicado), se estiver marcado, retorna true
+                if (checkedListBoxBrinquedos.GetItemChecked(i) == false)
+                    auxiliarBrinquedo = auxiliarBrinquedo + brinquedoColecao[i].valor;
+                else
+                    auxiliarBrinquedo = auxiliarBrinquedo - brinquedoColecao[i].valor;
+            }            
                 
             totalEvento();
         }
@@ -244,7 +263,7 @@ namespace Apresentacao
         private void checkedListBoxDecoracao_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             int i = checkedListBoxDecoracao.SelectedIndex;
-            if (checkedListBoxDecoracao.GetItemChecked(i) == false)
+            if (checkedListBoxDecoracao.GetItemChecked(i) == false) 
                 auxiliarDecoracao = auxiliarDecoracao + decoracaoColecao[i].valor;
             else
                 auxiliarDecoracao = auxiliarDecoracao - decoracaoColecao[i].valor;
@@ -265,7 +284,8 @@ namespace Apresentacao
 
         public void totalEvento()
         {
-            txtTotalEvento.Text = string.Format("{0:N}", (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo) - desconto).ToString();
+            txtValorEvento.Text = string.Format("{0:N}", (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico).ToString());
+            txtTotalEvento.Text = string.Format("{0:N}", (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo + auxiliarDescontoAcrescimo) - desconto).ToString();
         }
         private void btnAplicarDesconto_Click(object sender, EventArgs e)
         {
@@ -274,7 +294,7 @@ namespace Apresentacao
                 if (txtDesconto.Text != "0,00" || txtDesconto.Text != "0")
                     btnAplicarDesconto.Enabled = false;                 
                 desconto = Convert.ToDouble(txtDesconto.Text);
-                valorTotal = -valorTotal - (desconto - auxiliarBrinquedo - auxiliarDecoracao - auxiliarServico); 
+                valorTotal = -valorTotal - (desconto - auxiliarBrinquedo - auxiliarDecoracao - auxiliarServico);
                 txtTotalEvento.Text = string.Format("{0:N}", valorTotal);
                 valorTotal = 0;                
             }
@@ -364,16 +384,69 @@ namespace Apresentacao
 
         private void btnGravar_Click(object sender, EventArgs e)
         {            
-            gravarEvento();
-
-            if (MessageBox.Show("Deseja gerar o contrato deste evento?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if(btnGravar.Text == "Alterar" && btnCancelarEvento.Enabled == true)
             {
-                FrmVisualizadorContrato fvc = new FrmVisualizadorContrato(codEvento);
-                fvc.Show();
-                limparEventos();
+                Evento evento = new Evento();
+                EventoBrinquedoColecao eventoBrinquedoColecao = new EventoBrinquedoColecao();
+                EventoDecoracaoColecao eventoDecoracaoColecao = new EventoDecoracaoColecao();
+                EventoServicoColecao eventoServicoColecao = new EventoServicoColecao();
+                EventoNegocio eventoNegocio = new EventoNegocio();
+
+                //verificar se existe cliente selecionado
+                if (txtCliente.Text == null)
+                {
+                    MessageBox.Show("Favor, selecione um cliente.", "Erro ao gravar evento.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                evento.codEvento = Convert.ToInt32(txtCodigo.Text);
+                if (clienteSelecionado != null)
+                    evento.codCliente = Convert.ToInt32(clienteSelecionado.codCliente);
+                else
+                    evento.codCliente = codCliente;
+                evento.nome = txtAniversariante.Text;
+                evento.localEvento = txtLocal.Text;
+                evento.data_evento = dateTimePickerDataEvento.Value;
+                evento.cidadeEvento = txtCidadeEvento.Text;
+                evento.inicio = TimeSpan.Parse(maskedTextBoxInicio.Text);
+                evento.termino = TimeSpan.Parse(maskedTextBoxTermino.Text);
+                evento.tema = txtTema.Text;
+                evento.observacao = txtComplementar.Text;
+                evento.totalEvento = (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo) - desconto;
+                evento.parametro = 1;
+               //Atualizando os dados do evento
+                eventoNegocio.AlterarEvento(evento);
+                //Atualizando os dados dos brinquedos deste evento
+                for (int i = 0; i < brinquedoColecao.Count; i++)
+                {
+                    if (checkedListBoxBrinquedos.GetItemChecked(i) == true)
+                    {
+                        EventoBrinquedo eventoBrinquedo = new EventoBrinquedo();
+                        eventoBrinquedo.codBrinquedo = Convert.ToInt32(brinquedoColecao[i].codBrinquedo);
+                        eventoBrinquedo.codEvento = Convert.ToInt32(codEvento);
+
+                        eventoBrinquedoColecao.Add(eventoBrinquedo);
+                    }
+                }
+
+                eventoNegocio.AlterarEventoBrinquedo(eventoBrinquedoColecao, evento.codEvento);
+
+                MessageBox.Show("Evento atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
-                return;
+            {
+                gravarEvento();
+
+                if (MessageBox.Show("Deseja gerar o contrato deste evento?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    FrmVisualizadorContrato fvc = new FrmVisualizadorContrato(codEvento);
+                    fvc.Show();
+                    limparEventos();
+                }
+                else
+                    return;
+            }            
         }
 
         public void limparEventos()
@@ -408,7 +481,18 @@ namespace Apresentacao
 
         private void btnCancelarEvento_Click(object sender, EventArgs e)
         {
-            
+            EventoNegocio eventoNegocio = new EventoNegocio();
+            Evento evento = new Evento();
+
+            evento.codEvento = Convert.ToInt32(txtCodigo.Text);
+
+            eventoNegocio.EventoCancelado(evento);
+            DialogResult retorno = MessageBox.Show("Você tem certeja que deseja cancelar este evento?", "Pergunta?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (retorno == DialogResult.Yes)
+                MessageBox.Show("Evento cancelado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.Close();
         }
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAgendaEventos = new System.Windows.Forms.DataGridView();
             this.colConcluido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -63,8 +63,8 @@
             // 
             this.dgvAgendaEventos.AllowUserToAddRows = false;
             this.dgvAgendaEventos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dgvAgendaEventos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dgvAgendaEventos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAgendaEventos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAgendaEventos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colConcluido,

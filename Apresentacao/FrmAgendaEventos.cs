@@ -185,7 +185,10 @@ namespace Apresentacao
         private void dgvAgendaEventos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Evento eventoSelecionado = (dgvAgendaEventos.SelectedRows[0].DataBoundItem as Evento);
+            FrmCadastroEvento fce = new FrmCadastroEvento(EnumeradorEvento.Alterar, eventoSelecionado);
 
+            fce.Show();
+            this.Close();
         }
     }
 }

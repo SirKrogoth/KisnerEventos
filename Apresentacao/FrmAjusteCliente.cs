@@ -40,6 +40,7 @@ namespace Apresentacao
             FrmCadastroCliente fcc = new FrmCadastroCliente(EnumeradorCliente.Inserir, null);
 
             fcc.Show();
+            this.Close();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
