@@ -15,6 +15,7 @@ namespace AcessoBancoDados
     {
         public SqlConnection criarConexaoBanco()
         {
+            //Aqui temos todos os parametros de conexão com o banco de dados.
             return new SqlConnection(Settings.Default.stringConexao);
         }
         //Parametro que irá ao banco de dados

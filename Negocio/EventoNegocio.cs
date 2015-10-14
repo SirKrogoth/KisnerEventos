@@ -340,6 +340,64 @@ namespace Negocio
                 conexao.Close();
             }
         }
+        //Método utilizado para alterar os dados de decoração do evento
+        public void AlterarEventoDecoracao(EventoDecoracaoColecao eventoDecoracaoColecao, int codEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+            try
+            {
+                conexao.Open();
+                //Excluindo os dados de evento decoração
+                string sqlDelete = "DELETE FROM tblEventoDecoracao WHERE codEvento = " + codEvento;
+                SqlCommand cmdDelete = new SqlCommand(sqlDelete, conexao);
+                cmdDelete.ExecuteReader();
+                //Inserindo os novos registros em evento decoração
+                for(int i =0; i < eventoDecoracaoColecao.Count; i++)
+                {
+                    string sqlDecoracao = "INSERT INTO tblEventoDecoracao(codDecoracao,codEvento) " +
+                        "VALUES(" + eventoDecoracaoColecao[i].codDecoracao + ", " + codEvento + " )";
+                    SqlCommand cmdDecoracao = new SqlCommand(sqlDecoracao, conexao);
+                    cmdDecoracao.ExecuteReader();
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+        //Método usado para atualizar as informações de serviços do evento
+        public void AlterarEventoServico(EventoServicoColecao eventoServicoColecao, int codEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+            try
+            {
+                conexao.Open();
+                //Excluir os dados existentes para depois substitui-los
+                string sqlExcluir = "DELETE FROM tblEventoServico WHERE codEvento = " + codEvento;
+                SqlCommand cmdDelete = new SqlCommand(sqlExcluir, conexao);
+                cmdDelete.ExecuteReader();
+                //Inserindo os novos dados adquiridos pelo sistema.
+                for(int i = 0; i < eventoServicoColecao.Count; i++)
+                {
+                    string sqlServico = "INSERT INTO tblEventoServico(codEvento, codServico) " +
+                        "VALUES(" + codEvento + ", " + eventoServicoColecao[i].codServico + ")";
+                    SqlCommand cmd = new SqlCommand(sqlServico, conexao);
+                    cmd.ExecuteReader();
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
         public void EventoConcluir(Evento evento)
         {
             SqlConnection conexao = acessaDados.criarConexaoBanco();
@@ -464,6 +522,90 @@ namespace Negocio
             }
         }
 
+        public DecoracaoColecao BuscarEventoDecoracao(int codEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+            try
+            {
+                DecoracaoColecao decoracaoColecao = new DecoracaoColecao();
+                conexao.Open();
+                string sql = "SELECT d.codDecoracao, d.nome, d.ativo, d.valor FROM tblDecoracao AS d " +
+                    "INNER JOIN tblEventoDecoracao AS ed " +
+                    "ON d.codDecoracao = ed.codDecoracao " +
+                    "WHERE ed.codEvento = " + codEvento;
+
+                SqlCommand cmd = new SqlCommand(sql, conexao);
+                SqlDataReader dataReader = cmd.ExecuteReader();
+                DataTable dataTable = new System.Data.DataTable();
+
+                dataTable.Load(dataReader);
+
+                foreach(DataRow linha in dataTable.Rows)
+                {
+                    Decoracao decoracao = new Decoracao();
+                    
+                    decoracao.codDecoracao = Convert.ToInt32(linha["codDecoracao"]);
+                    decoracao.nome = linha["nome"].ToString();
+                    decoracao.ativo = Convert.ToBoolean(linha["ativo"]);
+                    decoracao.valor = Convert.ToDouble(linha["valor"]);
+
+                    decoracaoColecao.Add(decoracao);
+                }
+
+                return decoracaoColecao;
+                
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public ServicoColecao BuscarEventoServico(int codEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+            try
+            {
+                ServicoColecao servicoColecao = new ServicoColecao();
+                conexao.Open();
+                string sql = "SELECT s.codServico, s.descricao, s.valor, s.ativo FROM tblServico AS s " +
+                    "INNER JOIN tblEventoServico AS es " +
+                    "ON s.codServico = es.codServico " +
+                    "WHERE es.codEvento = " + codEvento;
+
+                SqlCommand cmd = new SqlCommand(sql, conexao);
+                SqlDataReader dataReader = cmd.ExecuteReader();
+                DataTable dataTable = new System.Data.DataTable();
+
+                dataTable.Load(dataReader);
+
+                foreach(DataRow linha in dataTable.Rows)
+                {
+                    Servico servico = new Servico();
+
+                    servico.codServico = Convert.ToInt32(linha["codServico"]);
+                    servico.descricao = linha["descricao"].ToString();
+                    servico.valor = Convert.ToDouble(linha["valor"]);
+                    servico.ativo = Convert.ToBoolean(linha["ativo"]);
+
+                    servicoColecao.Add(servico);
+                }
+
+                return servicoColecao;
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
         public object BuscarValorTotalEvento(int codEvento)
         {
             SqlConnection conexao = acessaDados.criarConexaoBanco();

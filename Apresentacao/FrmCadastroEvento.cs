@@ -57,10 +57,11 @@ namespace Apresentacao
                 btnLimpar.Enabled = false;
                 btnNovo.Enabled = false;
                 btnCancelarEvento.Enabled = true;
-                //Pegar os dados e inserir no checkedListBoxBrinquedos
+                
+                //Pegar os dados de brinquedos e inserir no checkedListBoxBrinquedos
                 BrinquedoColecao brinquedoColecaoGenerico = new BrinquedoColecao();
                 brinquedoColecaoGenerico = eventoNegocio.BuscarEventoBrinquedo(eventoSelecionado.codEvento);
-
+                
                 brinquedoColecao = brinquedoNegocio.ConsultarNomeBrinquedo("");
 
                 for (int i = 0; i < brinquedoColecao.Count; i++)
@@ -81,14 +82,59 @@ namespace Apresentacao
                         }
                     }
                 }
+                //Pegar os dados de decoração e inserir no checkedListBoxDecoracoes
+                DecoracaoColecao decoracaoColecaoGenerico = new DecoracaoColecao();
+                decoracaoColecaoGenerico = eventoNegocio.BuscarEventoDecoracao(eventoSelecionado.codEvento);
+
+                decoracaoColecao = decoracaoNegocio.ConsultarNomeDecoracao("");
+
+                for (int i = 0; i < decoracaoColecao.Count; i++)
+                {
+                    checkedListBoxDecoracao.Items.Add(decoracaoColecao[i].nome);
+                }
+
+                double auxiliarPrecoTotalDecoracao = 0;
+
+                for (int i = 0; i < decoracaoColecaoGenerico.Count; i++)
+                {
+                    for (int x = 0; x < decoracaoColecao.Count; x++)
+                    {
+                        if (decoracaoColecaoGenerico[i].nome == decoracaoColecao[x].nome)
+                        {
+                            checkedListBoxDecoracao.SetItemChecked(x, true);
+                            auxiliarPrecoTotalDecoracao += decoracaoColecaoGenerico[i].valor;
+                        }
+                    }
+                }
+                //Pegar os dados de serviço e inserir no checkedListBoxServicos
+                ServicoColecao servicoColecaoGenerico = new ServicoColecao();
+                servicoColecaoGenerico = eventoNegocio.BuscarEventoServico(eventoSelecionado.codEvento);
+
+                servicoColecao = servicoNegocio.ConsultarNome("");
+
+                for (int i = 0; i < servicoColecao.Count; i++)
+                {
+                    checkedListBoxServicos.Items.Add(servicoColecao[i].descricao);
+                }
+
+                double auxiliarPrecoTotalServico = 0;
+
+                for (int i = 0; i < servicoColecaoGenerico.Count; i++)
+                {
+                    for (int x = 0; x < servicoColecao.Count; x++)
+                    {
+                        if (servicoColecaoGenerico[i].descricao == servicoColecao[x].descricao)
+                        {
+                            checkedListBoxServicos.SetItemChecked(x, true);
+                            auxiliarPrecoTotalServico += servicoColecaoGenerico[i].valor;
+                        }
+                    }
+                }
                 //Código para buscar apenas o total do (evento + acrescimos) - descontos
                 object retorno = eventoNegocio.BuscarValorTotalEvento(eventoSelecionado.codEvento);
 
-                auxiliarDescontoAcrescimo = Convert.ToDouble(retorno);
-                auxiliarDescontoAcrescimo = auxiliarDescontoAcrescimo - auxiliarBrinquedo;
-
                 txtTotalEvento.Text = retorno.ToString();                    
-                txtValorEvento.Text = auxiliarPrecoTotalBrinquedo.ToString();
+                txtValorEvento.Text = (auxiliarPrecoTotalBrinquedo + auxiliarPrecoTotalDecoracao + auxiliarPrecoTotalServico).ToString();
             }
             else
                 MessageBox.Show("Erro ao carregar dados.\nContate o Administrador do sistema.","Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -262,22 +308,46 @@ namespace Apresentacao
         //Método para contar os listar as decorações "Checados" pelo usuário
         private void checkedListBoxDecoracao_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            int i = checkedListBoxDecoracao.SelectedIndex;
-            if (checkedListBoxDecoracao.GetItemChecked(i) == false) 
-                auxiliarDecoracao = auxiliarDecoracao + decoracaoColecao[i].valor;
-            else
-                auxiliarDecoracao = auxiliarDecoracao - decoracaoColecao[i].valor;
+            if(btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
+            {
+                int i = e.Index;
+                if (checkedListBoxDecoracao.GetItemChecked(i) == false)
+                    auxiliarDecoracao = auxiliarDecoracao + decoracaoColecao[i].valor;
+                else
+                    auxiliarDecoracao = auxiliarDecoracao - decoracaoColecao[i].valor;
 
+            }
+            else
+            {
+                int i = checkedListBoxDecoracao.SelectedIndex;
+                if (checkedListBoxDecoracao.GetItemChecked(i) == false)
+                    auxiliarDecoracao = auxiliarDecoracao + decoracaoColecao[i].valor;
+                else
+                    auxiliarDecoracao = auxiliarDecoracao - decoracaoColecao[i].valor;
+            }
+            
             totalEvento();
         }
         //Método para contar uma lista de serviços "checados" pelo usuário
         private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
         {
-            int i = checkedListBoxServicos.SelectedIndex;
-            if(checkedListBoxServicos.GetItemChecked(i) == false)
-                auxiliarServico = auxiliarServico + servicoColecao[i].valor;
+            if (btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
+            {
+
+                int i = e.Index;
+                if (checkedListBoxServicos.GetItemChecked(i) == false)
+                    auxiliarServico = auxiliarServico + servicoColecao[i].valor;
+                else
+                    auxiliarServico = auxiliarServico - servicoColecao[i].valor;
+            }
             else
-                auxiliarServico = auxiliarServico - servicoColecao[i].valor;
+            {
+                int i = checkedListBoxServicos.SelectedIndex;
+                if (checkedListBoxServicos.GetItemChecked(i) == false)
+                    auxiliarServico = auxiliarServico + servicoColecao[i].valor;
+                else
+                    auxiliarServico = auxiliarServico - servicoColecao[i].valor;
+            }
 
             totalEvento();
         }
@@ -414,7 +484,7 @@ namespace Apresentacao
                 evento.observacao = txtComplementar.Text;
                 evento.totalEvento = (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo) - desconto;
                 evento.parametro = 1;
-               //Atualizando os dados do evento
+                //Atualizando os dados do evento
                 eventoNegocio.AlterarEvento(evento);
                 //Atualizando os dados dos brinquedos deste evento
                 for (int i = 0; i < brinquedoColecao.Count; i++)
@@ -430,6 +500,36 @@ namespace Apresentacao
                 }
 
                 eventoNegocio.AlterarEventoBrinquedo(eventoBrinquedoColecao, evento.codEvento);
+
+                //Atualizando os dados das decorações deste evento
+                for (int i = 0; i < decoracaoColecao.Count; i++ )
+                {
+                    if(checkedListBoxDecoracao.GetItemChecked(i) == true)
+                    {
+                        EventoDecoracao eventoDecoracao = new EventoDecoracao();
+                        eventoDecoracao.codDecoracao = Convert.ToInt32(decoracaoColecao[i].codDecoracao);
+                        eventoDecoracao.codEvento = Convert.ToInt32(codEvento);
+
+                        eventoDecoracaoColecao.Add(eventoDecoracao);
+                    }
+                }
+
+                eventoNegocio.AlterarEventoDecoracao(eventoDecoracaoColecao, evento.codEvento);
+
+                //Atualizando os dados dos serviços deste evento
+                for (int i = 0; i < servicoColecao.Count; i++ )
+                {
+                    if(checkedListBoxServicos.GetItemChecked(i) == true)
+                    {
+                        EventoServico eventoServico = new EventoServico();
+                        eventoServico.codEvento = Convert.ToInt32(codEvento);
+                        eventoServico.codServico = Convert.ToInt32(servicoColecao[i].codServico);
+
+                        eventoServicoColecao.Add(eventoServico);
+                    }
+                }
+
+                eventoNegocio.AlterarEventoServico(eventoServicoColecao, evento.codEvento);
 
                 MessageBox.Show("Evento atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
