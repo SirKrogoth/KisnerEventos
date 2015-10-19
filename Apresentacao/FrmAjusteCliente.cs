@@ -67,5 +67,12 @@ namespace Apresentacao
         {
             
         }
+
+        private void txtBusca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //13 é o valor do enter na tabela ASCII
+            if (e.KeyChar == 13)
+                atualizaGrid();
+        }
     }
 }   

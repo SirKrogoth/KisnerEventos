@@ -34,16 +34,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewDecoracao = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtPesquisa = new System.Windows.Forms.TextBox();
-            this.btnAjustar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
             this.colCodDecoracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeDecoracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.btnAjustar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDecoracao)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,55 +67,6 @@
             this.dataGridViewDecoracao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDecoracao.Size = new System.Drawing.Size(560, 219);
             this.dataGridViewDecoracao.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(345, 227);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(227, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Selecione o item desejado e clique em \'Ajustar\'";
-            // 
-            // txtPesquisa
-            // 
-            this.txtPesquisa.Location = new System.Drawing.Point(12, 256);
-            this.txtPesquisa.Name = "txtPesquisa";
-            this.txtPesquisa.Size = new System.Drawing.Size(317, 20);
-            this.txtPesquisa.TabIndex = 1;
-            // 
-            // btnAjustar
-            // 
-            this.btnAjustar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAjustar.Location = new System.Drawing.Point(497, 254);
-            this.btnAjustar.Name = "btnAjustar";
-            this.btnAjustar.Size = new System.Drawing.Size(75, 23);
-            this.btnAjustar.TabIndex = 4;
-            this.btnAjustar.Text = "Ajustar";
-            this.btnAjustar.UseVisualStyleBackColor = true;
-            this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.Location = new System.Drawing.Point(335, 254);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 2;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.Location = new System.Drawing.Point(416, 254);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 23);
-            this.btnNovo.TabIndex = 3;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // colCodDecoracao
             // 
@@ -167,6 +118,56 @@
             this.colAtivo.HeaderText = "Situação";
             this.colAtivo.Name = "colAtivo";
             this.colAtivo.ReadOnly = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(345, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(227, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Selecione o item desejado e clique em \'Ajustar\'";
+            // 
+            // txtPesquisa
+            // 
+            this.txtPesquisa.Location = new System.Drawing.Point(12, 256);
+            this.txtPesquisa.Name = "txtPesquisa";
+            this.txtPesquisa.Size = new System.Drawing.Size(317, 20);
+            this.txtPesquisa.TabIndex = 1;
+            this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
+            // 
+            // btnAjustar
+            // 
+            this.btnAjustar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAjustar.Location = new System.Drawing.Point(497, 254);
+            this.btnAjustar.Name = "btnAjustar";
+            this.btnAjustar.Size = new System.Drawing.Size(75, 23);
+            this.btnAjustar.TabIndex = 4;
+            this.btnAjustar.Text = "Ajustar";
+            this.btnAjustar.UseVisualStyleBackColor = true;
+            this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Location = new System.Drawing.Point(335, 254);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 2;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovo.Location = new System.Drawing.Point(416, 254);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 23);
+            this.btnNovo.TabIndex = 3;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // FrmAjusteDecoracao
             // 

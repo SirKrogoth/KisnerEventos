@@ -155,6 +155,12 @@ namespace Apresentacao
             FrmLogin fl = new FrmLogin();
 
             fl.Show();
+            this.Visible = false;
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Brinquedo.cs" />
     <Compile Include="BrinquedoColecao.cs" />
+    <Compile Include="CadastroUsuario.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ClienteColecao.cs" />
     <Compile Include="Decoracao.cs" />

@@ -64,5 +64,11 @@ namespace Apresentacao
 
             fcb.Show();
         }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                atualizarGrid();
+        }
     }        
 }

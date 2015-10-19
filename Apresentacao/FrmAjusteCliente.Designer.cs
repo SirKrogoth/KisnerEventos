@@ -31,12 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAjusteCliente));
             this.dataGridViewCliente = new System.Windows.Forms.DataGridView();
-            this.txtBusca = new System.Windows.Forms.TextBox();
-            this.btnAjustar = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnCadastrar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSexo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -46,6 +40,12 @@
             this.colNascimento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.txtBusca = new System.Windows.Forms.TextBox();
+            this.btnAjustar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnCadastrar = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -74,66 +74,6 @@
             this.dataGridViewCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCliente.Size = new System.Drawing.Size(747, 303);
             this.dataGridViewCliente.TabIndex = 0;
-            // 
-            // txtBusca
-            // 
-            this.txtBusca.Location = new System.Drawing.Point(135, 350);
-            this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(381, 20);
-            this.txtBusca.TabIndex = 1;
-            // 
-            // btnAjustar
-            // 
-            this.btnAjustar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAjustar.Location = new System.Drawing.Point(684, 348);
-            this.btnAjustar.Name = "btnAjustar";
-            this.btnAjustar.Size = new System.Drawing.Size(75, 23);
-            this.btnAjustar.TabIndex = 2;
-            this.btnAjustar.Text = "Ajustar";
-            this.btnAjustar.UseVisualStyleBackColor = true;
-            this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
-            // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.Location = new System.Drawing.Point(522, 347);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 3;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(269, 315);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(471, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Selecione o item desejado e clique em \'Ajustar\' ou clique em \'Novo\' para adiciona" +
-    "r um novo cliente";
-            // 
-            // btnCadastrar
-            // 
-            this.btnCadastrar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCadastrar.Location = new System.Drawing.Point(603, 348);
-            this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
-            this.btnCadastrar.TabIndex = 6;
-            this.btnCadastrar.Text = "Novo";
-            this.btnCadastrar.UseVisualStyleBackColor = true;
-            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 321);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
             // 
             // colCodigo
             // 
@@ -204,6 +144,67 @@
             this.colAtivo.HeaderText = "Ativo";
             this.colAtivo.Name = "colAtivo";
             this.colAtivo.ReadOnly = true;
+            // 
+            // txtBusca
+            // 
+            this.txtBusca.Location = new System.Drawing.Point(135, 350);
+            this.txtBusca.Name = "txtBusca";
+            this.txtBusca.Size = new System.Drawing.Size(381, 20);
+            this.txtBusca.TabIndex = 1;
+            this.txtBusca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusca_KeyPress);
+            // 
+            // btnAjustar
+            // 
+            this.btnAjustar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAjustar.Location = new System.Drawing.Point(684, 348);
+            this.btnAjustar.Name = "btnAjustar";
+            this.btnAjustar.Size = new System.Drawing.Size(75, 23);
+            this.btnAjustar.TabIndex = 2;
+            this.btnAjustar.Text = "Ajustar";
+            this.btnAjustar.UseVisualStyleBackColor = true;
+            this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBuscar.Location = new System.Drawing.Point(522, 347);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(269, 315);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(471, 13);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Selecione o item desejado e clique em \'Ajustar\' ou clique em \'Novo\' para adiciona" +
+    "r um novo cliente";
+            // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCadastrar.Location = new System.Drawing.Point(603, 348);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
+            this.btnCadastrar.TabIndex = 6;
+            this.btnCadastrar.Text = "Novo";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(12, 321);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // FrmAjusteCliente
             // 

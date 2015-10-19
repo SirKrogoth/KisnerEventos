@@ -65,5 +65,11 @@ namespace Apresentacao
 
             fcs.Show();
         }
+
+        private void txtPesquisa_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                atualizaGrid();
+        }
     }
 }
