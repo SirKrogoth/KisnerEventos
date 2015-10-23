@@ -30,15 +30,6 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAgendaEventos = new System.Windows.Forms.DataGridView();
-            this.colConcluido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAniversariante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLocalEnveto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTermino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,6 +46,15 @@
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnNovoEvento = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.colConcluido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAniversariante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLocalEnveto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTermino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgendaEventos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -85,76 +85,6 @@
             this.dgvAgendaEventos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgendaEventos_CellContentClick);
             this.dgvAgendaEventos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgendaEventos_CellDoubleClick);
             this.dgvAgendaEventos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAgendaEventos_CellFormatting);
-            // 
-            // colConcluido
-            // 
-            this.colConcluido.DataPropertyName = "concluido";
-            this.colConcluido.HeaderText = "Concluido";
-            this.colConcluido.Name = "colConcluido";
-            this.colConcluido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colConcluido.Width = 60;
-            // 
-            // colCancelado
-            // 
-            this.colCancelado.DataPropertyName = "cancelado";
-            this.colCancelado.HeaderText = "Cancelado";
-            this.colCancelado.Name = "colCancelado";
-            this.colCancelado.Width = 60;
-            // 
-            // colCliente
-            // 
-            this.colCliente.DataPropertyName = "nomeCliente";
-            this.colCliente.HeaderText = "Cliente";
-            this.colCliente.Name = "colCliente";
-            this.colCliente.ReadOnly = true;
-            this.colCliente.Width = 120;
-            // 
-            // colAniversariante
-            // 
-            this.colAniversariante.DataPropertyName = "nome";
-            this.colAniversariante.HeaderText = "Aniversariante";
-            this.colAniversariante.Name = "colAniversariante";
-            this.colAniversariante.ReadOnly = true;
-            this.colAniversariante.Width = 120;
-            // 
-            // colLocalEnveto
-            // 
-            this.colLocalEnveto.DataPropertyName = "localEvento";
-            this.colLocalEnveto.HeaderText = "Local";
-            this.colLocalEnveto.Name = "colLocalEnveto";
-            this.colLocalEnveto.ReadOnly = true;
-            this.colLocalEnveto.Width = 170;
-            // 
-            // colCidade
-            // 
-            this.colCidade.DataPropertyName = "cidadeEvento";
-            this.colCidade.HeaderText = "Cidade";
-            this.colCidade.Name = "colCidade";
-            this.colCidade.ReadOnly = true;
-            // 
-            // colData
-            // 
-            this.colData.DataPropertyName = "data_evento";
-            this.colData.HeaderText = "Data";
-            this.colData.Name = "colData";
-            this.colData.ReadOnly = true;
-            this.colData.Width = 80;
-            // 
-            // colInicio
-            // 
-            this.colInicio.DataPropertyName = "inicio";
-            this.colInicio.HeaderText = "Inicio";
-            this.colInicio.Name = "colInicio";
-            this.colInicio.ReadOnly = true;
-            this.colInicio.Width = 90;
-            // 
-            // colTermino
-            // 
-            this.colTermino.DataPropertyName = "termino";
-            this.colTermino.HeaderText = "Termino";
-            this.colTermino.Name = "colTermino";
-            this.colTermino.ReadOnly = true;
-            this.colTermino.Width = 90;
             // 
             // label1
             // 
@@ -303,6 +233,76 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "Dê um duplo clique no evento que deseja alterar.";
             // 
+            // colConcluido
+            // 
+            this.colConcluido.DataPropertyName = "concluido";
+            this.colConcluido.HeaderText = "Concluido";
+            this.colConcluido.Name = "colConcluido";
+            this.colConcluido.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colConcluido.Width = 60;
+            // 
+            // colCancelado
+            // 
+            this.colCancelado.DataPropertyName = "cancelado";
+            this.colCancelado.HeaderText = "Cancelado";
+            this.colCancelado.Name = "colCancelado";
+            this.colCancelado.Width = 60;
+            // 
+            // colCliente
+            // 
+            this.colCliente.DataPropertyName = "nomeCliente";
+            this.colCliente.HeaderText = "Cliente";
+            this.colCliente.Name = "colCliente";
+            this.colCliente.ReadOnly = true;
+            this.colCliente.Width = 120;
+            // 
+            // colAniversariante
+            // 
+            this.colAniversariante.DataPropertyName = "nome";
+            this.colAniversariante.HeaderText = "Aniversariante";
+            this.colAniversariante.Name = "colAniversariante";
+            this.colAniversariante.ReadOnly = true;
+            this.colAniversariante.Width = 120;
+            // 
+            // colLocalEnveto
+            // 
+            this.colLocalEnveto.DataPropertyName = "localEvento";
+            this.colLocalEnveto.HeaderText = "Local";
+            this.colLocalEnveto.Name = "colLocalEnveto";
+            this.colLocalEnveto.ReadOnly = true;
+            this.colLocalEnveto.Width = 170;
+            // 
+            // colCidade
+            // 
+            this.colCidade.DataPropertyName = "cidadeEvento";
+            this.colCidade.HeaderText = "Cidade";
+            this.colCidade.Name = "colCidade";
+            this.colCidade.ReadOnly = true;
+            // 
+            // colData
+            // 
+            this.colData.DataPropertyName = "data_evento";
+            this.colData.HeaderText = "Data do Evento";
+            this.colData.Name = "colData";
+            this.colData.ReadOnly = true;
+            this.colData.Width = 110;
+            // 
+            // colInicio
+            // 
+            this.colInicio.DataPropertyName = "inicio";
+            this.colInicio.HeaderText = "Inicio";
+            this.colInicio.Name = "colInicio";
+            this.colInicio.ReadOnly = true;
+            this.colInicio.Width = 90;
+            // 
+            // colTermino
+            // 
+            this.colTermino.DataPropertyName = "termino";
+            this.colTermino.HeaderText = "Termino";
+            this.colTermino.Name = "colTermino";
+            this.colTermino.ReadOnly = true;
+            this.colTermino.Width = 90;
+            // 
             // FrmAgendaEventos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -356,6 +356,7 @@
         private System.Windows.Forms.CheckBox cbConcluido;
         private System.Windows.Forms.Button btnPesquisar;
         private System.Windows.Forms.Button btnNovoEvento;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colConcluido;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colCancelado;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCliente;
@@ -365,7 +366,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colData;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTermino;
-        private System.Windows.Forms.Label label6;
 
     }
 }

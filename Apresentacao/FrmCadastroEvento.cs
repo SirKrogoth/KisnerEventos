@@ -52,7 +52,8 @@ namespace Apresentacao
                 dateTimePickerDataEvento.Value = Convert.ToDateTime(eventoSelecionado.data_evento);
                 maskedTextBoxInicio.Text = eventoSelecionado.inicio.ToString();
                 maskedTextBoxTermino.Text = eventoSelecionado.termino.ToString();
-                txtTema.Text = eventoSelecionado.tema;                
+                txtTema.Text = eventoSelecionado.tema;
+                txtComplementar.Text = eventoSelecionado.observacao;
                 btnGravar.Text = "Alterar";
                 btnLimpar.Enabled = false;
                 btnNovo.Enabled = false;
@@ -532,6 +533,16 @@ namespace Apresentacao
                 eventoNegocio.AlterarEventoServico(eventoServicoColecao, evento.codEvento);
 
                 MessageBox.Show("Evento atualizado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                DialogResult retornoCliente = MessageBox.Show("Deseja reemprimir o contrato deste evento com os dados atualizados?", "Pergunta?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (retornoCliente == DialogResult.Yes)
+                {
+                    FrmVisualizadorContrato fvc = new FrmVisualizadorContrato(evento.codEvento.ToString());
+                    fvc.Show();
+                    limparEventos();
+                }
+                else
+                    limparEventos();
                 this.Close();
             }
             else

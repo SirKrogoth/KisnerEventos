@@ -27,8 +27,6 @@ namespace Apresentacao
 
         private void btnEntrar_Click(object sender, EventArgs e)
         {
-            this.timerLogon.Start();
-
             confirmarLogon();
         }
 
@@ -39,28 +37,32 @@ namespace Apresentacao
 
             string retorno = tln.ConsultaUsuario(txtUsuario.Text, txtSenha.Text);
 
-            int novoRetorno = Convert.ToInt32(retorno);
-
-            if (novoRetorno != 0)
+            try
             {
-                principal.Show();
-                this.Visible = false;
+                int novoRetorno = Convert.ToInt32(retorno);
+
+                if (novoRetorno != 0)
+                {
+                    principal.Show();
+                    this.Visible = false;
+                }
+                else
+                {
+                    MessageBox.Show("Usuário não localizado ou não cadastrado, verifique com o administrador.", "Usuário não localizado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }                    
             }
-            else
-                MessageBox.Show("Usuário não localizado ou não cadastrado, verifique com o administrador.", "Usuário não localizado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch
+            {
+
+            }
+            
         }
 
         private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13)
                 confirmarLogon();
-        }
-
-        private void timerLogon_Tick(object sender, EventArgs e)
-        {
-            this.progressBarLogon.Increment(1);
-            if (progressBarLogon.Value == 100)
-                timerLogon.Stop();
         }
     }
 }

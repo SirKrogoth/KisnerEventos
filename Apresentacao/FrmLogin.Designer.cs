@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
@@ -38,8 +37,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnEntrar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.progressBarLogon = new System.Windows.Forms.ProgressBar();
-            this.timerLogon = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,24 +115,12 @@
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
-            // progressBarLogon
-            // 
-            this.progressBarLogon.Location = new System.Drawing.Point(336, 160);
-            this.progressBarLogon.Name = "progressBarLogon";
-            this.progressBarLogon.Size = new System.Drawing.Size(76, 14);
-            this.progressBarLogon.TabIndex = 10;
-            // 
-            // timerLogon
-            // 
-            this.timerLogon.Tick += new System.EventHandler(this.timerLogon_Tick);
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(413, 175);
-            this.Controls.Add(this.progressBarLogon);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnEntrar);
             this.Controls.Add(this.pictureBox1);
@@ -166,7 +151,5 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnEntrar;
         private System.Windows.Forms.Button btnLimpar;
-        private System.Windows.Forms.ProgressBar progressBarLogon;
-        private System.Windows.Forms.Timer timerLogon;
     }
 }

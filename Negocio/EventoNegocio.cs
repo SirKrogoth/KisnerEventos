@@ -7,7 +7,6 @@ using System.Data;
 using AcessoBancoDados;
 using ObjetoTransferencia;
 using System.Data.SqlClient;
-using System.Data;
 
 namespace Negocio
 {
