@@ -55,7 +55,9 @@ namespace Apresentacao
                 txtTema.Text = eventoSelecionado.tema;
                 txtComplementar.Text = eventoSelecionado.observacao;
                 btnGravar.Text = "Alterar";
-                btnLimpar.Enabled = false;
+                btnLimpar.Text = "Reimprimir";
+                btnLimpar.Image = Properties.Resources.reimprimir;
+                //Image.FromFile("Imagens/reimprimir.png");                
                 btnNovo.Enabled = false;
                 btnCancelarEvento.Enabled = true;
                 
@@ -587,7 +589,14 @@ namespace Apresentacao
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            limparEventos();
+            if (btnLimpar.Text == "Limpar" && btnGravar.Text == "Gravar")
+                limparEventos();
+            else
+            {
+                FrmVisualizadorContrato fvc = new FrmVisualizadorContrato(txtCodigo.Text);
+
+                fvc.Show();
+            }
         }
 
         private void btnCancelarEvento_Click(object sender, EventArgs e)
@@ -651,6 +660,42 @@ namespace Apresentacao
                 }
                 txtExtrato.Text = msg.ToString();
             }
+        }
+
+        private void tabControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void FrmCadastroEvento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnNovo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnLimpar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnCancelarEvento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnGravar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
         }
     }
 }

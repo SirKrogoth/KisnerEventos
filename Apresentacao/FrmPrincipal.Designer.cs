@@ -44,9 +44,6 @@
             this.clienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.decoraçãoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.serviçoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.contratoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adicionarNovoContratoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alterarContratoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +60,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonDecoracao = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.barraStatusPrincipal.SuspendLayout();
             this.menuPrincipal.SuspendLayout();
             this.toolStripPrincipal.SuspendLayout();
@@ -89,7 +88,6 @@
             this.menuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cadastroToolStripMenuItem,
             this.ajusteToolStripMenuItem,
-            this.contratoToolStripMenuItem,
             this.relatóriosToolStripMenuItem,
             this.configuraçõesToolStripMenuItem,
             this.sairToolStripMenuItem});
@@ -155,8 +153,8 @@
             this.decoraçãoToolStripMenuItem1,
             this.serviçoToolStripMenuItem1});
             this.ajusteToolStripMenuItem.Name = "ajusteToolStripMenuItem";
-            this.ajusteToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
-            this.ajusteToolStripMenuItem.Text = "Ajustes";
+            this.ajusteToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.ajusteToolStripMenuItem.Text = "Pesquisar";
             // 
             // agendaEventosToolStripMenuItem
             // 
@@ -193,28 +191,6 @@
             this.serviçoToolStripMenuItem1.Text = "Serviço";
             this.serviçoToolStripMenuItem1.Click += new System.EventHandler(this.serviçoToolStripMenuItem1_Click);
             // 
-            // contratoToolStripMenuItem
-            // 
-            this.contratoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adicionarNovoContratoToolStripMenuItem,
-            this.alterarContratoToolStripMenuItem});
-            this.contratoToolStripMenuItem.Name = "contratoToolStripMenuItem";
-            this.contratoToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.contratoToolStripMenuItem.Text = "Contrato";
-            // 
-            // adicionarNovoContratoToolStripMenuItem
-            // 
-            this.adicionarNovoContratoToolStripMenuItem.Name = "adicionarNovoContratoToolStripMenuItem";
-            this.adicionarNovoContratoToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.adicionarNovoContratoToolStripMenuItem.Text = "Adicionar novo contrato";
-            this.adicionarNovoContratoToolStripMenuItem.Click += new System.EventHandler(this.adicionarNovoContratoToolStripMenuItem_Click);
-            // 
-            // alterarContratoToolStripMenuItem
-            // 
-            this.alterarContratoToolStripMenuItem.Name = "alterarContratoToolStripMenuItem";
-            this.alterarContratoToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.alterarContratoToolStripMenuItem.Text = "Alterar contrato";
-            // 
             // relatóriosToolStripMenuItem
             // 
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
@@ -233,13 +209,13 @@
             // configuraçõesToolStripMenuItem1
             // 
             this.configuraçõesToolStripMenuItem1.Name = "configuraçõesToolStripMenuItem1";
-            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.configuraçõesToolStripMenuItem1.Text = "Configurações";
             // 
             // telaLoginTesteToolStripMenuItem
             // 
             this.telaLoginTesteToolStripMenuItem.Name = "telaLoginTesteToolStripMenuItem";
-            this.telaLoginTesteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.telaLoginTesteToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.telaLoginTesteToolStripMenuItem.Text = "Logoff";
             this.telaLoginTesteToolStripMenuItem.Click += new System.EventHandler(this.telaLoginTesteToolStripMenuItem_Click);
             // 
@@ -259,6 +235,8 @@
             this.toolStripSeparator2,
             this.toolStripButtonServicos,
             this.toolStripSeparator3,
+            this.toolStripButtonDecoracao,
+            this.toolStripSeparator6,
             this.toolStripButtonEventos,
             this.toolStripSeparator4,
             this.toolStripButtonClose,
@@ -353,6 +331,22 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 94);
             // 
+            // toolStripButtonDecoracao
+            // 
+            this.toolStripButtonDecoracao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDecoracao.Image")));
+            this.toolStripButtonDecoracao.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonDecoracao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDecoracao.Name = "toolStripButtonDecoracao";
+            this.toolStripButtonDecoracao.Size = new System.Drawing.Size(81, 91);
+            this.toolStripButtonDecoracao.Text = "Decorações";
+            this.toolStripButtonDecoracao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonDecoracao.Click += new System.EventHandler(this.toolStripButtonDecoracao_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 94);
+            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -399,12 +393,9 @@
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem contratoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviçoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviçoToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem adicionarNovoContratoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alterarContratoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agendaEventosToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonServicos;
         private System.Windows.Forms.ToolStripButton toolStripButtonCliente;
@@ -415,5 +406,7 @@
         private System.Windows.Forms.ToolStripMenuItem telaLoginTesteToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButtonClose;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripButton toolStripButtonDecoracao;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
     }
 }

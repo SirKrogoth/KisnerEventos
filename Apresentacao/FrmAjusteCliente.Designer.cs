@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAjusteCliente));
             this.dataGridViewCliente = new System.Windows.Forms.DataGridView();
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,8 +54,8 @@
             // 
             this.dataGridViewCliente.AllowUserToAddRows = false;
             this.dataGridViewCliente.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridViewCliente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridViewCliente.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCliente.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodigo,
@@ -74,6 +74,8 @@
             this.dataGridViewCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCliente.Size = new System.Drawing.Size(747, 303);
             this.dataGridViewCliente.TabIndex = 0;
+            this.dataGridViewCliente.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCliente_CellDoubleClick);
+            this.dataGridViewCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCliente_KeyDown);
             // 
             // colCodigo
             // 
@@ -151,6 +153,7 @@
             this.txtBusca.Name = "txtBusca";
             this.txtBusca.Size = new System.Drawing.Size(381, 20);
             this.txtBusca.TabIndex = 1;
+            this.txtBusca.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBusca_KeyDown);
             this.txtBusca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusca_KeyPress);
             // 
             // btnAjustar
@@ -163,6 +166,7 @@
             this.btnAjustar.Text = "Ajustar";
             this.btnAjustar.UseVisualStyleBackColor = true;
             this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
+            this.btnAjustar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAjustar_KeyDown);
             // 
             // btnBuscar
             // 
@@ -174,6 +178,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBuscar_KeyDown);
             // 
             // label1
             // 
@@ -195,6 +200,7 @@
             this.btnCadastrar.Text = "Novo";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            this.btnCadastrar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnCadastrar_KeyDown);
             // 
             // pictureBox1
             // 

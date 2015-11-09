@@ -64,5 +64,29 @@ namespace Apresentacao
             if (e.KeyChar == 13)
                 confirmarLogon();
         }
+
+        private void txtUsuario_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void txtSenha_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnEntrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnLimpar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
     }
 }

@@ -116,6 +116,7 @@
             this.mTxtCelular.Size = new System.Drawing.Size(100, 20);
             this.mTxtCelular.TabIndex = 9;
             this.mTxtCelular.Visible = false;
+            this.mTxtCelular.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mTxtCelular_KeyDown);
             // 
             // mTxtResidencial
             // 
@@ -124,6 +125,7 @@
             this.mTxtResidencial.Name = "mTxtResidencial";
             this.mTxtResidencial.Size = new System.Drawing.Size(100, 20);
             this.mTxtResidencial.TabIndex = 7;
+            this.mTxtResidencial.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mTxtResidencial_KeyDown);
             // 
             // mTxtCpf
             // 
@@ -132,6 +134,7 @@
             this.mTxtCpf.Name = "mTxtCpf";
             this.mTxtCpf.Size = new System.Drawing.Size(100, 20);
             this.mTxtCpf.TabIndex = 6;
+            this.mTxtCpf.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mTxtCpf_KeyDown);
             // 
             // comboBoxOperadora
             // 
@@ -151,6 +154,7 @@
             this.comboBoxOperadora.TabIndex = 10;
             this.comboBoxOperadora.Text = "Selecione";
             this.comboBoxOperadora.Visible = false;
+            this.comboBoxOperadora.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxOperadora_KeyDown);
             // 
             // labelOperadora
             // 
@@ -182,6 +186,7 @@
             this.checkBoxInformaCelular.Text = "Informar telefone celular";
             this.checkBoxInformaCelular.UseVisualStyleBackColor = true;
             this.checkBoxInformaCelular.CheckedChanged += new System.EventHandler(this.checkBoxInformaCelular_CheckedChanged);
+            this.checkBoxInformaCelular.KeyDown += new System.Windows.Forms.KeyEventHandler(this.checkBoxInformaCelular_KeyDown);
             // 
             // label15
             // 
@@ -200,6 +205,7 @@
             this.dateTimePickerNascimento.Name = "dateTimePickerNascimento";
             this.dateTimePickerNascimento.Size = new System.Drawing.Size(98, 20);
             this.dateTimePickerNascimento.TabIndex = 2;
+            this.dateTimePickerNascimento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerNascimento_KeyDown);
             // 
             // label12
             // 
@@ -226,6 +232,7 @@
             this.txtRg.Size = new System.Drawing.Size(96, 20);
             this.txtRg.TabIndex = 5;
             this.txtRg.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtRg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRg_KeyDown);
             // 
             // label4
             // 
@@ -245,6 +252,7 @@
             this.radioButtonFeminino.TabIndex = 4;
             this.radioButtonFeminino.Text = "Feminino";
             this.radioButtonFeminino.UseVisualStyleBackColor = true;
+            this.radioButtonFeminino.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioButtonFeminino_KeyDown);
             // 
             // radioButtonMasculino
             // 
@@ -257,6 +265,7 @@
             this.radioButtonMasculino.TabStop = true;
             this.radioButtonMasculino.Text = "Masculino";
             this.radioButtonMasculino.UseVisualStyleBackColor = true;
+            this.radioButtonMasculino.KeyDown += new System.Windows.Forms.KeyEventHandler(this.radioButtonMasculino_KeyDown);
             // 
             // label3
             // 
@@ -273,6 +282,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(358, 20);
             this.txtNome.TabIndex = 1;
+            this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
             // 
             // label2
             // 
@@ -328,6 +338,7 @@
             this.mTxtCep.Name = "mTxtCep";
             this.mTxtCep.Size = new System.Drawing.Size(100, 20);
             this.mTxtCep.TabIndex = 5;
+            this.mTxtCep.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mTxtCep_KeyDown);
             // 
             // label11
             // 
@@ -373,7 +384,8 @@
             this.comboBoxEstados.Name = "comboBoxEstados";
             this.comboBoxEstados.Size = new System.Drawing.Size(83, 21);
             this.comboBoxEstados.TabIndex = 4;
-            this.comboBoxEstados.Text = "Selecione";
+            this.comboBoxEstados.Text = "RS";
+            this.comboBoxEstados.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxEstados_KeyDown);
             // 
             // label10
             // 
@@ -390,6 +402,7 @@
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(148, 20);
             this.txtCidade.TabIndex = 3;
+            this.txtCidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCidade_KeyDown);
             // 
             // label9
             // 
@@ -406,6 +419,7 @@
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(146, 20);
             this.txtBairro.TabIndex = 2;
+            this.txtBairro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBairro_KeyDown);
             // 
             // label8
             // 
@@ -422,6 +436,7 @@
             this.txtNumero.Name = "txtNumero";
             this.txtNumero.Size = new System.Drawing.Size(63, 20);
             this.txtNumero.TabIndex = 1;
+            this.txtNumero.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNumero_KeyDown);
             // 
             // label7
             // 
@@ -438,6 +453,7 @@
             this.txtRua.Name = "txtRua";
             this.txtRua.Size = new System.Drawing.Size(230, 20);
             this.txtRua.TabIndex = 0;
+            this.txtRua.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRua_KeyDown);
             // 
             // label6
             // 
@@ -471,6 +487,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(367, 20);
             this.txtEmail.TabIndex = 0;
+            this.txtEmail.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtEmail_KeyDown);
             // 
             // label17
             // 
@@ -491,6 +508,7 @@
             this.comboBoxSituacao.Size = new System.Drawing.Size(104, 21);
             this.comboBoxSituacao.TabIndex = 3;
             this.comboBoxSituacao.Text = "Ativo";
+            this.comboBoxSituacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBoxSituacao_KeyDown);
             // 
             // label16
             // 
@@ -508,6 +526,7 @@
             this.dateTimePickerDataCadastro.Name = "dateTimePickerDataCadastro";
             this.dateTimePickerDataCadastro.Size = new System.Drawing.Size(226, 20);
             this.dateTimePickerDataCadastro.TabIndex = 2;
+            this.dateTimePickerDataCadastro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dateTimePickerDataCadastro_KeyDown);
             // 
             // label14
             // 
@@ -526,6 +545,7 @@
             this.txtObservacoes.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtObservacoes.Size = new System.Drawing.Size(164, 62);
             this.txtObservacoes.TabIndex = 1;
+            this.txtObservacoes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtObservacoes_KeyDown);
             // 
             // label13
             // 
@@ -546,6 +566,7 @@
             this.btnGravar.Text = "Gravar";
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
+            this.btnGravar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnGravar_KeyDown);
             // 
             // btnNovo
             // 
@@ -557,6 +578,7 @@
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.btnNovo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnNovo_KeyDown);
             // 
             // btnLimpar
             // 
@@ -568,6 +590,7 @@
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnLimpar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnLimpar_KeyDown);
             // 
             // FrmCadastroCliente
             // 

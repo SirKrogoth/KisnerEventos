@@ -63,7 +63,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 57);
+            this.label2.Location = new System.Drawing.Point(12, 48);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 2;
@@ -71,15 +71,16 @@
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(15, 73);
+            this.txtNome.Location = new System.Drawing.Point(15, 64);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(372, 20);
             this.txtNome.TabIndex = 3;
+            this.txtNome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyDown);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 105);
+            this.label3.Location = new System.Drawing.Point(12, 87);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(31, 13);
             this.label3.TabIndex = 4;
@@ -87,17 +88,18 @@
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(15, 121);
+            this.txtValor.Location = new System.Drawing.Point(15, 105);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(92, 20);
             this.txtValor.TabIndex = 5;
             this.txtValor.Text = "0,00";
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyDown);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(172, 105);
+            this.label4.Location = new System.Drawing.Point(172, 87);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(84, 13);
             this.label4.TabIndex = 6;
@@ -106,15 +108,16 @@
             // dtpCriacao
             // 
             this.dtpCriacao.Enabled = false;
-            this.dtpCriacao.Location = new System.Drawing.Point(175, 121);
+            this.dtpCriacao.Location = new System.Drawing.Point(175, 105);
             this.dtpCriacao.Name = "dtpCriacao";
             this.dtpCriacao.Size = new System.Drawing.Size(212, 20);
             this.dtpCriacao.TabIndex = 7;
+            this.dtpCriacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpCriacao_KeyDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 156);
+            this.label5.Location = new System.Drawing.Point(12, 128);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
             this.label5.TabIndex = 8;
@@ -126,16 +129,17 @@
             this.cmSituaco.Items.AddRange(new object[] {
             "Ativo",
             "Inativo"});
-            this.cmSituaco.Location = new System.Drawing.Point(15, 172);
+            this.cmSituaco.Location = new System.Drawing.Point(15, 144);
             this.cmSituaco.Name = "cmSituaco";
             this.cmSituaco.Size = new System.Drawing.Size(120, 21);
             this.cmSituaco.TabIndex = 9;
-            this.cmSituaco.Text = "Selecione";
+            this.cmSituaco.Text = "Ativo";
+            this.cmSituaco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmSituaco_KeyDown);
             // 
             // btnGravar
             // 
             this.btnGravar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGravar.Location = new System.Drawing.Point(160, 170);
+            this.btnGravar.Location = new System.Drawing.Point(150, 137);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 32);
             this.btnGravar.TabIndex = 10;
@@ -146,7 +150,7 @@
             // btnNovo
             // 
             this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.Location = new System.Drawing.Point(241, 170);
+            this.btnNovo.Location = new System.Drawing.Point(231, 137);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 32);
             this.btnNovo.TabIndex = 11;
@@ -157,7 +161,7 @@
             // btnLimpar
             // 
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpar.Location = new System.Drawing.Point(322, 170);
+            this.btnLimpar.Location = new System.Drawing.Point(312, 137);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 32);
             this.btnLimpar.TabIndex = 12;
@@ -169,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 213);
+            this.ClientSize = new System.Drawing.Size(416, 178);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnGravar);
@@ -190,6 +194,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kisner Eventos - Cadastro de Serviço";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FrmCadastroServico_KeyPress);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -69,5 +69,35 @@ namespace Apresentacao
             if (e.KeyChar == 13)
                 atualizarGrid();
         }
+
+        private void dataGridViewDecoracao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void txtPesquisa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnNovo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnAjustar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
     }
 }

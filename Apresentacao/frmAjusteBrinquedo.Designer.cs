@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewBrinquedo = new System.Windows.Forms.DataGridView();
             this.colCodDecoracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeBrinquedo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +51,8 @@
             // 
             this.dataGridViewBrinquedo.AllowUserToAddRows = false;
             this.dataGridViewBrinquedo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridViewBrinquedo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridViewBrinquedo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewBrinquedo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBrinquedo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodDecoracao,
@@ -67,12 +67,13 @@
             this.dataGridViewBrinquedo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBrinquedo.Size = new System.Drawing.Size(560, 219);
             this.dataGridViewBrinquedo.TabIndex = 0;
+            this.dataGridViewBrinquedo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewBrinquedo_KeyDown);
             // 
             // colCodDecoracao
             // 
             this.colCodDecoracao.DataPropertyName = "codBrinquedo";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colCodDecoracao.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.NullValue = null;
+            this.colCodDecoracao.DefaultCellStyle = dataGridViewCellStyle22;
             this.colCodDecoracao.HeaderText = "Codigo";
             this.colCodDecoracao.Name = "colCodDecoracao";
             this.colCodDecoracao.ReadOnly = true;
@@ -81,9 +82,9 @@
             // colNomeBrinquedo
             // 
             this.colNomeBrinquedo.DataPropertyName = "nome";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.NullValue = null;
-            this.colNomeBrinquedo.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.NullValue = null;
+            this.colNomeBrinquedo.DefaultCellStyle = dataGridViewCellStyle23;
             this.colNomeBrinquedo.HeaderText = "Nome Brinquedo";
             this.colNomeBrinquedo.Name = "colNomeBrinquedo";
             this.colNomeBrinquedo.ReadOnly = true;
@@ -92,9 +93,9 @@
             // colDataCadastro
             // 
             this.colDataCadastro.DataPropertyName = "cadastro";
-            dataGridViewCellStyle4.Format = "g";
-            dataGridViewCellStyle4.NullValue = null;
-            this.colDataCadastro.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle24.Format = "g";
+            dataGridViewCellStyle24.NullValue = null;
+            this.colDataCadastro.DefaultCellStyle = dataGridViewCellStyle24;
             this.colDataCadastro.HeaderText = "Data Cadastro";
             this.colDataCadastro.Name = "colDataCadastro";
             this.colDataCadastro.ReadOnly = true;
@@ -103,10 +104,10 @@
             // valor
             // 
             this.valor.DataPropertyName = "valor";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = null;
-            this.valor.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "C2";
+            dataGridViewCellStyle25.NullValue = null;
+            this.valor.DefaultCellStyle = dataGridViewCellStyle25;
             this.valor.HeaderText = "Valor";
             this.valor.Name = "valor";
             this.valor.ReadOnly = true;
@@ -127,6 +128,7 @@
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(317, 20);
             this.txtBuscar.TabIndex = 1;
+            this.txtBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtBuscar_KeyDown);
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // btnBuscar
@@ -139,6 +141,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBuscar_KeyDown);
             // 
             // label1
             // 
@@ -159,6 +162,7 @@
             this.btnAjustar.Text = "Ajustar";
             this.btnAjustar.UseVisualStyleBackColor = true;
             this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
+            this.btnAjustar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAjustar_KeyDown);
             // 
             // button1
             // 
@@ -170,6 +174,7 @@
             this.button1.Text = "Novo";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.button1_KeyDown);
             // 
             // frmAjusteBrinquedo
             // 

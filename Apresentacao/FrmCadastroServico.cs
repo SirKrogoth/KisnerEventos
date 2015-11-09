@@ -73,6 +73,7 @@ namespace Apresentacao
             {
                 int converter = Convert.ToInt32(retorno);
                 MessageBox.Show("Registro alterado com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             catch
             {
@@ -151,7 +152,7 @@ namespace Apresentacao
             txtCodigo.Text = "";
             txtNome.Text = "";
             txtValor.Text = "";
-            cmSituaco.Text = "Selecione";
+            cmSituaco.Text = "Ativo";
             dtpCriacao.Value = DateTime.Now;
         }
 
@@ -166,6 +167,36 @@ namespace Apresentacao
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             novoRegistro();
+        }
+
+        private void FrmCadastroServico_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 27)
+                this.Close();
+        }
+
+        private void txtNome_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void txtValor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void dtpCriacao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void cmSituaco_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
         }
     }
 }

@@ -64,10 +64,10 @@ namespace Apresentacao
 
         private void toolStripButtonCliente_Click(object sender, EventArgs e)
         {
-            FrmAjusteCliente fac = new FrmAjusteCliente();
+            FrmCadastroCliente fcc = new FrmCadastroCliente(EnumeradorCliente.Inserir, null);
 
-            fac.MdiParent = this;
-            fac.Show();
+            fcc.MdiParent = this;
+            fcc.Show();
         }
 
         private void clienteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -161,6 +161,14 @@ namespace Apresentacao
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void toolStripButtonDecoracao_Click(object sender, EventArgs e)
+        {
+            frmCadastroDecoracao fcd = new frmCadastroDecoracao(EnumDecoracao.Inserir, null);
+
+            fcd.MdiParent = this;
+            fcd.Show();
         }
     }
 }

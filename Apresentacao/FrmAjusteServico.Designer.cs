@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewAjusteServico = new System.Windows.Forms.DataGridView();
             this.colCodServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +48,8 @@
             // 
             this.dataGridViewAjusteServico.AllowUserToAddRows = false;
             this.dataGridViewAjusteServico.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridViewAjusteServico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridViewAjusteServico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewAjusteServico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAjusteServico.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodServico,
@@ -65,6 +65,7 @@
             this.dataGridViewAjusteServico.Size = new System.Drawing.Size(560, 217);
             this.dataGridViewAjusteServico.TabIndex = 0;
             this.dataGridViewAjusteServico.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAjusteServico_CellDoubleClick);
+            this.dataGridViewAjusteServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewAjusteServico_KeyDown);
             // 
             // colCodServico
             // 
@@ -94,9 +95,9 @@
             // colValor
             // 
             this.colValor.DataPropertyName = "valor";
-            dataGridViewCellStyle2.Format = "C2";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colValor.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Format = "C2";
+            dataGridViewCellStyle10.NullValue = null;
+            this.colValor.DefaultCellStyle = dataGridViewCellStyle10;
             this.colValor.HeaderText = "Valor";
             this.colValor.Name = "colValor";
             this.colValor.ReadOnly = true;
@@ -127,6 +128,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBuscar_KeyDown);
             // 
             // btnNovo
             // 
@@ -138,6 +140,7 @@
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.btnNovo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnNovo_KeyDown);
             // 
             // btnAjustar
             // 
@@ -149,6 +152,7 @@
             this.btnAjustar.Text = "Ajustar";
             this.btnAjustar.UseVisualStyleBackColor = true;
             this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
+            this.btnAjustar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAjustar_KeyDown);
             // 
             // txtPesquisa
             // 
@@ -156,6 +160,7 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(317, 20);
             this.txtPesquisa.TabIndex = 5;
+            this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
             this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
             // 
             // FrmAjusteServico

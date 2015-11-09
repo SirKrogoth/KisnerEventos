@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewDecoracao = new System.Windows.Forms.DataGridView();
             this.colCodDecoracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeDecoracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,8 +51,8 @@
             // 
             this.dataGridViewDecoracao.AllowUserToAddRows = false;
             this.dataGridViewDecoracao.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridViewDecoracao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridViewDecoracao.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
             this.dataGridViewDecoracao.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDecoracao.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodDecoracao,
@@ -67,13 +67,14 @@
             this.dataGridViewDecoracao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDecoracao.Size = new System.Drawing.Size(560, 219);
             this.dataGridViewDecoracao.TabIndex = 0;
+            this.dataGridViewDecoracao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewDecoracao_KeyDown);
             // 
             // colCodDecoracao
             // 
             this.colCodDecoracao.DataPropertyName = "codDecoracao";
-            dataGridViewCellStyle2.Format = "g";
-            dataGridViewCellStyle2.NullValue = null;
-            this.colCodDecoracao.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle22.Format = "g";
+            dataGridViewCellStyle22.NullValue = null;
+            this.colCodDecoracao.DefaultCellStyle = dataGridViewCellStyle22;
             this.colCodDecoracao.HeaderText = "Código";
             this.colCodDecoracao.Name = "colCodDecoracao";
             this.colCodDecoracao.ReadOnly = true;
@@ -82,8 +83,8 @@
             // colNomeDecoracao
             // 
             this.colNomeDecoracao.DataPropertyName = "nome";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            this.colNomeDecoracao.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            this.colNomeDecoracao.DefaultCellStyle = dataGridViewCellStyle23;
             this.colNomeDecoracao.HeaderText = "Nome Decoração";
             this.colNomeDecoracao.Name = "colNomeDecoracao";
             this.colNomeDecoracao.ReadOnly = true;
@@ -92,9 +93,9 @@
             // colDataCadastro
             // 
             this.colDataCadastro.DataPropertyName = "cadastro";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.Format = "g";
-            this.colDataCadastro.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.Format = "g";
+            this.colDataCadastro.DefaultCellStyle = dataGridViewCellStyle24;
             this.colDataCadastro.HeaderText = "Data Cadastro";
             this.colDataCadastro.Name = "colDataCadastro";
             this.colDataCadastro.ReadOnly = true;
@@ -103,10 +104,10 @@
             // colValor
             // 
             this.colValor.DataPropertyName = "valor";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = "0,00";
-            this.colValor.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle25.Format = "C2";
+            dataGridViewCellStyle25.NullValue = "0,00";
+            this.colValor.DefaultCellStyle = dataGridViewCellStyle25;
             this.colValor.HeaderText = "Valor";
             this.colValor.Name = "colValor";
             this.colValor.ReadOnly = true;
@@ -134,6 +135,7 @@
             this.txtPesquisa.Name = "txtPesquisa";
             this.txtPesquisa.Size = new System.Drawing.Size(317, 20);
             this.txtPesquisa.TabIndex = 1;
+            this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
             this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
             // 
             // btnAjustar
@@ -146,6 +148,7 @@
             this.btnAjustar.Text = "Ajustar";
             this.btnAjustar.UseVisualStyleBackColor = true;
             this.btnAjustar.Click += new System.EventHandler(this.btnAjustar_Click);
+            this.btnAjustar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnAjustar_KeyDown);
             // 
             // btnBuscar
             // 
@@ -157,6 +160,7 @@
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnBuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnBuscar_KeyDown);
             // 
             // btnNovo
             // 
@@ -168,6 +172,7 @@
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.btnNovo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnNovo_KeyDown);
             // 
             // FrmAjusteDecoracao
             // 

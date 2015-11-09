@@ -34,7 +34,7 @@ namespace Apresentacao
             //report.Load("C:\\Users\\João\\Documents\\Video Aulas\\Canal Professor Drausion\\1° Temporada\\KISNER_EVENTOS\\Apresentacao\\Relatorios\\Contrato\\RelContrato.rpt");            
             //string path = System.Reflection.Assembly.GetExecutingAssembly().Location;
             //report.Load("\\Relatorios\\Contrato\\RelContrato.rpt");
-            Relatorios.Contrato.RelContrato report = new Relatorios.Contrato.RelContrato();
+            Relatorios.Contrato.RelContrato report = new Relatorios.Contrato.RelContrato();            
 
             ParameterFieldDefinitions crParameterFieldDefinitions;
             ParameterFieldDefinition crParameterFieldDefinition;
@@ -54,7 +54,6 @@ namespace Apresentacao
 
             BrinquedoColecao bc = new BrinquedoColecao();
             */
-            
 
             crParameterValues.Clear();
             crParameterValues.Add(crParameterDiscreteValue);

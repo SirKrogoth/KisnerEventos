@@ -40,7 +40,8 @@ namespace Apresentacao
         private void novo()
         {
             txtNomeDecoracao.Text = "";
-            cbSituacao.Text = "Selecione";
+            txtValor.Text = "0";
+            cbSituacao.Text = "Ativo";
             dateTimePickerCriacao.Value = DateTime.Now;
         }
 
@@ -88,7 +89,7 @@ namespace Apresentacao
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             txtNomeDecoracao.Text = "";
-            cbSituacao.Text = "Selecione";
+            cbSituacao.Text = "Ativo";
             dateTimePickerCriacao.Value = DateTime.Now;
         }
 
@@ -168,7 +169,7 @@ namespace Apresentacao
                 {
                     int codDecoracao = Convert.ToInt32(retorno);
                     MessageBox.Show("Decoração alterada com sucesso.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    novo();
+                    this.Close();
                 }
                 catch
                 {
@@ -182,6 +183,48 @@ namespace Apresentacao
                 alterarRegistro();
             else
                 gravarRegistro();                
+        }
+
+        private void txtNomeDecoracao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void txtValor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void dateTimePickerCriacao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void cbSituacao_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnGravar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnNovo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnLimpar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
         }
     }
 }

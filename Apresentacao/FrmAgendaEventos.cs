@@ -93,6 +93,7 @@ namespace Apresentacao
                 pesquisarEventos();
         }
         //Evento responsável por informar com uma cor verde se o evento está concluido e vermelho para cancelado
+        //CellFormatting serve para formatar as celulas do grid
         private void dgvAgendaEventos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.Value != null && e.ColumnIndex == 0 && e.Value.Equals(true))
@@ -189,6 +190,66 @@ namespace Apresentacao
 
             fce.Show();
             this.Close();
+        }
+
+        private void txtCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void txtCidade_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void cbConcluido_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void cbCancelado_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void txtAniverariante_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void dtpInicio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void dtpTermino_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnPesquisar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnNovoEvento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void dgvAgendaEventos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
         }
     }
 }

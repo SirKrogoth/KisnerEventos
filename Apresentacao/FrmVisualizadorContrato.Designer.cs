@@ -53,6 +53,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kisner Eventos - Visualizador de contrato";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmVisualizadorContrato_Load);
             this.ResumeLayout(false);
 

@@ -35,9 +35,14 @@ namespace Apresentacao
             dataGridViewBuscarCliente.Refresh();
         }
 
-        private void btnBuscar_Click(object sender, EventArgs e)
+        private void btnSelecionar_Click(object sender, EventArgs e)
         {
-            atualizarGrid();
+            FrmCadastroEvento fce = new FrmCadastroEvento();
+
+            clienteSelecionado = (dataGridViewBuscarCliente.SelectedRows[0].DataBoundItem as Cliente);
+
+
+            this.Close();
         }
 
         private void dataGridViewBuscarCliente_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -49,6 +54,12 @@ namespace Apresentacao
             
 
             this.Close();
+        }
+
+        private void txtBusca_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+                atualizarGrid();
         }
     }
 }

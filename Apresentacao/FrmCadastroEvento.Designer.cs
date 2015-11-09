@@ -71,6 +71,7 @@
             this.btnAplicarDesconto = new System.Windows.Forms.Button();
             this.txtValorEvento = new System.Windows.Forms.TextBox();
             this.txtDesconto = new System.Windows.Forms.TextBox();
+            this.txtTotalEvento = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -80,7 +81,6 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnGravar = new System.Windows.Forms.Button();
-            this.txtTotalEvento = new System.Windows.Forms.TextBox();
             this.tabControl.SuspendLayout();
             this.tabPagePrincipal.SuspendLayout();
             this.tabPageDadosEvento.SuspendLayout();
@@ -202,6 +202,7 @@
             this.tabControl.Size = new System.Drawing.Size(434, 268);
             this.tabControl.TabIndex = 11;
             this.tabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl_Selected);
+            this.tabControl.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tabControl_KeyDown);
             // 
             // tabPagePrincipal
             // 
@@ -529,6 +530,18 @@
             this.txtDesconto.Click += new System.EventHandler(this.txtDesconto_Click);
             this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
             // 
+            // txtTotalEvento
+            // 
+            this.txtTotalEvento.AllowDrop = true;
+            this.txtTotalEvento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalEvento.Location = new System.Drawing.Point(289, 173);
+            this.txtTotalEvento.Name = "txtTotalEvento";
+            this.txtTotalEvento.ReadOnly = true;
+            this.txtTotalEvento.Size = new System.Drawing.Size(100, 26);
+            this.txtTotalEvento.TabIndex = 6;
+            this.txtTotalEvento.Text = "0,00";
+            this.txtTotalEvento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -593,6 +606,7 @@
             this.btnCancelarEvento.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelarEvento.UseVisualStyleBackColor = true;
             this.btnCancelarEvento.Click += new System.EventHandler(this.btnCancelarEvento_Click);
+            this.btnCancelarEvento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnCancelarEvento_KeyDown);
             // 
             // btnLimpar
             // 
@@ -606,6 +620,7 @@
             this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            this.btnLimpar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnLimpar_KeyDown);
             // 
             // btnNovo
             // 
@@ -619,6 +634,7 @@
             this.btnNovo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.btnNovo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnNovo_KeyDown);
             // 
             // btnGravar
             // 
@@ -633,18 +649,7 @@
             this.btnGravar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnGravar.UseVisualStyleBackColor = true;
             this.btnGravar.Click += new System.EventHandler(this.btnGravar_Click);
-            // 
-            // txtTotalEvento
-            // 
-            this.txtTotalEvento.AllowDrop = true;
-            this.txtTotalEvento.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalEvento.Location = new System.Drawing.Point(289, 173);
-            this.txtTotalEvento.Name = "txtTotalEvento";
-            this.txtTotalEvento.ReadOnly = true;
-            this.txtTotalEvento.Size = new System.Drawing.Size(100, 26);
-            this.txtTotalEvento.TabIndex = 6;
-            this.txtTotalEvento.Text = "0,00";
-            this.txtTotalEvento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnGravar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnGravar_KeyDown);
             // 
             // FrmCadastroEvento
             // 
@@ -661,6 +666,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kisner Eventos - Cadastro de Evento";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmCadastroEvento_KeyDown);
             this.tabControl.ResumeLayout(false);
             this.tabPagePrincipal.ResumeLayout(false);
             this.tabPagePrincipal.PerformLayout();

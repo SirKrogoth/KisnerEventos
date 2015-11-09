@@ -33,7 +33,7 @@
             this.colCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnSelecionar = new System.Windows.Forms.Button();
             this.txtBusca = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBuscarCliente)).BeginInit();
@@ -53,7 +53,7 @@
             this.dataGridViewBuscarCliente.Name = "dataGridViewBuscarCliente";
             this.dataGridViewBuscarCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewBuscarCliente.Size = new System.Drawing.Size(407, 152);
-            this.dataGridViewBuscarCliente.TabIndex = 0;
+            this.dataGridViewBuscarCliente.TabIndex = 2;
             this.dataGridViewBuscarCliente.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewBuscarCliente_CellContentDoubleClick);
             // 
             // colCodigo
@@ -80,23 +80,24 @@
             this.colCidade.ReadOnly = true;
             this.colCidade.Width = 120;
             // 
-            // btnBuscar
+            // btnSelecionar
             // 
-            this.btnBuscar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBuscar.Location = new System.Drawing.Point(344, 184);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 23);
-            this.btnBuscar.TabIndex = 1;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            this.btnSelecionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSelecionar.Location = new System.Drawing.Point(344, 184);
+            this.btnSelecionar.Name = "btnSelecionar";
+            this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
+            this.btnSelecionar.TabIndex = 1;
+            this.btnSelecionar.Text = "Selecionar";
+            this.btnSelecionar.UseVisualStyleBackColor = true;
+            this.btnSelecionar.Click += new System.EventHandler(this.btnSelecionar_Click);
             // 
             // txtBusca
             // 
             this.txtBusca.Location = new System.Drawing.Point(12, 186);
             this.txtBusca.Name = "txtBusca";
             this.txtBusca.Size = new System.Drawing.Size(326, 20);
-            this.txtBusca.TabIndex = 2;
+            this.txtBusca.TabIndex = 0;
+            this.txtBusca.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBusca_KeyPress);
             // 
             // label1
             // 
@@ -114,7 +115,7 @@
             this.ClientSize = new System.Drawing.Size(431, 212);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtBusca);
-            this.Controls.Add(this.btnBuscar);
+            this.Controls.Add(this.btnSelecionar);
             this.Controls.Add(this.dataGridViewBuscarCliente);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -132,7 +133,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewBuscarCliente;
-        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnSelecionar;
         private System.Windows.Forms.TextBox txtBusca;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNome;

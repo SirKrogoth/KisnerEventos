@@ -74,5 +74,46 @@ namespace Apresentacao
             if (e.KeyChar == 13)
                 atualizaGrid();
         }
+
+        private void dataGridViewCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Cliente clienteSelecionado = new Cliente();
+
+            clienteSelecionado = (dataGridViewCliente.SelectedRows[0].DataBoundItem as Cliente);
+            FrmCadastroCliente fcc = new FrmCadastroCliente(EnumeradorCliente.Alterar, clienteSelecionado);
+
+            fcc.Show();
+            this.Close();
+        }
+
+        private void dataGridViewCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void txtBusca_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnBuscar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnCadastrar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
+
+        private void btnAjustar_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 27)
+                this.Close();
+        }
     }
 }   

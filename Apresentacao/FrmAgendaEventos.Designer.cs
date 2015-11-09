@@ -30,6 +30,15 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAgendaEventos = new System.Windows.Forms.DataGridView();
+            this.colConcluido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAniversariante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLocalEnveto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colData = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTermino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtCliente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,15 +55,6 @@
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnNovoEvento = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.colConcluido = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colCancelado = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAniversariante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colLocalEnveto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colData = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTermino = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgendaEventos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -85,153 +85,7 @@
             this.dgvAgendaEventos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgendaEventos_CellContentClick);
             this.dgvAgendaEventos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAgendaEventos_CellDoubleClick);
             this.dgvAgendaEventos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvAgendaEventos_CellFormatting);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Cliente:";
-            // 
-            // txtCliente
-            // 
-            this.txtCliente.Location = new System.Drawing.Point(16, 41);
-            this.txtCliente.Name = "txtCliente";
-            this.txtCliente.Size = new System.Drawing.Size(343, 20);
-            this.txtCliente.TabIndex = 0;
-            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 68);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(77, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Aniversariante:";
-            // 
-            // txtAniverariante
-            // 
-            this.txtAniverariante.Location = new System.Drawing.Point(19, 85);
-            this.txtAniverariante.Name = "txtAniverariante";
-            this.txtAniverariante.Size = new System.Drawing.Size(340, 20);
-            this.txtAniverariante.TabIndex = 2;
-            this.txtAniverariante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAniverariante_KeyPress);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(402, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Cidade:";
-            // 
-            // txtCidade
-            // 
-            this.txtCidade.Location = new System.Drawing.Point(405, 41);
-            this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(221, 20);
-            this.txtCidade.TabIndex = 1;
-            this.txtCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCidade_KeyPress);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(405, 68);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "De:";
-            // 
-            // dtpInicio
-            // 
-            this.dtpInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpInicio.Location = new System.Drawing.Point(408, 85);
-            this.dtpInicio.Name = "dtpInicio";
-            this.dtpInicio.Size = new System.Drawing.Size(98, 20);
-            this.dtpInicio.TabIndex = 3;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(519, 67);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Para:";
-            // 
-            // dtpTermino
-            // 
-            this.dtpTermino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpTermino.Location = new System.Drawing.Point(522, 85);
-            this.dtpTermino.Name = "dtpTermino";
-            this.dtpTermino.Size = new System.Drawing.Size(104, 20);
-            this.dtpTermino.TabIndex = 4;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.cbCancelado);
-            this.groupBox1.Controls.Add(this.cbConcluido);
-            this.groupBox1.Location = new System.Drawing.Point(668, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(153, 100);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Status de exibição";
-            // 
-            // cbCancelado
-            // 
-            this.cbCancelado.AutoSize = true;
-            this.cbCancelado.Location = new System.Drawing.Point(7, 44);
-            this.cbCancelado.Name = "cbCancelado";
-            this.cbCancelado.Size = new System.Drawing.Size(77, 17);
-            this.cbCancelado.TabIndex = 6;
-            this.cbCancelado.Text = "Cancelado";
-            this.cbCancelado.UseVisualStyleBackColor = true;
-            // 
-            // cbConcluido
-            // 
-            this.cbConcluido.AutoSize = true;
-            this.cbConcluido.Location = new System.Drawing.Point(7, 20);
-            this.cbConcluido.Name = "cbConcluido";
-            this.cbConcluido.Size = new System.Drawing.Size(73, 17);
-            this.cbConcluido.TabIndex = 5;
-            this.cbConcluido.Text = "Concluido";
-            this.cbConcluido.UseVisualStyleBackColor = true;
-            // 
-            // btnPesquisar
-            // 
-            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPesquisar.Location = new System.Drawing.Point(840, 86);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
-            this.btnPesquisar.TabIndex = 7;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
-            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
-            // 
-            // btnNovoEvento
-            // 
-            this.btnNovoEvento.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovoEvento.Location = new System.Drawing.Point(921, 86);
-            this.btnNovoEvento.Name = "btnNovoEvento";
-            this.btnNovoEvento.Size = new System.Drawing.Size(75, 23);
-            this.btnNovoEvento.TabIndex = 12;
-            this.btnNovoEvento.Text = "Novo";
-            this.btnNovoEvento.UseVisualStyleBackColor = true;
-            this.btnNovoEvento.Click += new System.EventHandler(this.btnNovoEvento_Click);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(757, 454);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(239, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Dê um duplo clique no evento que deseja alterar.";
+            this.dgvAgendaEventos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvAgendaEventos_KeyDown);
             // 
             // colConcluido
             // 
@@ -302,6 +156,162 @@
             this.colTermino.Name = "colTermino";
             this.colTermino.ReadOnly = true;
             this.colTermino.Width = 90;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 24);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Cliente:";
+            // 
+            // txtCliente
+            // 
+            this.txtCliente.Location = new System.Drawing.Point(16, 41);
+            this.txtCliente.Name = "txtCliente";
+            this.txtCliente.Size = new System.Drawing.Size(343, 20);
+            this.txtCliente.TabIndex = 0;
+            this.txtCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCliente_KeyDown);
+            this.txtCliente.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCliente_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 68);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Aniversariante:";
+            // 
+            // txtAniverariante
+            // 
+            this.txtAniverariante.Location = new System.Drawing.Point(19, 85);
+            this.txtAniverariante.Name = "txtAniverariante";
+            this.txtAniverariante.Size = new System.Drawing.Size(340, 20);
+            this.txtAniverariante.TabIndex = 2;
+            this.txtAniverariante.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAniverariante_KeyDown);
+            this.txtAniverariante.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAniverariante_KeyPress);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(402, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(43, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Cidade:";
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.Location = new System.Drawing.Point(405, 41);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(221, 20);
+            this.txtCidade.TabIndex = 1;
+            this.txtCidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCidade_KeyDown);
+            this.txtCidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCidade_KeyPress);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(405, 68);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(24, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "De:";
+            // 
+            // dtpInicio
+            // 
+            this.dtpInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpInicio.Location = new System.Drawing.Point(408, 85);
+            this.dtpInicio.Name = "dtpInicio";
+            this.dtpInicio.Size = new System.Drawing.Size(98, 20);
+            this.dtpInicio.TabIndex = 3;
+            this.dtpInicio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpInicio_KeyDown);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(519, 67);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "Para:";
+            // 
+            // dtpTermino
+            // 
+            this.dtpTermino.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpTermino.Location = new System.Drawing.Point(522, 85);
+            this.dtpTermino.Name = "dtpTermino";
+            this.dtpTermino.Size = new System.Drawing.Size(104, 20);
+            this.dtpTermino.TabIndex = 4;
+            this.dtpTermino.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpTermino_KeyDown);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cbCancelado);
+            this.groupBox1.Controls.Add(this.cbConcluido);
+            this.groupBox1.Location = new System.Drawing.Point(668, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(153, 100);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Status de exibição";
+            // 
+            // cbCancelado
+            // 
+            this.cbCancelado.AutoSize = true;
+            this.cbCancelado.Location = new System.Drawing.Point(7, 44);
+            this.cbCancelado.Name = "cbCancelado";
+            this.cbCancelado.Size = new System.Drawing.Size(77, 17);
+            this.cbCancelado.TabIndex = 6;
+            this.cbCancelado.Text = "Cancelado";
+            this.cbCancelado.UseVisualStyleBackColor = true;
+            this.cbCancelado.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbCancelado_KeyDown);
+            // 
+            // cbConcluido
+            // 
+            this.cbConcluido.AutoSize = true;
+            this.cbConcluido.Location = new System.Drawing.Point(7, 20);
+            this.cbConcluido.Name = "cbConcluido";
+            this.cbConcluido.Size = new System.Drawing.Size(73, 17);
+            this.cbConcluido.TabIndex = 5;
+            this.cbConcluido.Text = "Concluido";
+            this.cbConcluido.UseVisualStyleBackColor = true;
+            this.cbConcluido.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbConcluido_KeyDown);
+            // 
+            // btnPesquisar
+            // 
+            this.btnPesquisar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPesquisar.Location = new System.Drawing.Point(840, 86);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(75, 23);
+            this.btnPesquisar.TabIndex = 7;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
+            this.btnPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnPesquisar_KeyDown);
+            // 
+            // btnNovoEvento
+            // 
+            this.btnNovoEvento.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNovoEvento.Location = new System.Drawing.Point(921, 86);
+            this.btnNovoEvento.Name = "btnNovoEvento";
+            this.btnNovoEvento.Size = new System.Drawing.Size(75, 23);
+            this.btnNovoEvento.TabIndex = 12;
+            this.btnNovoEvento.Text = "Novo";
+            this.btnNovoEvento.UseVisualStyleBackColor = true;
+            this.btnNovoEvento.Click += new System.EventHandler(this.btnNovoEvento_Click);
+            this.btnNovoEvento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnNovoEvento_KeyDown);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(757, 454);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(239, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Dê um duplo clique no evento que deseja alterar.";
             // 
             // FrmAgendaEventos
             // 
