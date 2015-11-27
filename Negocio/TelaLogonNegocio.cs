@@ -14,11 +14,11 @@ namespace Negocio
     {
         AcessaDadosSqlServer acessaDados = new AcessaDadosSqlServer();
         public string ConsultaUsuario(string login, string senha)
-        {            
+        {
             try
             {
                 acessaDados.limparParametro();
-                acessaDados.adicionarParametro("@logon", login);
+                acessaDados.adicionarParametro("@login", login);
                 acessaDados.adicionarParametro("@senha", senha);
 
                 string retorno = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_VERIFICA_USUARIO").ToString();

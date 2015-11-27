@@ -33,8 +33,8 @@ namespace Negocio
                 acessaDados.adicionarParametro("@cancelado", 0);
                 acessaDados.adicionarParametro("@cidadeEvento", evento.cidadeEvento);
 
-                string codEvento = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_INSERIR_EVENTO").ToString();
-
+                string codEvento = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_INSERIR_EVENTO").ToString();                
+                
                 return codEvento;
             }
             catch(Exception e)

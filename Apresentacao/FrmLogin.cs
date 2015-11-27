@@ -41,20 +41,25 @@ namespace Apresentacao
             {
                 int novoRetorno = Convert.ToInt32(retorno);
 
-                if (novoRetorno != 0)
+                if (novoRetorno == 1)
                 {
                     principal.Show();
                     this.Visible = false;
                 }
-                else
+                else if(novoRetorno == 0)
                 {
-                    MessageBox.Show("Usuário não localizado ou não cadastrado, verifique com o administrador.", "Usuário não localizado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Usuário não localizado ou não cadastrado.", "Usuário não localizado", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                 }                    
+                else
+                {
+                    MessageBox.Show("Mais de um dado retornado pelo banco de dados.\nRevise os dados informados e caso persista, contate o administrador do sistema.","Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    this.Close();
+                }
             }
             catch
             {
-
+                MessageBox.Show("Erro ao buscar usuário.\nContate o administrador.", "ERRO", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
         }
