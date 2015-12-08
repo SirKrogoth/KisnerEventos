@@ -56,12 +56,13 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonServicos = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonDecoracao = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonEventos = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonDecoracao = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barraStatusPrincipal.SuspendLayout();
             this.menuPrincipal.SuspendLayout();
             this.toolStripPrincipal.SuspendLayout();
@@ -200,6 +201,7 @@
             // configuraçõesToolStripMenuItem
             // 
             this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.backupToolStripMenuItem,
             this.configuraçõesToolStripMenuItem1,
             this.telaLoginTesteToolStripMenuItem});
             this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
@@ -209,13 +211,13 @@
             // configuraçõesToolStripMenuItem1
             // 
             this.configuraçõesToolStripMenuItem1.Name = "configuraçõesToolStripMenuItem1";
-            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
+            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.configuraçõesToolStripMenuItem1.Text = "Configurações";
             // 
             // telaLoginTesteToolStripMenuItem
             // 
             this.telaLoginTesteToolStripMenuItem.Name = "telaLoginTesteToolStripMenuItem";
-            this.telaLoginTesteToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.telaLoginTesteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.telaLoginTesteToolStripMenuItem.Text = "Logoff";
             this.telaLoginTesteToolStripMenuItem.Click += new System.EventHandler(this.telaLoginTesteToolStripMenuItem_Click);
             // 
@@ -297,6 +299,22 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 94);
             // 
+            // toolStripButtonDecoracao
+            // 
+            this.toolStripButtonDecoracao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDecoracao.Image")));
+            this.toolStripButtonDecoracao.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.toolStripButtonDecoracao.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonDecoracao.Name = "toolStripButtonDecoracao";
+            this.toolStripButtonDecoracao.Size = new System.Drawing.Size(81, 91);
+            this.toolStripButtonDecoracao.Text = "Decorações";
+            this.toolStripButtonDecoracao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.toolStripButtonDecoracao.Click += new System.EventHandler(this.toolStripButtonDecoracao_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 94);
+            // 
             // toolStripButtonEventos
             // 
             this.toolStripButtonEventos.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonEventos.Image")));
@@ -331,21 +349,12 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 94);
             // 
-            // toolStripButtonDecoracao
+            // backupToolStripMenuItem
             // 
-            this.toolStripButtonDecoracao.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonDecoracao.Image")));
-            this.toolStripButtonDecoracao.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.toolStripButtonDecoracao.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonDecoracao.Name = "toolStripButtonDecoracao";
-            this.toolStripButtonDecoracao.Size = new System.Drawing.Size(81, 91);
-            this.toolStripButtonDecoracao.Text = "Decorações";
-            this.toolStripButtonDecoracao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.toolStripButtonDecoracao.Click += new System.EventHandler(this.toolStripButtonDecoracao_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 94);
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -408,5 +417,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripButton toolStripButtonDecoracao;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
     }
 }

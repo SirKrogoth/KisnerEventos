@@ -170,5 +170,13 @@ namespace Apresentacao
             fcd.MdiParent = this;
             fcd.Show();
         }
+
+        private void backupToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmCriarBackup bck = new FrmCriarBackup();
+
+            bck.MdiParent = this;
+            bck.Show();
+        }
     }
 }

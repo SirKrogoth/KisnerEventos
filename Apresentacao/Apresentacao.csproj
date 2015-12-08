@@ -74,6 +74,7 @@
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -157,6 +158,12 @@
     <Compile Include="FrmCadastroServico.Designer.cs">
       <DependentUpon>FrmCadastroServico.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCriarBackup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCriarBackup.Designer.cs">
+      <DependentUpon>FrmCriarBackup.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCadastroServico.resx">
       <DependentUpon>FrmCadastroServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCriarBackup.resx">
+      <DependentUpon>FrmCriarBackup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
