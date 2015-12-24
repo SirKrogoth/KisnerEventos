@@ -22,6 +22,7 @@ namespace ObjetoTransferencia
         public int parametro { get; set; }
         public bool concluido { get; set; }
         public bool cancelado { get; set; }
+        public bool aberto { get; set; }
         public string nomeCliente { get; set; }
     }
 }

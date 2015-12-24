@@ -55,6 +55,7 @@
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.btnNovoEvento = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.cbAberto = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAgendaEventos)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -249,8 +250,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cbCancelado);
+            this.groupBox1.Controls.Add(this.cbAberto);
             this.groupBox1.Controls.Add(this.cbConcluido);
+            this.groupBox1.Controls.Add(this.cbCancelado);
             this.groupBox1.Location = new System.Drawing.Point(668, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(153, 100);
@@ -261,7 +263,7 @@
             // cbCancelado
             // 
             this.cbCancelado.AutoSize = true;
-            this.cbCancelado.Location = new System.Drawing.Point(7, 44);
+            this.cbCancelado.Location = new System.Drawing.Point(30, 43);
             this.cbCancelado.Name = "cbCancelado";
             this.cbCancelado.Size = new System.Drawing.Size(77, 17);
             this.cbCancelado.TabIndex = 6;
@@ -272,7 +274,7 @@
             // cbConcluido
             // 
             this.cbConcluido.AutoSize = true;
-            this.cbConcluido.Location = new System.Drawing.Point(7, 20);
+            this.cbConcluido.Location = new System.Drawing.Point(30, 66);
             this.cbConcluido.Name = "cbConcluido";
             this.cbConcluido.Size = new System.Drawing.Size(73, 17);
             this.cbConcluido.TabIndex = 5;
@@ -312,6 +314,18 @@
             this.label6.Size = new System.Drawing.Size(253, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Dê um duplo clique no evento que deseja visualizar.";
+            // 
+            // cbAberto
+            // 
+            this.cbAberto.AutoSize = true;
+            this.cbAberto.Checked = true;
+            this.cbAberto.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbAberto.Location = new System.Drawing.Point(30, 20);
+            this.cbAberto.Name = "cbAberto";
+            this.cbAberto.Size = new System.Drawing.Size(57, 17);
+            this.cbAberto.TabIndex = 7;
+            this.cbAberto.Text = "Aberto";
+            this.cbAberto.UseVisualStyleBackColor = true;
             // 
             // FrmAgendaEventos
             // 
@@ -376,6 +390,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colData;
         private System.Windows.Forms.DataGridViewTextBoxColumn colInicio;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTermino;
+        private System.Windows.Forms.CheckBox cbAberto;
 
     }
 }

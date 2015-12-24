@@ -186,18 +186,32 @@ namespace Negocio
             }
         }
         //Evento independente onde será retornado todos os eventos a serem realizados de forma avançada.
-        public EventoColecao ConsultaAvancada(string cliente, string aniversariante, string cidade, DateTime dataDe, DateTime dataPara, bool concluido, bool cancelado)
+        public EventoColecao ConsultaAvancada(string cliente, string aniversariante, string cidade, DateTime dataDe, DateTime dataPara, bool concluido, bool cancelado, bool aberto)
         {
             SqlConnection conexao = acessaDados.criarConexaoBanco();
             try
             {
                 conexao.Open();
                 EventoColecao eventoColecao = new EventoColecao();
-                string script = "SELECT e.codEvento, e.nome, e.localEvento, e.data_evento, e.inicio, e.termino, e.tema, e.codCliente, e.observacao, e.concluido, e.cancelado, e.cidadeEvento, c.nome AS nomeCliente" + 
+                string script = null;                
+                //verificar se a data inicial é igual a data final, irá mudar o periodo da consulta
+                if(dataDe.Date == dataPara.Date)
+                {
+                    script = "SELECT e.codEvento, e.nome, e.localEvento, e.data_evento, e.inicio, e.termino, e.tema, e.codCliente, e.observacao, e.concluido, e.cancelado, e.aberto, e.cidadeEvento, c.nome AS nomeCliente" +
                     " FROM tblEvento AS e" +
                     " INNER JOIN tblCliente AS c " +
                     " ON e.codCliente = c.codCliente " +
-                    " WHERE c.nome LIKE '%" + cliente + "%' AND e.nome LIKE '%" + aniversariante + "%' AND e.cidadeEvento LIKE '%" + cidade + "%' AND e.data_evento >= '" + dataDe + "' AND e.data_evento <= '" + dataPara + "' AND (e.concluido = '" + concluido + "' OR e.concluido = 'false') AND (e.cancelado = '" + cancelado + "' OR e.cancelado = 'false' )ORDER BY data_evento ASC";
+                    " WHERE c.nome LIKE '%" + cliente + "%' AND e.nome LIKE '%" + aniversariante + "%' AND e.cidadeEvento LIKE '%" + cidade + "%' AND e.data_evento = '" + dataDe + "' AND (e.concluido = '" + concluido + "' OR e.concluido = 'false') AND (e.cancelado =  '" + cancelado + "' OR e.cancelado = 'false' ) AND (e.aberto = '" + aberto + "' OR e.aberto = 'false') ORDER BY data_evento ASC";
+                }
+                else
+                {
+                    script = "SELECT e.codEvento, e.nome, e.localEvento, e.data_evento, e.inicio, e.termino, e.tema, e.codCliente, e.observacao, e.concluido, e.cancelado, e.aberto, e.cidadeEvento, c.nome AS nomeCliente" +
+                    " FROM tblEvento AS e" +
+                    " INNER JOIN tblCliente AS c " +
+                    " ON e.codCliente = c.codCliente " +
+                    " WHERE c.nome LIKE '%" + cliente + "%' AND e.nome LIKE '%" + aniversariante + "%' AND e.cidadeEvento LIKE '%" + cidade + "%' AND e.data_evento >= '" + dataDe + "' AND e.data_evento <= '" + dataPara + "' AND (e.concluido = '" + concluido + "' OR e.concluido = 'false') AND (e.cancelado =  '" + cancelado + "' OR e.cancelado = 'false' ) AND (e.aberto = '" + aberto + "' OR e.aberto = 'false') ORDER BY data_evento ASC";
+                }
+                
                 SqlCommand sql = new SqlCommand(script, conexao);
                 SqlDataReader dataReader = sql.ExecuteReader();
 
@@ -219,6 +233,7 @@ namespace Negocio
                     evento.observacao = Convert.ToString(linha["observacao"]);
                     evento.concluido = Convert.ToBoolean(linha["concluido"]);
                     evento.cancelado = Convert.ToBoolean(linha["cancelado"]);
+                    evento.aberto = Convert.ToBoolean(linha["aberto"]);
                     evento.cidadeEvento = linha["cidadeEvento"].ToString();
                     evento.nomeCliente = linha["nomeCliente"].ToString();
 

@@ -23,6 +23,14 @@ namespace Apresentacao
         {
             InitializeComponent();
             dgvAgendaEventos.AutoGenerateColumns = false;
+            //Preenchendo os campos dtpInicio e dtpTermino com o inicio do mes e final de mes
+            DateTime dataCompleta = DateTime.Now;
+            int hoje = dataCompleta.Day;
+            int mes = dataCompleta.Month;
+            int ano = dataCompleta.Year;
+            int qtdDiasDoMes = DateTime.DaysInMonth(ano, mes);
+            dtpInicio.Value = new DateTime(ano,mes,01) ;
+            dtpTermino.Value = new DateTime(ano, mes,qtdDiasDoMes);
             atualizaGrid();
         }
 
@@ -55,16 +63,19 @@ namespace Apresentacao
             DateTime dataPara = dtpTermino.Value.Date;
             bool concluido = false;
             bool cancelado = false;
+            bool aberto = false;
 
             if (cbConcluido.Checked == true)
                 concluido = true;
             if (cbCancelado.Checked == true)
                 cancelado = true;
+            if (cbAberto.Checked == true)
+                aberto = true;
 
             EventoNegocio eventoNegocio = new EventoNegocio();
             EventoColecao eventoColecao = new EventoColecao();
 
-            eventoColecao = eventoNegocio.ConsultaAvancada(cliente, aniversariante, cidade, dataDe, dataPara, concluido, cancelado);
+            eventoColecao = eventoNegocio.ConsultaAvancada(cliente, aniversariante, cidade, dataDe, dataPara, concluido, cancelado,aberto);
 
             dgvAgendaEventos.DataSource = null;
             dgvAgendaEventos.DataSource = eventoColecao;
