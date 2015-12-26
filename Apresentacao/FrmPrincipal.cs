@@ -178,5 +178,11 @@ namespace Apresentacao
             bck.MdiParent = this;
             bck.Show();
         }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            tsslExibirHora.Text = DateTime.Now.ToLongTimeString();
+            tsslExibirData.Text = DateTime.Now.ToLongDateString();
+        }
     }
 }

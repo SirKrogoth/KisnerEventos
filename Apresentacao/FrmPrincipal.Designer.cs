@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.barraStatusPrincipal = new System.Windows.Forms.StatusStrip();
-            this.labelVersao = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuPrincipal = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brinquedoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,6 +46,7 @@
             this.serviçoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.telaLoginTesteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,7 +63,12 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsslVersao = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslHoraLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslExibirHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslData = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslExibirData = new System.Windows.Forms.ToolStripStatusLabel();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.barraStatusPrincipal.SuspendLayout();
             this.menuPrincipal.SuspendLayout();
             this.toolStripPrincipal.SuspendLayout();
@@ -71,18 +77,16 @@
             // barraStatusPrincipal
             // 
             this.barraStatusPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.labelVersao});
+            this.tsslVersao,
+            this.tsslData,
+            this.tsslExibirData,
+            this.tsslHoraLabel,
+            this.tsslExibirHora});
             this.barraStatusPrincipal.Location = new System.Drawing.Point(0, 386);
             this.barraStatusPrincipal.Name = "barraStatusPrincipal";
             this.barraStatusPrincipal.Size = new System.Drawing.Size(787, 22);
             this.barraStatusPrincipal.TabIndex = 1;
             this.barraStatusPrincipal.Text = "statusStrip1";
-            // 
-            // labelVersao
-            // 
-            this.labelVersao.Name = "labelVersao";
-            this.labelVersao.Size = new System.Drawing.Size(86, 17);
-            this.labelVersao.Text = "Versão 1.0 Beta";
             // 
             // menuPrincipal
             // 
@@ -208,16 +212,23 @@
             this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.configuraçõesToolStripMenuItem.Text = "Sistema";
             // 
+            // backupToolStripMenuItem
+            // 
+            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.backupToolStripMenuItem.Text = "Backup";
+            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
+            // 
             // configuraçõesToolStripMenuItem1
             // 
             this.configuraçõesToolStripMenuItem1.Name = "configuraçõesToolStripMenuItem1";
-            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
             this.configuraçõesToolStripMenuItem1.Text = "Configurações";
             // 
             // telaLoginTesteToolStripMenuItem
             // 
             this.telaLoginTesteToolStripMenuItem.Name = "telaLoginTesteToolStripMenuItem";
-            this.telaLoginTesteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.telaLoginTesteToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
             this.telaLoginTesteToolStripMenuItem.Text = "Logoff";
             this.telaLoginTesteToolStripMenuItem.Click += new System.EventHandler(this.telaLoginTesteToolStripMenuItem_Click);
             // 
@@ -349,12 +360,39 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 94);
             // 
-            // backupToolStripMenuItem
+            // tsslVersao
             // 
-            this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.backupToolStripMenuItem.Text = "Backup";
-            this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
+            this.tsslVersao.Name = "tsslVersao";
+            this.tsslVersao.Size = new System.Drawing.Size(60, 17);
+            this.tsslVersao.Text = "Versão 1.0";
+            // 
+            // tsslHoraLabel
+            // 
+            this.tsslHoraLabel.Name = "tsslHoraLabel";
+            this.tsslHoraLabel.Size = new System.Drawing.Size(36, 17);
+            this.tsslHoraLabel.Text = "Hora:";
+            // 
+            // tsslExibirHora
+            // 
+            this.tsslExibirHora.Name = "tsslExibirHora";
+            this.tsslExibirHora.Size = new System.Drawing.Size(0, 17);
+            // 
+            // tsslData
+            // 
+            this.tsslData.Name = "tsslData";
+            this.tsslData.Size = new System.Drawing.Size(34, 17);
+            this.tsslData.Text = "Data:";
+            // 
+            // tsslExibirData
+            // 
+            this.tsslExibirData.Name = "tsslExibirData";
+            this.tsslExibirData.Size = new System.Drawing.Size(0, 17);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // FrmPrincipal
             // 
@@ -385,7 +423,6 @@
         #endregion
 
         private System.Windows.Forms.StatusStrip barraStatusPrincipal;
-        private System.Windows.Forms.ToolStripStatusLabel labelVersao;
         private System.Windows.Forms.MenuStrip menuPrincipal;
         private System.Windows.Forms.ToolStripMenuItem cadastroToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem brinquedoToolStripMenuItem;
@@ -418,5 +455,11 @@
         private System.Windows.Forms.ToolStripButton toolStripButtonDecoracao;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem backupToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel tsslVersao;
+        private System.Windows.Forms.ToolStripStatusLabel tsslHoraLabel;
+        private System.Windows.Forms.ToolStripStatusLabel tsslExibirHora;
+        private System.Windows.Forms.ToolStripStatusLabel tsslData;
+        private System.Windows.Forms.ToolStripStatusLabel tsslExibirData;
+        private System.Windows.Forms.Timer timer1;
     }
 }
