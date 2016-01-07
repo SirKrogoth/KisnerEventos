@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewAjusteServico = new System.Windows.Forms.DataGridView();
-            this.colCodServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnAjustar = new System.Windows.Forms.Button();
             this.txtPesquisa = new System.Windows.Forms.TextBox();
+            this.colCodServico = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colValor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAjusteServico)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,14 +49,15 @@
             // 
             this.dataGridViewAjusteServico.AllowUserToAddRows = false;
             this.dataGridViewAjusteServico.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridViewAjusteServico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridViewAjusteServico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewAjusteServico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAjusteServico.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodServico,
             this.colDescricao,
             this.colDataCadastro,
             this.colValor,
+            this.colEstoque,
             this.colAtivo});
             this.dataGridViewAjusteServico.Location = new System.Drawing.Point(12, 7);
             this.dataGridViewAjusteServico.MultiSelect = false;
@@ -66,48 +68,6 @@
             this.dataGridViewAjusteServico.TabIndex = 0;
             this.dataGridViewAjusteServico.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAjusteServico_CellDoubleClick);
             this.dataGridViewAjusteServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewAjusteServico_KeyDown);
-            // 
-            // colCodServico
-            // 
-            this.colCodServico.DataPropertyName = "codServico";
-            this.colCodServico.HeaderText = "Codigo";
-            this.colCodServico.Name = "colCodServico";
-            this.colCodServico.ReadOnly = true;
-            this.colCodServico.Width = 80;
-            // 
-            // colDescricao
-            // 
-            this.colDescricao.DataPropertyName = "descricao";
-            this.colDescricao.HeaderText = "Descrição";
-            this.colDescricao.Name = "colDescricao";
-            this.colDescricao.ReadOnly = true;
-            this.colDescricao.Width = 135;
-            // 
-            // colDataCadastro
-            // 
-            this.colDataCadastro.DataPropertyName = "cadastro";
-            this.colDataCadastro.HeaderText = "Cadastro";
-            this.colDataCadastro.Name = "colDataCadastro";
-            this.colDataCadastro.ReadOnly = true;
-            this.colDataCadastro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colDataCadastro.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // colValor
-            // 
-            this.colValor.DataPropertyName = "valor";
-            dataGridViewCellStyle10.Format = "C2";
-            dataGridViewCellStyle10.NullValue = null;
-            this.colValor.DefaultCellStyle = dataGridViewCellStyle10;
-            this.colValor.HeaderText = "Valor";
-            this.colValor.Name = "colValor";
-            this.colValor.ReadOnly = true;
-            // 
-            // colAtivo
-            // 
-            this.colAtivo.DataPropertyName = "ativo";
-            this.colAtivo.HeaderText = "Ativo";
-            this.colAtivo.Name = "colAtivo";
-            this.colAtivo.ReadOnly = true;
             // 
             // label1
             // 
@@ -163,6 +123,56 @@
             this.txtPesquisa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisa_KeyDown);
             this.txtPesquisa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPesquisa_KeyPress);
             // 
+            // colCodServico
+            // 
+            this.colCodServico.DataPropertyName = "codServico";
+            this.colCodServico.HeaderText = "Codigo";
+            this.colCodServico.Name = "colCodServico";
+            this.colCodServico.ReadOnly = true;
+            this.colCodServico.Width = 80;
+            // 
+            // colDescricao
+            // 
+            this.colDescricao.DataPropertyName = "descricao";
+            this.colDescricao.HeaderText = "Descrição";
+            this.colDescricao.Name = "colDescricao";
+            this.colDescricao.ReadOnly = true;
+            this.colDescricao.Width = 135;
+            // 
+            // colDataCadastro
+            // 
+            this.colDataCadastro.DataPropertyName = "cadastro";
+            this.colDataCadastro.HeaderText = "Data Cadastro";
+            this.colDataCadastro.Name = "colDataCadastro";
+            this.colDataCadastro.ReadOnly = true;
+            this.colDataCadastro.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colDataCadastro.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // colValor
+            // 
+            this.colValor.DataPropertyName = "valor";
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.colValor.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colValor.HeaderText = "Valor";
+            this.colValor.Name = "colValor";
+            this.colValor.ReadOnly = true;
+            // 
+            // colEstoque
+            // 
+            this.colEstoque.DataPropertyName = "estoque";
+            this.colEstoque.HeaderText = "Estoque";
+            this.colEstoque.Name = "colEstoque";
+            this.colEstoque.ReadOnly = true;
+            this.colEstoque.Width = 60;
+            // 
+            // colAtivo
+            // 
+            this.colAtivo.DataPropertyName = "ativo";
+            this.colAtivo.HeaderText = "Ativo";
+            this.colAtivo.Name = "colAtivo";
+            this.colAtivo.ReadOnly = true;
+            // 
             // FrmAjusteServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,6 +209,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDataCadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn colValor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEstoque;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colAtivo;
     }
 }

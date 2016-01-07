@@ -25,6 +25,8 @@ namespace Negocio
                 acessaDadosSqlServer.adicionarParametro("@dataCadastro", brinquedo.cadastro);
                 acessaDadosSqlServer.adicionarParametro("@ativo", brinquedo.ativo);
                 acessaDadosSqlServer.adicionarParametro("@valor", brinquedo.valor);
+                acessaDadosSqlServer.adicionarParametro("@estoque", brinquedo.estoque);
+                acessaDadosSqlServer.adicionarParametro("@controlaEstoque", brinquedo.controlaEstoque);
                 //executar inserção
                 string codCliente = acessaDadosSqlServer.executarManipulacao(CommandType.StoredProcedure, "SP_INSERIR_BRINQUEDO").ToString();
 
@@ -45,6 +47,7 @@ namespace Negocio
                 acessaDadosSqlServer.adicionarParametro("@ativo", brinquedo.ativo);
                 acessaDadosSqlServer.adicionarParametro("@codBrinquedo", brinquedo.codBrinquedo);
                 acessaDadosSqlServer.adicionarParametro("@valor", brinquedo.valor);
+                acessaDadosSqlServer.adicionarParametro("@estoque", brinquedo.estoque);
 
                 string codCliente = acessaDadosSqlServer.executarManipulacao(CommandType.StoredProcedure, "SP_ALTERAR_BRINQUEDO").ToString();
 
@@ -91,6 +94,8 @@ namespace Negocio
                     b.cadastro = Convert.ToDateTime(linha["dataCadastro"]);
                     b.ativo = Convert.ToBoolean(linha["ativo"]);
                     b.valor = Convert.ToDouble(linha["valor"]);
+                    b.estoque = Convert.ToInt32(linha["estoque"]);
+                    b.controlaEstoque = Convert.ToBoolean(linha["controlaEstoque"]);
                     //adicionando cliente na coleção
                     bc.Add(b);
                 }

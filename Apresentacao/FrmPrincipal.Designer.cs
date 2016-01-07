@@ -31,6 +31,13 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPrincipal));
             this.barraStatusPrincipal = new System.Windows.Forms.StatusStrip();
+            this.tsslVersao = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslData = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslExibirData = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslHoraLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslExibirHora = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslExibirUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuPrincipal = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brinquedoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,12 +70,8 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsslVersao = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsslHoraLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsslExibirHora = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsslData = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsslExibirData = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.ajusteDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barraStatusPrincipal.SuspendLayout();
             this.menuPrincipal.SuspendLayout();
             this.toolStripPrincipal.SuspendLayout();
@@ -81,12 +84,53 @@
             this.tsslData,
             this.tsslExibirData,
             this.tsslHoraLabel,
-            this.tsslExibirHora});
+            this.tsslExibirHora,
+            this.tsslUsuarioLogado,
+            this.tsslExibirUsuarioLogado});
             this.barraStatusPrincipal.Location = new System.Drawing.Point(0, 386);
             this.barraStatusPrincipal.Name = "barraStatusPrincipal";
             this.barraStatusPrincipal.Size = new System.Drawing.Size(787, 22);
             this.barraStatusPrincipal.TabIndex = 1;
             this.barraStatusPrincipal.Text = "statusStrip1";
+            // 
+            // tsslVersao
+            // 
+            this.tsslVersao.Name = "tsslVersao";
+            this.tsslVersao.Size = new System.Drawing.Size(60, 17);
+            this.tsslVersao.Text = "Versão 1.0";
+            // 
+            // tsslData
+            // 
+            this.tsslData.Name = "tsslData";
+            this.tsslData.Size = new System.Drawing.Size(34, 17);
+            this.tsslData.Text = "Data:";
+            // 
+            // tsslExibirData
+            // 
+            this.tsslExibirData.Name = "tsslExibirData";
+            this.tsslExibirData.Size = new System.Drawing.Size(0, 17);
+            // 
+            // tsslHoraLabel
+            // 
+            this.tsslHoraLabel.Name = "tsslHoraLabel";
+            this.tsslHoraLabel.Size = new System.Drawing.Size(36, 17);
+            this.tsslHoraLabel.Text = "Hora:";
+            // 
+            // tsslExibirHora
+            // 
+            this.tsslExibirHora.Name = "tsslExibirHora";
+            this.tsslExibirHora.Size = new System.Drawing.Size(0, 17);
+            // 
+            // tsslUsuarioLogado
+            // 
+            this.tsslUsuarioLogado.Name = "tsslUsuarioLogado";
+            this.tsslUsuarioLogado.Size = new System.Drawing.Size(93, 17);
+            this.tsslUsuarioLogado.Text = "Usuário Logado:";
+            // 
+            // tsslExibirUsuarioLogado
+            // 
+            this.tsslExibirUsuarioLogado.Name = "tsslExibirUsuarioLogado";
+            this.tsslExibirUsuarioLogado.Size = new System.Drawing.Size(0, 17);
             // 
             // menuPrincipal
             // 
@@ -105,6 +149,7 @@
             // cadastroToolStripMenuItem
             // 
             this.cadastroToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ajusteDeEstoqueToolStripMenuItem,
             this.brinquedoToolStripMenuItem,
             this.clienteToolStripMenuItem,
             this.decoraçãoToolStripMenuItem,
@@ -117,35 +162,35 @@
             // brinquedoToolStripMenuItem
             // 
             this.brinquedoToolStripMenuItem.Name = "brinquedoToolStripMenuItem";
-            this.brinquedoToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.brinquedoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.brinquedoToolStripMenuItem.Text = "Brinquedos";
             this.brinquedoToolStripMenuItem.Click += new System.EventHandler(this.brinquedoToolStripMenuItem_Click);
             // 
             // clienteToolStripMenuItem
             // 
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.clienteToolStripMenuItem.Text = "Clientes";
             this.clienteToolStripMenuItem.Click += new System.EventHandler(this.clienteToolStripMenuItem_Click);
             // 
             // decoraçãoToolStripMenuItem
             // 
             this.decoraçãoToolStripMenuItem.Name = "decoraçãoToolStripMenuItem";
-            this.decoraçãoToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.decoraçãoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.decoraçãoToolStripMenuItem.Text = "Decoração";
             this.decoraçãoToolStripMenuItem.Click += new System.EventHandler(this.decoraçãoToolStripMenuItem_Click);
             // 
             // eventoToolStripMenuItem
             // 
             this.eventoToolStripMenuItem.Name = "eventoToolStripMenuItem";
-            this.eventoToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.eventoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.eventoToolStripMenuItem.Text = "Evento";
             this.eventoToolStripMenuItem.Click += new System.EventHandler(this.eventoToolStripMenuItem_Click);
             // 
             // serviçoToolStripMenuItem
             // 
             this.serviçoToolStripMenuItem.Name = "serviçoToolStripMenuItem";
-            this.serviçoToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.serviçoToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
             this.serviçoToolStripMenuItem.Text = "Serviços";
             this.serviçoToolStripMenuItem.Click += new System.EventHandler(this.serviçoToolStripMenuItem_Click);
             // 
@@ -360,39 +405,18 @@
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 94);
             // 
-            // tsslVersao
-            // 
-            this.tsslVersao.Name = "tsslVersao";
-            this.tsslVersao.Size = new System.Drawing.Size(60, 17);
-            this.tsslVersao.Text = "Versão 1.0";
-            // 
-            // tsslHoraLabel
-            // 
-            this.tsslHoraLabel.Name = "tsslHoraLabel";
-            this.tsslHoraLabel.Size = new System.Drawing.Size(36, 17);
-            this.tsslHoraLabel.Text = "Hora:";
-            // 
-            // tsslExibirHora
-            // 
-            this.tsslExibirHora.Name = "tsslExibirHora";
-            this.tsslExibirHora.Size = new System.Drawing.Size(0, 17);
-            // 
-            // tsslData
-            // 
-            this.tsslData.Name = "tsslData";
-            this.tsslData.Size = new System.Drawing.Size(34, 17);
-            this.tsslData.Text = "Data:";
-            // 
-            // tsslExibirData
-            // 
-            this.tsslExibirData.Name = "tsslExibirData";
-            this.tsslExibirData.Size = new System.Drawing.Size(0, 17);
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // ajusteDeEstoqueToolStripMenuItem
+            // 
+            this.ajusteDeEstoqueToolStripMenuItem.Name = "ajusteDeEstoqueToolStripMenuItem";
+            this.ajusteDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.ajusteDeEstoqueToolStripMenuItem.Text = "Ajuste de Estoque";
+            this.ajusteDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.ajusteDeEstoqueToolStripMenuItem_Click);
             // 
             // FrmPrincipal
             // 
@@ -461,5 +485,8 @@
         private System.Windows.Forms.ToolStripStatusLabel tsslData;
         private System.Windows.Forms.ToolStripStatusLabel tsslExibirData;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripStatusLabel tsslUsuarioLogado;
+        private System.Windows.Forms.ToolStripStatusLabel tsslExibirUsuarioLogado;
+        private System.Windows.Forms.ToolStripMenuItem ajusteDeEstoqueToolStripMenuItem;
     }
 }

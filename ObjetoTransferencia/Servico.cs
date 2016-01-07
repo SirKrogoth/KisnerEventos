@@ -13,5 +13,7 @@ namespace ObjetoTransferencia
         public double valor { get; set; }
         public DateTime cadastro { get; set; }
         public Boolean ativo { get; set; }
+        public int estoque { get; set; }
+        public Boolean controlaEstoque { get; set; }
     }
 }

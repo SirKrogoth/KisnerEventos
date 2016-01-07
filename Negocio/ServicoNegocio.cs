@@ -22,6 +22,8 @@ namespace Negocio
                 acessaDadosSqlServer.adicionarParametro("@valor", servico.valor);
                 acessaDadosSqlServer.adicionarParametro("@ativo", servico.ativo);
                 acessaDadosSqlServer.adicionarParametro("@data_cadastro", servico.cadastro);
+                acessaDadosSqlServer.adicionarParametro("@estoque", servico.estoque);
+                acessaDadosSqlServer.adicionarParametro("@controlaEstoque", servico.controlaEstoque);
 
                 string codServico = acessaDadosSqlServer.executarManipulacao(CommandType.StoredProcedure, "SP_INSERIR_SERVICO").ToString();
 
@@ -54,6 +56,8 @@ namespace Negocio
                     servico.valor = Convert.ToDouble(linha["valor"]);
                     servico.ativo = Convert.ToBoolean(linha["ativo"]);
                     servico.cadastro = Convert.ToDateTime(linha["data_cadastro"]);
+                    servico.estoque = Convert.ToInt32(linha["estoque"]);
+                    servico.controlaEstoque = Convert.ToBoolean(linha["controlaEstoque"]);
 
                     servicoColecao.Add(servico);
                 }
@@ -93,6 +97,7 @@ namespace Negocio
                 acessaDadosSqlServer.adicionarParametro("@descricao", servico.descricao);
                 acessaDadosSqlServer.adicionarParametro("@valor", servico.valor);
                 acessaDadosSqlServer.adicionarParametro("@ativo", servico.ativo);
+                acessaDadosSqlServer.adicionarParametro("@estoque", servico.estoque);
 
                 string codServico = acessaDadosSqlServer.executarManipulacao(CommandType.StoredProcedure, "SP_ALTERAR_SERVICO").ToString();
 

@@ -32,6 +32,9 @@ namespace Apresentacao
                 btnGravar.Text = "Alterar";
                 btnNovo.Text = "Excluir";
                 btnLimpar.Visible = false;
+                txtQtdEstoque.Text = servico.estoque.ToString();
+                txtQtdEstoque.Enabled = false;
+                cbControleEstoque.Enabled = false;
             }
             else
                 dtpCriacao.Value = DateTime.Now;
@@ -100,6 +103,12 @@ namespace Apresentacao
                     servico.ativo = false;
             }            
             servico.cadastro = Convert.ToDateTime(dtpCriacao.Value);
+            servico.estoque = Convert.ToInt32(txtQtdEstoque.Text);
+
+            if (cbControleEstoque.Checked == true)
+                servico.controlaEstoque = true;
+            else
+                servico.controlaEstoque = false;
 
             ServicoNegocio servicoNegocio = new ServicoNegocio();
 
@@ -154,6 +163,8 @@ namespace Apresentacao
             txtValor.Text = "";
             cmSituaco.Text = "Ativo";
             dtpCriacao.Value = DateTime.Now;
+            txtQtdEstoque.Text = "0";
+            cbControleEstoque.Checked = false;
         }
 
         private void btnNovo_Click(object sender, EventArgs e)
@@ -197,6 +208,14 @@ namespace Apresentacao
         {
             if (e.KeyValue == 27)
                 this.Close();
+        }
+
+        private void cbControleEstoque_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbControleEstoque.Checked == true)
+                txtQtdEstoque.Enabled = true;
+            else
+                txtQtdEstoque.Enabled = false;
         }
     }
 }

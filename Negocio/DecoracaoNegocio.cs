@@ -22,6 +22,8 @@ namespace Negocio
                 acessaDados.adicionarParametro("@dataCadastro", decoracao.cadastro);
                 acessaDados.adicionarParametro("@ativo", decoracao.ativo);
                 acessaDados.adicionarParametro("@valor", decoracao.valor);
+                acessaDados.adicionarParametro("@estoque", decoracao.estoque);
+                acessaDados.adicionarParametro("@controlaEstoque", decoracao.controlaEstoque);
 
                 string codDecoracao = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_INSERIR_DECORACAO").ToString();
 
@@ -42,6 +44,7 @@ namespace Negocio
                 acessaDados.adicionarParametro("@ativo", decoracao.ativo);
                 acessaDados.adicionarParametro("@codDecoracao", decoracao.codDecoracao);
                 acessaDados.adicionarParametro("@valor", decoracao.valor);
+                acessaDados.adicionarParametro("@estoque", decoracao.estoque);
 
                 string codDecoracao = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_ALTERAR_DECORACAO").ToString();
 
@@ -90,6 +93,8 @@ namespace Negocio
                     decoracao.cadastro = Convert.ToDateTime(linha["dataCadastro"]);
                     decoracao.ativo = Convert.ToBoolean(linha["ativo"]);
                     decoracao.valor = Convert.ToDouble(linha["valor"]);
+                    decoracao.estoque = Convert.ToInt32(linha["estoque"]);
+                    decoracao.controlaEstoque = Convert.ToBoolean(linha["controlaEstoque"]);
 
                     dc.Add(decoracao);
                 }

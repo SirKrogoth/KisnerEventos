@@ -32,7 +32,9 @@ namespace Apresentacao
                     cbSituacao.SelectedItem = "Inativo";
                 dateTimePickerBrinquedo.Value = brinquedo.cadastro;
                 txtValor.Text = brinquedo.valor.ToString();
-
+                txtQtdEstoque.Text = brinquedo.estoque.ToString();
+                txtQtdEstoque.Enabled = false;
+                cbControleEstoque.Enabled = false;
             }
             else
                 dateTimePickerBrinquedo.Value = DateTime.Now;
@@ -59,6 +61,12 @@ namespace Apresentacao
             }
 
             brinquedo.valor = Convert.ToDouble(txtValor.Text);
+            brinquedo.estoque = Convert.ToInt32(txtQtdEstoque.Text);
+
+            if (cbControleEstoque.Checked == true)
+                brinquedo.controlaEstoque = true;
+            else
+                brinquedo.controlaEstoque = false;
 
             BrinquedoNegocio brinquedoNegocio = new BrinquedoNegocio();
             if (txtNomeBrinquedo.Text == "")
@@ -142,6 +150,7 @@ namespace Apresentacao
         {
             txtNomeBrinquedo.Text = "";
             cbSituacao.Text = "Ativo";
+
         }
         //Evento novo e evento excluir
         private void btnNovo_Click(object sender, EventArgs e)
@@ -189,6 +198,10 @@ namespace Apresentacao
             cbSituacao.Text = "Ativo";
             txtValor.Text = "0,00";
             dateTimePickerBrinquedo.Value = DateTime.Now;
+            txtQtdEstoque.Text = "0";
+            txtQtdEstoque.Enabled = false;
+            cbControleEstoque.Checked = false;
+            cbControleEstoque.Enabled = true;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -241,6 +254,19 @@ namespace Apresentacao
         {
             if (e.KeyValue == 27)
                 this.Close();
+        }
+
+        private void cbControleEstoque_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbControleEstoque.Checked == true)
+                txtQtdEstoque.Enabled = true;
+            else
+                txtQtdEstoque.Enabled = false;
+        }
+
+        private void FrmCadastroBrinquedo_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

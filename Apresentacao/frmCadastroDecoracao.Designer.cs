@@ -41,6 +41,9 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtControlaEstoque = new System.Windows.Forms.TextBox();
+            this.cbControlaEstoque = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -103,7 +106,7 @@
             // btnNovo
             // 
             this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.Location = new System.Drawing.Point(231, 136);
+            this.btnNovo.Location = new System.Drawing.Point(173, 185);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 31);
             this.btnNovo.TabIndex = 6;
@@ -115,7 +118,7 @@
             // btnGravar
             // 
             this.btnGravar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGravar.Location = new System.Drawing.Point(150, 136);
+            this.btnGravar.Location = new System.Drawing.Point(92, 185);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 31);
             this.btnGravar.TabIndex = 5;
@@ -127,7 +130,7 @@
             // btnLimpar
             // 
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpar.Location = new System.Drawing.Point(312, 136);
+            this.btnLimpar.Location = new System.Drawing.Point(254, 185);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 31);
             this.btnLimpar.TabIndex = 7;
@@ -172,11 +175,44 @@
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyDown);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(160, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Estoque";
+            // 
+            // txtControlaEstoque
+            // 
+            this.txtControlaEstoque.Enabled = false;
+            this.txtControlaEstoque.Location = new System.Drawing.Point(163, 142);
+            this.txtControlaEstoque.Name = "txtControlaEstoque";
+            this.txtControlaEstoque.Size = new System.Drawing.Size(77, 20);
+            this.txtControlaEstoque.TabIndex = 10;
+            this.txtControlaEstoque.Text = "0";
+            this.txtControlaEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cbControlaEstoque
+            // 
+            this.cbControlaEstoque.AutoSize = true;
+            this.cbControlaEstoque.Location = new System.Drawing.Point(249, 144);
+            this.cbControlaEstoque.Name = "cbControlaEstoque";
+            this.cbControlaEstoque.Size = new System.Drawing.Size(107, 17);
+            this.cbControlaEstoque.TabIndex = 11;
+            this.cbControlaEstoque.Text = "Controla Estoque";
+            this.cbControlaEstoque.UseVisualStyleBackColor = true;
+            this.cbControlaEstoque.CheckedChanged += new System.EventHandler(this.cbControlaEstoque_CheckedChanged);
+            // 
             // frmCadastroDecoracao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 178);
+            this.ClientSize = new System.Drawing.Size(416, 228);
+            this.Controls.Add(this.cbControlaEstoque);
+            this.Controls.Add(this.txtControlaEstoque);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCodigo);
@@ -217,5 +253,8 @@
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtControlaEstoque;
+        private System.Windows.Forms.CheckBox cbControlaEstoque;
     }
 }

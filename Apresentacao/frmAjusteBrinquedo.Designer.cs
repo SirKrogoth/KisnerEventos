@@ -28,16 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewBrinquedo = new System.Windows.Forms.DataGridView();
             this.colCodDecoracao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNomeBrinquedo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataCadastro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.valor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstoque = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colAtivo = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.txtBuscar = new System.Windows.Forms.TextBox();
             this.btnBuscar = new System.Windows.Forms.Button();
@@ -51,14 +52,15 @@
             // 
             this.dataGridViewBrinquedo.AllowUserToAddRows = false;
             this.dataGridViewBrinquedo.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.dataGridViewBrinquedo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.dataGridViewBrinquedo.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewBrinquedo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewBrinquedo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colCodDecoracao,
             this.colNomeBrinquedo,
             this.colDataCadastro,
             this.valor,
+            this.colEstoque,
             this.colAtivo});
             this.dataGridViewBrinquedo.Location = new System.Drawing.Point(12, 3);
             this.dataGridViewBrinquedo.MultiSelect = false;
@@ -72,8 +74,8 @@
             // colCodDecoracao
             // 
             this.colCodDecoracao.DataPropertyName = "codBrinquedo";
-            dataGridViewCellStyle22.NullValue = null;
-            this.colCodDecoracao.DefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle2.NullValue = null;
+            this.colCodDecoracao.DefaultCellStyle = dataGridViewCellStyle2;
             this.colCodDecoracao.HeaderText = "Codigo";
             this.colCodDecoracao.Name = "colCodDecoracao";
             this.colCodDecoracao.ReadOnly = true;
@@ -82,9 +84,9 @@
             // colNomeBrinquedo
             // 
             this.colNomeBrinquedo.DataPropertyName = "nome";
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.NullValue = null;
-            this.colNomeBrinquedo.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.NullValue = null;
+            this.colNomeBrinquedo.DefaultCellStyle = dataGridViewCellStyle3;
             this.colNomeBrinquedo.HeaderText = "Nome Brinquedo";
             this.colNomeBrinquedo.Name = "colNomeBrinquedo";
             this.colNomeBrinquedo.ReadOnly = true;
@@ -93,9 +95,9 @@
             // colDataCadastro
             // 
             this.colDataCadastro.DataPropertyName = "cadastro";
-            dataGridViewCellStyle24.Format = "g";
-            dataGridViewCellStyle24.NullValue = null;
-            this.colDataCadastro.DefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle4.Format = "g";
+            dataGridViewCellStyle4.NullValue = null;
+            this.colDataCadastro.DefaultCellStyle = dataGridViewCellStyle4;
             this.colDataCadastro.HeaderText = "Data Cadastro";
             this.colDataCadastro.Name = "colDataCadastro";
             this.colDataCadastro.ReadOnly = true;
@@ -104,14 +106,22 @@
             // valor
             // 
             this.valor.DataPropertyName = "valor";
-            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle25.Format = "C2";
-            dataGridViewCellStyle25.NullValue = null;
-            this.valor.DefaultCellStyle = dataGridViewCellStyle25;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "C2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.valor.DefaultCellStyle = dataGridViewCellStyle5;
             this.valor.HeaderText = "Valor";
             this.valor.Name = "valor";
             this.valor.ReadOnly = true;
             this.valor.Width = 70;
+            // 
+            // colEstoque
+            // 
+            this.colEstoque.DataPropertyName = "estoque";
+            this.colEstoque.HeaderText = "Estoque";
+            this.colEstoque.Name = "colEstoque";
+            this.colEstoque.ReadOnly = true;
+            this.colEstoque.Width = 60;
             // 
             // colAtivo
             // 
@@ -212,6 +222,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colNomeBrinquedo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDataCadastro;
         private System.Windows.Forms.DataGridViewTextBoxColumn valor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEstoque;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colAtivo;
     }
 }

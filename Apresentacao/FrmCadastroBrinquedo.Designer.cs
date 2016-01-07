@@ -41,6 +41,9 @@
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtQtdEstoque = new System.Windows.Forms.TextBox();
+            this.cbControleEstoque = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -85,7 +88,7 @@
             // btnGravar
             // 
             this.btnGravar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGravar.Location = new System.Drawing.Point(148, 136);
+            this.btnGravar.Location = new System.Drawing.Point(87, 186);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 30);
             this.btnGravar.TabIndex = 5;
@@ -97,7 +100,7 @@
             // btnLimpar
             // 
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpar.Location = new System.Drawing.Point(310, 136);
+            this.btnLimpar.Location = new System.Drawing.Point(249, 186);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 30);
             this.btnLimpar.TabIndex = 7;
@@ -130,7 +133,7 @@
             // btnNovo
             // 
             this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.Location = new System.Drawing.Point(229, 136);
+            this.btnNovo.Location = new System.Drawing.Point(168, 186);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 30);
             this.btnNovo.TabIndex = 6;
@@ -170,17 +173,50 @@
             this.txtValor.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
             this.txtValor.Location = new System.Drawing.Point(20, 103);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(100, 20);
+            this.txtValor.Size = new System.Drawing.Size(121, 20);
             this.txtValor.TabIndex = 2;
             this.txtValor.Text = "0,00";
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyDown);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(171, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "Estoque";
+            // 
+            // txtQtdEstoque
+            // 
+            this.txtQtdEstoque.Enabled = false;
+            this.txtQtdEstoque.Location = new System.Drawing.Point(174, 142);
+            this.txtQtdEstoque.Name = "txtQtdEstoque";
+            this.txtQtdEstoque.Size = new System.Drawing.Size(81, 20);
+            this.txtQtdEstoque.TabIndex = 12;
+            this.txtQtdEstoque.Text = "0";
+            this.txtQtdEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cbControleEstoque
+            // 
+            this.cbControleEstoque.AutoSize = true;
+            this.cbControleEstoque.Location = new System.Drawing.Point(271, 144);
+            this.cbControleEstoque.Name = "cbControleEstoque";
+            this.cbControleEstoque.Size = new System.Drawing.Size(107, 17);
+            this.cbControleEstoque.TabIndex = 13;
+            this.cbControleEstoque.Text = "Controla Estoque";
+            this.cbControleEstoque.UseVisualStyleBackColor = true;
+            this.cbControleEstoque.CheckedChanged += new System.EventHandler(this.cbControleEstoque_CheckedChanged);
+            // 
             // FrmCadastroBrinquedo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 178);
+            this.ClientSize = new System.Drawing.Size(416, 228);
+            this.Controls.Add(this.cbControleEstoque);
+            this.Controls.Add(this.txtQtdEstoque);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtCodigo);
@@ -201,6 +237,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Kisner Eventos - Cadastro de Brinquedo";
+            this.Load += new System.EventHandler(this.FrmCadastroBrinquedo_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,5 +258,8 @@
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtQtdEstoque;
+        private System.Windows.Forms.CheckBox cbControleEstoque;
     }
 }

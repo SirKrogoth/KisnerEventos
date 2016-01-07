@@ -33,7 +33,7 @@ namespace Apresentacao
         public void confirmarLogon()
         {
             TelaLogonNegocio tln = new TelaLogonNegocio();
-            FrmPrincipal principal = new FrmPrincipal();
+            FrmPrincipal principal = new FrmPrincipal(txtUsuario.Text);
 
             string retorno = tln.ConsultaUsuario(txtUsuario.Text, txtSenha.Text);
 

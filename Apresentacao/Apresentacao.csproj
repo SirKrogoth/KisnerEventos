@@ -88,6 +88,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnumAlteracaoEstoque.cs" />
     <Compile Include="EnumDecoracao.cs" />
     <Compile Include="EnumeradorBrinquedo.cs" />
     <Compile Include="EnumeradorCliente.cs" />
@@ -118,11 +119,41 @@
     <Compile Include="FrmAjusteDecoracao.Designer.cs">
       <DependentUpon>FrmAjusteDecoracao.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmAjusteEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAjusteEstoque.Designer.cs">
+      <DependentUpon>FrmAjusteEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmAjusteServico.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmAjusteServico.Designer.cs">
       <DependentUpon>FrmAjusteServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscaAlteracaoEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscaAlteracaoEstoque.Designer.cs">
+      <DependentUpon>FrmBuscaAlteracaoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscaAlteracaoEstoqueBrinquedo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscaAlteracaoEstoqueBrinquedo.Designer.cs">
+      <DependentUpon>FrmBuscaAlteracaoEstoqueBrinquedo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscaAlteracaoEstoqueDecoracao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscaAlteracaoEstoqueDecoracao.Designer.cs">
+      <DependentUpon>FrmBuscaAlteracaoEstoqueDecoracao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmBuscaAlteracaoEstoqueServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmBuscaAlteracaoEstoqueServico.Designer.cs">
+      <DependentUpon>FrmBuscaAlteracaoEstoqueServico.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmCadastroBrinquedo.cs">
       <SubType>Form</SubType>
@@ -217,8 +248,23 @@
     <EmbeddedResource Include="FrmAjusteDecoracao.resx">
       <DependentUpon>FrmAjusteDecoracao.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmAjusteEstoque.resx">
+      <DependentUpon>FrmAjusteEstoque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmAjusteServico.resx">
       <DependentUpon>FrmAjusteServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscaAlteracaoEstoque.resx">
+      <DependentUpon>FrmBuscaAlteracaoEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscaAlteracaoEstoqueBrinquedo.resx">
+      <DependentUpon>FrmBuscaAlteracaoEstoqueBrinquedo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscaAlteracaoEstoqueDecoracao.resx">
+      <DependentUpon>FrmBuscaAlteracaoEstoqueDecoracao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmBuscaAlteracaoEstoqueServico.resx">
+      <DependentUpon>FrmBuscaAlteracaoEstoqueServico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCadastroBrinquedo.resx">
       <DependentUpon>FrmCadastroBrinquedo.cs</DependentUpon>

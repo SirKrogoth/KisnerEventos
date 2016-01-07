@@ -32,6 +32,10 @@ namespace Apresentacao
                 else
                     cbSituacao.SelectedItem = "Inativo";
                 txtValor.Text = decoracao.valor.ToString();
+
+                txtControlaEstoque.Text = decoracao.estoque.ToString();
+                txtControlaEstoque.Enabled = false;
+                cbControlaEstoque.Enabled = false;
             }
             else
                 dateTimePickerCriacao.Value = DateTime.Now;
@@ -42,6 +46,8 @@ namespace Apresentacao
             txtNomeDecoracao.Text = "";
             txtValor.Text = "0";
             cbSituacao.Text = "Ativo";
+            cbControlaEstoque.Checked = false;
+            txtControlaEstoque.Text = "0";
             dateTimePickerCriacao.Value = DateTime.Now;
         }
 
@@ -114,6 +120,12 @@ namespace Apresentacao
             }
 
             d.valor = Convert.ToDouble(txtValor.Text);
+            d.estoque = Convert.ToInt32(txtControlaEstoque.Text);
+
+            if (cbControlaEstoque.Checked == true)
+                d.controlaEstoque = true;
+            else
+                d.controlaEstoque = false;
 
             DecoracaoNegocio dn = new DecoracaoNegocio();
 
@@ -225,6 +237,14 @@ namespace Apresentacao
         {
             if (e.KeyValue == 27)
                 this.Close();
+        }
+
+        private void cbControlaEstoque_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbControlaEstoque.Checked == true)
+                txtControlaEstoque.Enabled = true;
+            else
+                txtControlaEstoque.Enabled = false;
         }
     }
 }

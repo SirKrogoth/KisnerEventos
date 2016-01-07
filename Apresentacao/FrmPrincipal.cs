@@ -17,6 +17,12 @@ namespace Apresentacao
             InitializeComponent();
         }
 
+        public FrmPrincipal(string usuarioLogado)
+        {
+            InitializeComponent();
+            tsslExibirUsuarioLogado.Text = usuarioLogado;
+        }
+
         private void brinquedoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmCadastroBrinquedo fcb = new FrmCadastroBrinquedo(EnumeradorBrinquedo.Inserir, null);
@@ -183,6 +189,14 @@ namespace Apresentacao
         {
             tsslExibirHora.Text = DateTime.Now.ToLongTimeString();
             tsslExibirData.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void ajusteDeEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAjusteEstoque fae = new FrmAjusteEstoque();
+
+            fae.MdiParent = this;
+            fae.Show();
         }
     }
 }

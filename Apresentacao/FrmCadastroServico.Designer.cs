@@ -41,6 +41,9 @@
             this.btnGravar = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtQtdEstoque = new System.Windows.Forms.TextBox();
+            this.cbControleEstoque = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -90,7 +93,7 @@
             // 
             this.txtValor.Location = new System.Drawing.Point(15, 105);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(92, 20);
+            this.txtValor.Size = new System.Drawing.Size(120, 20);
             this.txtValor.TabIndex = 5;
             this.txtValor.Text = "0,00";
             this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -139,7 +142,7 @@
             // btnGravar
             // 
             this.btnGravar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnGravar.Location = new System.Drawing.Point(150, 137);
+            this.btnGravar.Location = new System.Drawing.Point(85, 186);
             this.btnGravar.Name = "btnGravar";
             this.btnGravar.Size = new System.Drawing.Size(75, 32);
             this.btnGravar.TabIndex = 10;
@@ -150,7 +153,7 @@
             // btnNovo
             // 
             this.btnNovo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNovo.Location = new System.Drawing.Point(231, 137);
+            this.btnNovo.Location = new System.Drawing.Point(166, 186);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 32);
             this.btnNovo.TabIndex = 11;
@@ -161,7 +164,7 @@
             // btnLimpar
             // 
             this.btnLimpar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnLimpar.Location = new System.Drawing.Point(312, 137);
+            this.btnLimpar.Location = new System.Drawing.Point(247, 186);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 32);
             this.btnLimpar.TabIndex = 12;
@@ -169,11 +172,44 @@
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(172, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Estoque";
+            // 
+            // txtQtdEstoque
+            // 
+            this.txtQtdEstoque.Enabled = false;
+            this.txtQtdEstoque.Location = new System.Drawing.Point(175, 144);
+            this.txtQtdEstoque.Name = "txtQtdEstoque";
+            this.txtQtdEstoque.Size = new System.Drawing.Size(77, 20);
+            this.txtQtdEstoque.TabIndex = 14;
+            this.txtQtdEstoque.Text = "0";
+            this.txtQtdEstoque.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // cbControleEstoque
+            // 
+            this.cbControleEstoque.AutoSize = true;
+            this.cbControleEstoque.Location = new System.Drawing.Point(276, 146);
+            this.cbControleEstoque.Name = "cbControleEstoque";
+            this.cbControleEstoque.Size = new System.Drawing.Size(107, 17);
+            this.cbControleEstoque.TabIndex = 15;
+            this.cbControleEstoque.Text = "Controla Estoque";
+            this.cbControleEstoque.UseVisualStyleBackColor = true;
+            this.cbControleEstoque.CheckedChanged += new System.EventHandler(this.cbControleEstoque_CheckedChanged);
+            // 
             // FrmCadastroServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(416, 178);
+            this.ClientSize = new System.Drawing.Size(416, 228);
+            this.Controls.Add(this.cbControleEstoque);
+            this.Controls.Add(this.txtQtdEstoque);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnNovo);
             this.Controls.Add(this.btnGravar);
@@ -215,5 +251,8 @@
         private System.Windows.Forms.Button btnGravar;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtQtdEstoque;
+        private System.Windows.Forms.CheckBox cbControleEstoque;
     }
 }
