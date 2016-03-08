@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AcessoBancoDados;
 using ObjetoTransferencia;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Negocio
 {
@@ -18,7 +19,7 @@ namespace Negocio
             try
             {
                 acessaDadosSqlServer.limparParametro();
-                acessaDadosSqlServer.adicionarParametro("@descricao", servico.descricao);
+                acessaDadosSqlServer.adicionarParametro("@nome", servico.nome);
                 acessaDadosSqlServer.adicionarParametro("@valor", servico.valor);
                 acessaDadosSqlServer.adicionarParametro("@ativo", servico.ativo);
                 acessaDadosSqlServer.adicionarParametro("@data_cadastro", servico.cadastro);
@@ -52,7 +53,7 @@ namespace Negocio
                     Servico servico = new Servico();
 
                     servico.codServico = Convert.ToInt32(linha["codServico"]);
-                    servico.descricao = Convert.ToString(linha["descricao"]);
+                    servico.nome = Convert.ToString(linha["nome"]);
                     servico.valor = Convert.ToDouble(linha["valor"]);
                     servico.ativo = Convert.ToBoolean(linha["ativo"]);
                     servico.cadastro = Convert.ToDateTime(linha["data_cadastro"]);
@@ -70,7 +71,6 @@ namespace Negocio
                 throw new Exception("Não foi possível consultar dados no banco.\nContate o Administrador." + e.Message);
             }
         }
-
         public String DeletarServico(Servico servico)
         {
             try
@@ -94,7 +94,7 @@ namespace Negocio
             {
                 acessaDadosSqlServer.limparParametro();
                 acessaDadosSqlServer.adicionarParametro("@codServico", servico.codServico);
-                acessaDadosSqlServer.adicionarParametro("@descricao", servico.descricao);
+                acessaDadosSqlServer.adicionarParametro("@nome", servico.nome);
                 acessaDadosSqlServer.adicionarParametro("@valor", servico.valor);
                 acessaDadosSqlServer.adicionarParametro("@ativo", servico.ativo);
                 acessaDadosSqlServer.adicionarParametro("@estoque", servico.estoque);

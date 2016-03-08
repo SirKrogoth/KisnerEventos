@@ -264,6 +264,7 @@ namespace Negocio
                     acessaDados.limparParametro();
                     acessaDados.adicionarParametro("@codEvento", eventoBrinquedoColecao[i].codEvento);
                     acessaDados.adicionarParametro("@codBrinquedo", eventoBrinquedoColecao[i].codBrinquedo);
+                    acessaDados.adicionarParametro("@quantidade", eventoBrinquedoColecao[i].quantidade);
                     //irá retornar o codigo do evento
                     codEventoBrinquedo = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_INSERIR_EVENTOBRINQUEDO").ToString();
                 }
@@ -287,6 +288,7 @@ namespace Negocio
                     acessaDados.limparParametro();
                     acessaDados.adicionarParametro("@codEvento", eventoDecoracaoColecao[i].codEvento);
                     acessaDados.adicionarParametro("@codDecoracao", eventoDecoracaoColecao[i].codDecoracao);
+                    acessaDados.adicionarParametro("@quantidade", eventoDecoracaoColecao[i].quantidade);
 
                     codEventoDecoracao = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_INSERIR_EVENTODECORACAO").ToString();
 
@@ -311,7 +313,8 @@ namespace Negocio
                     acessaDados.limparParametro();
                     acessaDados.adicionarParametro("@codServico", eventoServicoColecao[i].codServico);
                     acessaDados.adicionarParametro("@codEvento", eventoServicoColecao[i].codEvento);
-
+                    acessaDados.adicionarParametro("@quantidade", eventoServicoColecao[i].quantidade);
+                    
                     codEventoServico = acessaDados.executarManipulacao(CommandType.StoredProcedure, "SP_INSERIR_EVENTOSERVICO").ToString();
 
                 }
@@ -586,7 +589,7 @@ namespace Negocio
             {
                 ServicoColecao servicoColecao = new ServicoColecao();
                 conexao.Open();
-                string sql = "SELECT s.codServico, s.descricao, s.valor, s.ativo FROM tblServico AS s " +
+                string sql = "SELECT s.codServico, s.nome, s.valor, s.ativo FROM tblServico AS s " +
                     "INNER JOIN tblEventoServico AS es " +
                     "ON s.codServico = es.codServico " +
                     "WHERE es.codEvento = " + codEvento;
@@ -602,7 +605,7 @@ namespace Negocio
                     Servico servico = new Servico();
 
                     servico.codServico = Convert.ToInt32(linha["codServico"]);
-                    servico.descricao = linha["descricao"].ToString();
+                    servico.nome = linha["nome"].ToString();
                     servico.valor = Convert.ToDouble(linha["valor"]);
                     servico.ativo = Convert.ToBoolean(linha["ativo"]);
 

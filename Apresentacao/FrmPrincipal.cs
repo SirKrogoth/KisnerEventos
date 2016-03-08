@@ -198,5 +198,13 @@ namespace Apresentacao
             fae.MdiParent = this;
             fae.Show();
         }
+
+        private void parametrosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmParametros fp = new FrmParametros();
+
+            fp.MdiParent = this;
+            fp.Show();
+        }
     }
 }

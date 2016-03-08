@@ -10,5 +10,6 @@ namespace ObjetoTransferencia
     {
         public int codServico { get; set; }
         public int codEvento { get; set; }
+        public int quantidade { get; set; }
     }
 }

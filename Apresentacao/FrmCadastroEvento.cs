@@ -22,6 +22,9 @@ namespace Apresentacao
         DecoracaoNegocio decoracaoNegocio = new DecoracaoNegocio();
         ServicoColecao servicoColecao = new ServicoColecao();
         ServicoNegocio servicoNegocio = new ServicoNegocio();
+        PagamentoNegocio pgtoNegocio = new PagamentoNegocio();
+        EventoCarrinhoColecao eventoCarrinhoColecao = new EventoCarrinhoColecao();
+        EstoqueNegocio estoqueNegocio = new EstoqueNegocio();
 
         public Cliente clienteSelecionado = null;
         public int codCliente = 0;
@@ -117,7 +120,7 @@ namespace Apresentacao
 
                 for (int i = 0; i < servicoColecao.Count; i++)
                 {
-                    checkedListBoxServicos.Items.Add(servicoColecao[i].descricao);
+                    checkedListBoxServicos.Items.Add(servicoColecao[i].nome);
                 }
 
                 double auxiliarPrecoTotalServico = 0;
@@ -126,7 +129,7 @@ namespace Apresentacao
                 {
                     for (int x = 0; x < servicoColecao.Count; x++)
                     {
-                        if (servicoColecaoGenerico[i].descricao == servicoColecao[x].descricao)
+                        if (servicoColecaoGenerico[i].nome == servicoColecao[x].nome)
                         {
                             checkedListBoxServicos.SetItemChecked(x, true);
                             auxiliarPrecoTotalServico += servicoColecaoGenerico[i].valor;
@@ -169,7 +172,7 @@ namespace Apresentacao
             //para fins didaticos
             foreach (Servico linha in servicoColecao)
             {
-                checkedListBoxServicos.Items.Add(linha.descricao);
+                checkedListBoxServicos.Items.Add(linha.nome);
             }
         }
         //Método usado para buscar o cliente cadastrado
@@ -193,6 +196,7 @@ namespace Apresentacao
                 EventoBrinquedoColecao eventoBrinquedoColecao = new EventoBrinquedoColecao();
                 EventoDecoracaoColecao eventoDecoracaoColecao = new EventoDecoracaoColecao();
                 EventoServicoColecao eventoServicoColecao = new EventoServicoColecao();
+                
                 EventoNegocio eventoNegocio = new EventoNegocio();
 
                 //verificar se existe cliente selecionado
@@ -211,8 +215,10 @@ namespace Apresentacao
                 evento.termino = TimeSpan.Parse(maskedTextBoxTermino.Text);
                 evento.tema = txtTema.Text;
                 evento.observacao = txtComplementar.Text;
-                evento.totalEvento = (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo) - desconto;                
+                //evento.totalEvento = (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo) - desconto;
+                evento.totalEvento = totalEvento();
                 evento.parametro = 1;
+                
                 //inserido o codigo do evento gravado
                 codEvento = eventoNegocio.InserirEvento(evento);
 
@@ -226,11 +232,19 @@ namespace Apresentacao
                         EventoBrinquedo eventoBrinquedo = new EventoBrinquedo();
                         eventoBrinquedo.codBrinquedo = Convert.ToInt32(brinquedoColecao[i].codBrinquedo);
                         eventoBrinquedo.codEvento = Convert.ToInt32(codEvento);
-
+                        
                         eventoBrinquedoColecao.Add(eventoBrinquedo);
                     }
                 }
-
+                //Preenchendo quantidade segundo o dgvCarrinho de brinquedo
+                for(int i = 0; i < dgvCarrinho.RowCount; i++)
+                {                    
+                    if(dgvCarrinho[0,i].Value.ToString() == "Brinquedo")
+                    {
+                        eventoBrinquedoColecao[i].quantidade = Convert.ToInt32(dgvCarrinho[colQuantidadeEvento.Index,i].Value);
+                    }
+                }
+                
                 for (int i = 0; i < decoracaoColecao.Count; i++)
                 {
                     if (checkedListBoxDecoracao.GetItemChecked(i) == true)
@@ -241,6 +255,17 @@ namespace Apresentacao
                         eventoDecoracao.codEvento = Convert.ToInt32(codEvento);
 
                         eventoDecoracaoColecao.Add(eventoDecoracao);
+                    }
+                }
+
+                //Preenchendo quantidade segundo o dgvCarrinho de Decoração
+                int x = 0;
+                for (int i = 0; i < dgvCarrinho.RowCount; i++)
+                {
+                    if (dgvCarrinho[0,i].Value.ToString() == "Decoração")
+                    {                        
+                        eventoDecoracaoColecao[x].quantidade = Convert.ToInt32(dgvCarrinho[colQuantidadeEvento.Index, i].Value);
+                        x++;
                     }
                 }
 
@@ -257,12 +282,42 @@ namespace Apresentacao
                     }
                 }
 
+                //Preenchendo quantidade segundo o dgvCarrinho de Serviço
+                int y = 0;
+                for (int i = 0; i < dgvCarrinho.RowCount; i++)
+                {
+                    if (dgvCarrinho[0, i].Value.ToString() == "Serviço")
+                    {
+                        eventoServicoColecao[y].quantidade = Convert.ToInt32(dgvCarrinho[colQuantidadeEvento.Index, i].Value);
+                        y++;
+                    }
+                }
+
+                //Inserir forma de pagamento ao objeto
+                PagamentoColecao pgtoColecao = new PagamentoColecao();
+                for(int i = 0; i < dgvFormaPagamento.RowCount; i++)
+                {
+                    if(dgvFormaPagamento[2,i].Value.ToString() != "0".ToString())
+                    {
+                        PagamentoFormas pgtoFormas = new PagamentoFormas();
+
+                        pgtoFormas.codPagamento = Convert.ToInt32(dgvFormaPagamento[0, i].Value);//codigo
+                        pgtoFormas.nome = dgvFormaPagamento[1, i].Value.ToString();//Nome Forma
+                        pgtoFormas.valor = Convert.ToInt32(dgvFormaPagamento[2, i].Value);//Valor pgto na forma selecionada
+
+                        pgtoColecao.Add(pgtoFormas);
+                    }
+                }
+
+
                 //gravando os registros de "brinquedos", "decoração" e "serviço".
                 string codEventoBrinquedo = eventoNegocio.InserirEventoBrinquedo(eventoBrinquedoColecao);
 
                 string codEventoDecoracao = eventoNegocio.InserirEventoDecoracao(eventoDecoracaoColecao);
 
                 string codEventoServico = eventoNegocio.InserirEventoServico(eventoServicoColecao);
+
+                pgtoNegocio.fCadastrarFormaPagamento(pgtoColecao, codEvento);
 
                 try
                 {
@@ -285,96 +340,123 @@ namespace Apresentacao
             
         }
         //Método para contar os listar os brinquedos "Checados" pelo usuário
-        private void checkedListBoxBrinquedos_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if(btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
-            {
-                int i = e.Index;
-                //ele irá verificar o status do item(antes de ser clicado), se estiver marcado, retorna true
-                if (checkedListBoxBrinquedos.GetItemChecked(i) == false)
-                    auxiliarBrinquedo = auxiliarBrinquedo + brinquedoColecao[i].valor;
-                else
-                    auxiliarBrinquedo = auxiliarBrinquedo - brinquedoColecao[i].valor;
-            }
-            else
-            {
-                int i = checkedListBoxBrinquedos.SelectedIndex;
-                //ele irá verificar o status do item(antes de ser clicado), se estiver marcado, retorna true
-                if (checkedListBoxBrinquedos.GetItemChecked(i) == false)
-                    auxiliarBrinquedo = auxiliarBrinquedo + brinquedoColecao[i].valor;
-                else
-                    auxiliarBrinquedo = auxiliarBrinquedo - brinquedoColecao[i].valor;
-            }            
+        //private void checkedListBoxBrinquedos_ItemCheck(object sender, ItemCheckEventArgs e)
+        //{
+        //    if(btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
+        //    {
+        //        int i = e.Index;
+        //        //ele irá verificar o status do item(antes de ser clicado), se estiver marcado, retorna true
+        //        if (checkedListBoxBrinquedos.GetItemChecked(i) == false)
+        //            auxiliarBrinquedo = auxiliarBrinquedo + brinquedoColecao[i].valor;
+        //        else
+        //            auxiliarBrinquedo = auxiliarBrinquedo - brinquedoColecao[i].valor;
+        //    }
+        //    else
+        //    {
+        //        int i = checkedListBoxBrinquedos.SelectedIndex;
+        //        //ele irá verificar o status do item(antes de ser clicado), se estiver marcado, retorna true
+        //        if (checkedListBoxBrinquedos.GetItemChecked(i) == false)
+        //            auxiliarBrinquedo = auxiliarBrinquedo + brinquedoColecao[i].valor;
+        //        else
+        //            auxiliarBrinquedo = auxiliarBrinquedo - brinquedoColecao[i].valor;
+        //    }            
                 
-            totalEvento();
-        }
-        //Método para contar os listar as decorações "Checados" pelo usuário
-        private void checkedListBoxDecoracao_ItemCheck(object sender, ItemCheckEventArgs e)
-        {
-            if(btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
-            {
-                int i = e.Index;
-                if (checkedListBoxDecoracao.GetItemChecked(i) == false)
-                    auxiliarDecoracao = auxiliarDecoracao + decoracaoColecao[i].valor;
-                else
-                    auxiliarDecoracao = auxiliarDecoracao - decoracaoColecao[i].valor;
+        //    totalEvento();
+        //}
+        ////Método para contar os listar as decorações "Checados" pelo usuário
+        //private void checkedListBoxDecoracao_ItemCheck(object sender, ItemCheckEventArgs e)
+        //{
+        //    if(btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
+        //    {
+        //        int i = e.Index;
+        //        if (checkedListBoxDecoracao.GetItemChecked(i) == false)
+        //            auxiliarDecoracao = auxiliarDecoracao + decoracaoColecao[i].valor;
+        //        else
+        //            auxiliarDecoracao = auxiliarDecoracao - decoracaoColecao[i].valor;
 
-            }
-            else
-            {
-                int i = checkedListBoxDecoracao.SelectedIndex;
-                if (checkedListBoxDecoracao.GetItemChecked(i) == false)
-                    auxiliarDecoracao = auxiliarDecoracao + decoracaoColecao[i].valor;
-                else
-                    auxiliarDecoracao = auxiliarDecoracao - decoracaoColecao[i].valor;
-            }
+        //    }
+        //    else
+        //    {
+        //        int i = checkedListBoxDecoracao.SelectedIndex;
+        //        if (checkedListBoxDecoracao.GetItemChecked(i) == false)
+        //            auxiliarDecoracao = auxiliarDecoracao + decoracaoColecao[i].valor;
+        //        else
+        //            auxiliarDecoracao = auxiliarDecoracao - decoracaoColecao[i].valor;
+        //    }
             
-            totalEvento();
-        }
-        //Método para contar uma lista de serviços "checados" pelo usuário
-        private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        //    totalEvento();
+        //}
+        ////Método para contar uma lista de serviços "checados" pelo usuário
+        //private void checkedListBox1_ItemCheck(object sender, ItemCheckEventArgs e)
+        //{
+        //    if (btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
+        //    {
+
+        //        int i = e.Index;
+        //        if (checkedListBoxServicos.GetItemChecked(i) == false)
+        //            auxiliarServico = auxiliarServico + servicoColecao[i].valor;
+        //        else
+        //            auxiliarServico = auxiliarServico - servicoColecao[i].valor;
+        //    }
+        //    else
+        //    {
+        //        int i = checkedListBoxServicos.SelectedIndex;
+        //        if (checkedListBoxServicos.GetItemChecked(i) == false)
+        //            auxiliarServico = auxiliarServico + servicoColecao[i].valor;
+        //        else
+        //            auxiliarServico = auxiliarServico - servicoColecao[i].valor;
+        //    }
+
+        //    totalEvento();
+        //}
+
+        //public void totalEvento()
+        //{
+        //    double total = 0;
+        //    for (int i = 0; i < dgvCarrinho.RowCount; i++ )
+        //    {
+        //        double valor = Convert.ToDouble(dgvCarrinho["colValor", i].Value);
+        //        double quantidade = Convert.ToDouble(dgvCarrinho["colQuantidadeEvento", i].Value);
+                
+        //        total = total + (valor * quantidade);
+
+        //        txtValorEvento.Text = string.Format("{0:N}", total.ToString());
+        //        txtTotalEvento.Text = string.Format("{0:N}", (total + acrescimo + auxiliarDescontoAcrescimo) - desconto).ToString();
+        //    }                
+        //}
+
+        public double totalEvento()
         {
-            if (btnCancelarEvento.Enabled == true && btnGravar.Text == "Alterar")
-            {
+            double valorTotalEvento = 0;
 
-                int i = e.Index;
-                if (checkedListBoxServicos.GetItemChecked(i) == false)
-                    auxiliarServico = auxiliarServico + servicoColecao[i].valor;
-                else
-                    auxiliarServico = auxiliarServico - servicoColecao[i].valor;
-            }
-            else
+            for(int i = 0; i < eventoCarrinhoColecao.Count; i++)
             {
-                int i = checkedListBoxServicos.SelectedIndex;
-                if (checkedListBoxServicos.GetItemChecked(i) == false)
-                    auxiliarServico = auxiliarServico + servicoColecao[i].valor;
-                else
-                    auxiliarServico = auxiliarServico - servicoColecao[i].valor;
+                valorTotalEvento = valorTotalEvento + (eventoCarrinhoColecao[i].estoqueTemporario * eventoCarrinhoColecao[i].valor); 
             }
 
-            totalEvento();
+            txtTotalEvento.Text = (valorTotalEvento + acrescimo - desconto).ToString();
+            txtValorEvento.Text = valorTotalEvento.ToString();
+
+            return valorTotalEvento + acrescimo - desconto;
         }
 
-        public void totalEvento()
-        {
-            txtValorEvento.Text = string.Format("{0:N}", (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico).ToString());
-            txtTotalEvento.Text = string.Format("{0:N}", (auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico + acrescimo + auxiliarDescontoAcrescimo) - desconto).ToString();
-        }
-        private void btnAplicarDesconto_Click(object sender, EventArgs e)
+        public void descontoTotal()
         {
             try
             {
                 if (txtDesconto.Text != "0,00" || txtDesconto.Text != "0")
-                    btnAplicarDesconto.Enabled = false;                 
+                    btnAplicarDesconto.Enabled = false;
                 desconto = Convert.ToDouble(txtDesconto.Text);
-                valorTotal = -valorTotal - (desconto - auxiliarBrinquedo - auxiliarDecoracao - auxiliarServico);
-                txtTotalEvento.Text = string.Format("{0:N}", valorTotal);
-                valorTotal = 0;                
+                totalEvento();
             }
             catch
             {
                 MessageBox.Show("Erro ao aplicar desconto.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void btnAplicarDesconto_Click(object sender, EventArgs e)
+        {
+            descontoTotal();
         }
 
         private void txtDesconto_Click(object sender, EventArgs e)
@@ -408,21 +490,24 @@ namespace Apresentacao
             }
         }        
 
-        private void btnAcrescimo_Click(object sender, EventArgs e)
+        public void acrescimoTotal()
         {
             try
             {
                 if (txtAcrescimo.Text != "0,00" || txtAcrescimo.Text != "0")
                     btnAcrescimo.Enabled = false;
                 acrescimo = Convert.ToDouble(txtAcrescimo.Text);
-                valorTotal = valorTotal + (acrescimo + auxiliarBrinquedo + auxiliarDecoracao + auxiliarServico);
-                txtTotalEvento.Text = string.Format("{0:N}", valorTotal);
-                valorTotal = 0;
+                totalEvento();
             }
             catch
             {
                 MessageBox.Show("Erro ao aplicar acréscimo.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnAcrescimo_Click(object sender, EventArgs e)
+        {
+            acrescimoTotal();
         }
         //Método para desabilitar
         private void txtAcrescimo_TextChanged(object sender, EventArgs e)
@@ -497,7 +582,7 @@ namespace Apresentacao
                         EventoBrinquedo eventoBrinquedo = new EventoBrinquedo();
                         eventoBrinquedo.codBrinquedo = Convert.ToInt32(brinquedoColecao[i].codBrinquedo);
                         eventoBrinquedo.codEvento = Convert.ToInt32(codEvento);
-
+                        eventoBrinquedo.quantidade = Convert.ToInt32(dgvCarrinho.Columns["ColQuantidade"]);
                         eventoBrinquedoColecao.Add(eventoBrinquedo);
                     }
                 }
@@ -549,17 +634,47 @@ namespace Apresentacao
             }
             else
             {
-                gravarEvento();
-
-                if (MessageBox.Show("Deseja gerar o contrato deste evento?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if(verificaCarrinho() == true)
                 {
-                    FrmVisualizadorContrato fvc = new FrmVisualizadorContrato(codEvento);
-                    fvc.Show();
-                    limparEventos();
+                    gravarEvento();
+
+                    if (MessageBox.Show("Deseja gerar o contrato deste evento?", "Pergunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        FrmVisualizadorContrato fvc = new FrmVisualizadorContrato(codEvento);
+                        fvc.Show();
+                        limparEventos();
+                    }
+                    else
+                        return;
                 }
                 else
-                    return;
+                {
+                    MessageBox.Show("Existem informações não exibidas no Grid \"Carrinho\". Favor verificar se foram informados as quantidades do(s) produto(s) corretamente.", "Erro ao gravar dados.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }                
             }            
+        }
+
+        public bool verificaCarrinho()
+        {
+            try
+            {
+                //Verifica se o carrinho está vazio.
+                if(dgvCarrinho.RowCount == 0)
+                    return false;
+                else
+                {
+                    //Verifica se as informações do carrinho estão com quantidade "zero"
+                    for(int i = 0; i < dgvCarrinho.RowCount; i++)
+                        if (dgvCarrinho[colQuantidadeEvento.Index, i].Value == null)
+                            return false;
+                    return true;
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao gravar dados.\nContate o administrador.", "Erro Fatal.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         public void limparEventos()
@@ -617,7 +732,138 @@ namespace Apresentacao
 
         private void tabControl_Selected(object sender, TabControlEventArgs e)
         {
+            EventoCarrinhoColecao eventoCarrinhoColecaoAuxiliar = new EventoCarrinhoColecao();
+
             if(tabControl.SelectedIndex.Equals(4))
+            {
+                dgvCarrinho.AutoGenerateColumns = false;
+
+                if(eventoCarrinhoColecao.Count == (checkedListBoxBrinquedos.CheckedItems.Count + checkedListBoxDecoracao.CheckedItems.Count + checkedListBoxServicos.CheckedItems.Count))
+                {
+                    dgvCarrinho.DataSource = null;
+                    dgvCarrinho.DataSource = eventoCarrinhoColecao;
+                    dgvCarrinho.Update();
+                    dgvCarrinho.Refresh();
+                }
+                else
+                {
+                    eventoCarrinhoColecao.Clear();
+                    //Preenchendo o eventoCarrinhoColecao com as informações de Brinquedos
+                    for (int i = 0; i < checkedListBoxBrinquedos.Items.Count; i++)
+                    {
+                        if (checkedListBoxBrinquedos.GetItemChecked(i) == true)
+                        {                            
+                            EventoCarrinho eventoCarrinho = new EventoCarrinho();
+
+                            eventoCarrinho.tabela = "Brinquedo";
+                            eventoCarrinho.nome = brinquedoColecao[i].nome;
+                            eventoCarrinho.valor = brinquedoColecao[i].valor;
+                            eventoCarrinho.estoque = brinquedoColecao[i].estoque;
+                            object retorno = estoqueNegocio.estoqueDisponivelBrinquedo(brinquedoColecao[i].codBrinquedo, dateTimePickerDataEvento.Value);
+
+                            try
+                            {
+                                //Transformando o valor objeto para string
+                                string auxiliar = retorno.ToString();
+                                //verificando se a string não está vazia
+                                if (!auxiliar.Equals(""))
+                                {
+                                    
+                                    int quantidadeLocada = Convert.ToInt32(retorno);
+                                    eventoCarrinho.estoqueDisponivel = brinquedoColecao[i].estoque - quantidadeLocada;
+                                    eventoCarrinhoColecao.Add(eventoCarrinho);
+                                }
+                                else
+                                {                                    
+                                    eventoCarrinho.estoqueDisponivel = brinquedoColecao[i].estoque;
+                                    eventoCarrinhoColecao.Add(eventoCarrinho);                                                                                                            
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Erro ao buscar informações no banco de dados quanto ao brinquedo: " + brinquedoColecao[i].nome, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    //Preenchendo o eventoCarrinhoColecao com as informações de Decorações
+                    for (int i = 0; i < checkedListBoxDecoracao.Items.Count; i++)
+                    {
+                        if (checkedListBoxDecoracao.GetItemChecked(i) == true)
+                        {
+                            EventoCarrinho eventoCarrinho = new EventoCarrinho();
+
+                            eventoCarrinho.tabela = "Decoração";
+                            eventoCarrinho.nome = decoracaoColecao[i].nome;
+                            eventoCarrinho.valor = decoracaoColecao[i].valor;
+                            eventoCarrinho.estoque = decoracaoColecao[i].estoque;
+                            object retorno = estoqueNegocio.estoqueDisponivelDecoracao(decoracaoColecao[i].codDecoracao, dateTimePickerDataEvento.Value);
+
+                            try
+                            {
+                                //Transformando o valor objeto para string
+                                string auxiliar = retorno.ToString();
+                                //verificando se a string não está vazia
+                                if (!auxiliar.Equals(""))
+                                {
+                                    int quantidadeLocada = Convert.ToInt32(retorno);
+                                    eventoCarrinho.estoqueDisponivel = decoracaoColecao[i].estoque - quantidadeLocada;
+                                    eventoCarrinhoColecao.Add(eventoCarrinho);
+                                }
+                                else
+                                {
+                                    eventoCarrinho.estoqueDisponivel = decoracaoColecao[i].estoque;
+                                    eventoCarrinhoColecao.Add(eventoCarrinho);
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Erro ao buscar informações no banco de dados quanto ao brinquedo: " + brinquedoColecao[i].nome, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    //Preenchendo o eventoCarrinhoColecao com as informações de Serviço
+                    for (int i = 0; i < checkedListBoxServicos.Items.Count; i++)
+                    {
+                        if (checkedListBoxServicos.GetItemChecked(i) == true)
+                        {
+                            EventoCarrinho eventoCarrinho = new EventoCarrinho();
+
+                            eventoCarrinho.tabela = "Serviço";
+                            eventoCarrinho.nome = servicoColecao[i].nome;
+                            eventoCarrinho.valor = servicoColecao[i].valor;
+                            eventoCarrinho.estoque = servicoColecao[i].estoque;
+                            object retorno = estoqueNegocio.estoqueDisponivelServico(servicoColecao[i].codServico, dateTimePickerDataEvento.Value);
+
+                            try
+                            {
+                                //Transformando o valor objeto para string
+                                string auxiliar = retorno.ToString();
+                                //verificando se a string não está vazia
+                                if (!auxiliar.Equals(""))
+                                {
+                                    int quantidadeLocada = Convert.ToInt32(retorno);
+                                    eventoCarrinho.estoqueDisponivel = servicoColecao[i].estoque - quantidadeLocada;
+                                    eventoCarrinhoColecao.Add(eventoCarrinho);
+                                }
+                                else
+                                {
+                                    eventoCarrinho.estoqueDisponivel = servicoColecao[i].estoque;
+                                    eventoCarrinhoColecao.Add(eventoCarrinho);
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("Erro ao buscar informações no banco de dados quanto ao brinquedo: " + brinquedoColecao[i].nome, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                    dgvCarrinho.DataSource = null;
+                    dgvCarrinho.DataSource = eventoCarrinhoColecao;
+                    dgvCarrinho.Update();
+                    dgvCarrinho.Refresh();
+                }               
+            }
+            else if(tabControl.SelectedIndex.Equals(5))
             {
                 StringBuilder msg = new StringBuilder();
                 //Exibindo extrato dos brinquedos
@@ -655,13 +901,17 @@ namespace Apresentacao
                     if (checkedListBoxServicos.GetItemChecked(i) == true)
                     {
                         servico = servicoColecao[i];
-                        msg.AppendLine(servico.descricao + "....... R$ " + servico.valor);
+                        msg.AppendLine(servico.nome + "....... R$ " + servico.valor);
                     }
                 }
                 txtExtrato.Text = msg.ToString();
             }
+            else if(tabControl.SelectedIndex.Equals(6))
+            {
+                totalEvento();
+                atualizarGridPagamento();
+            }
         }
-
         private void tabControl_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 27)
@@ -696,6 +946,48 @@ namespace Apresentacao
         {
             if (e.KeyValue == 27)
                 this.Close();
+        }
+
+        private void txtDesconto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                descontoTotal();
+        }
+
+        private void txtAcrescimo_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyValue == 13)
+                acrescimoTotal();
+        }
+
+        private void tabControl_Deselected(object sender, TabControlEventArgs e)
+        {
+            //Quando sair da tela de Carrinho, irá setar as informações do usuário.
+            if(e.TabPageIndex == 4)
+            {
+                for(int i = 0; i < eventoCarrinhoColecao.Count; i++)
+                {
+                    eventoCarrinhoColecao[i].estoqueTemporario = Convert.ToInt32(dgvCarrinho[colQuantidadeEvento.Index,i].Value);
+                }
+            }
+        }
+
+        public void atualizarGridPagamento()
+        {
+            dgvFormaPagamento.AutoGenerateColumns = false;
+            PagamentoNegocio pagamentoNegocio = new PagamentoNegocio();
+
+            try
+            {
+                dgvFormaPagamento.DataSource = null;
+                dgvFormaPagamento.DataSource = pagamentoNegocio.ExibirFormasPagamentos();
+                dgvFormaPagamento.Update();
+                dgvFormaPagamento.Refresh();
+            }
+            catch
+            {
+                MessageBox.Show("Erro ao carregar registros de pagamento.", "Erro pagamento.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

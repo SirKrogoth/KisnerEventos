@@ -45,6 +45,8 @@
     <Compile Include="DecoracaoNegocio.cs" />
     <Compile Include="EstoqueNegocio.cs" />
     <Compile Include="EventoNegocio.cs" />
+    <Compile Include="PagamentoNegocio.cs" />
+    <Compile Include="ParametroNegocio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicoNegocio.cs" />
     <Compile Include="TelaLogonNegocio.cs" />

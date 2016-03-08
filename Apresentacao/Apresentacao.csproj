@@ -203,6 +203,12 @@
     <Compile Include="FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmParametros.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmParametros.Designer.cs">
+      <DependentUpon>FrmParametros.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,7 +228,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\Contrato\RelClientes.cs">
+    <Compile Include="Relatorios\RelClientes.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>RelClientes.rpt</DependentUpon>
@@ -290,6 +296,9 @@
     <EmbeddedResource Include="FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmParametros.resx">
+      <DependentUpon>FrmParametros.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,7 +309,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Contrato\RelClientes.rpt">
+    <EmbeddedResource Include="Relatorios\RelClientes.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RelClientes.cs</LastGenOutput>
     </EmbeddedResource>

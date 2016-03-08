@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Apresentacao.Relatorios.Contrato {
+namespace Apresentacao.Relatorios {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -41,7 +41,7 @@ namespace Apresentacao.Relatorios.Contrato {
         
         public override string FullResourceName {
             get {
-                return "Apresentacao.Relatorios.Contrato.RelClientes.rpt";
+                return "Apresentacao.Relatorios.RelClientes.rpt";
             }
             set {
                 // Do nothing

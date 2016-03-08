@@ -40,6 +40,7 @@
             this.tsslExibirUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuPrincipal = new System.Windows.Forms.MenuStrip();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ajusteDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.brinquedoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.decoraçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -56,6 +57,7 @@
             this.backupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.telaLoginTesteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.parametrosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripPrincipal = new System.Windows.Forms.ToolStrip();
             this.toolStripButtonCliente = new System.Windows.Forms.ToolStripButton();
@@ -71,7 +73,6 @@
             this.toolStripButtonClose = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.ajusteDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.barraStatusPrincipal.SuspendLayout();
             this.menuPrincipal.SuspendLayout();
             this.toolStripPrincipal.SuspendLayout();
@@ -97,7 +98,7 @@
             // 
             this.tsslVersao.Name = "tsslVersao";
             this.tsslVersao.Size = new System.Drawing.Size(60, 17);
-            this.tsslVersao.Text = "Versão 1.0";
+            this.tsslVersao.Text = "Versão 2.0";
             // 
             // tsslData
             // 
@@ -158,6 +159,13 @@
             this.cadastroToolStripMenuItem.Name = "cadastroToolStripMenuItem";
             this.cadastroToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
             this.cadastroToolStripMenuItem.Text = "Cadastro";
+            // 
+            // ajusteDeEstoqueToolStripMenuItem
+            // 
+            this.ajusteDeEstoqueToolStripMenuItem.Name = "ajusteDeEstoqueToolStripMenuItem";
+            this.ajusteDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
+            this.ajusteDeEstoqueToolStripMenuItem.Text = "Ajuste de Estoque";
+            this.ajusteDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.ajusteDeEstoqueToolStripMenuItem_Click);
             // 
             // brinquedoToolStripMenuItem
             // 
@@ -252,7 +260,8 @@
             this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.backupToolStripMenuItem,
             this.configuraçõesToolStripMenuItem1,
-            this.telaLoginTesteToolStripMenuItem});
+            this.telaLoginTesteToolStripMenuItem,
+            this.parametrosToolStripMenuItem});
             this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
             this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.configuraçõesToolStripMenuItem.Text = "Sistema";
@@ -260,22 +269,29 @@
             // backupToolStripMenuItem
             // 
             this.backupToolStripMenuItem.Name = "backupToolStripMenuItem";
-            this.backupToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.backupToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.backupToolStripMenuItem.Text = "Backup";
             this.backupToolStripMenuItem.Click += new System.EventHandler(this.backupToolStripMenuItem_Click);
             // 
             // configuraçõesToolStripMenuItem1
             // 
             this.configuraçõesToolStripMenuItem1.Name = "configuraçõesToolStripMenuItem1";
-            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(151, 22);
+            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.configuraçõesToolStripMenuItem1.Text = "Configurações";
             // 
             // telaLoginTesteToolStripMenuItem
             // 
             this.telaLoginTesteToolStripMenuItem.Name = "telaLoginTesteToolStripMenuItem";
-            this.telaLoginTesteToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.telaLoginTesteToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.telaLoginTesteToolStripMenuItem.Text = "Logoff";
             this.telaLoginTesteToolStripMenuItem.Click += new System.EventHandler(this.telaLoginTesteToolStripMenuItem_Click);
+            // 
+            // parametrosToolStripMenuItem
+            // 
+            this.parametrosToolStripMenuItem.Name = "parametrosToolStripMenuItem";
+            this.parametrosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.parametrosToolStripMenuItem.Text = "Parametros";
+            this.parametrosToolStripMenuItem.Click += new System.EventHandler(this.parametrosToolStripMenuItem_Click);
             // 
             // sairToolStripMenuItem
             // 
@@ -411,13 +427,6 @@
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // ajusteDeEstoqueToolStripMenuItem
-            // 
-            this.ajusteDeEstoqueToolStripMenuItem.Name = "ajusteDeEstoqueToolStripMenuItem";
-            this.ajusteDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(168, 22);
-            this.ajusteDeEstoqueToolStripMenuItem.Text = "Ajuste de Estoque";
-            this.ajusteDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.ajusteDeEstoqueToolStripMenuItem_Click);
-            // 
             // FrmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,5 +497,6 @@
         private System.Windows.Forms.ToolStripStatusLabel tsslUsuarioLogado;
         private System.Windows.Forms.ToolStripStatusLabel tsslExibirUsuarioLogado;
         private System.Windows.Forms.ToolStripMenuItem ajusteDeEstoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem parametrosToolStripMenuItem;
     }
 }

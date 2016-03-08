@@ -22,7 +22,7 @@ namespace Apresentacao
             {
                 this.Text = "Kisner Eventos - Ajuste de Serviço";
                 txtCodigo.Text = servico.codServico.ToString(); ;
-                txtNome.Text = servico.descricao;
+                txtNome.Text = servico.nome;
                 txtValor.Text = servico.valor.ToString();
                 dtpCriacao.Value = servico.cadastro;
                 if (servico.ativo == true)
@@ -54,7 +54,7 @@ namespace Apresentacao
             ServicoNegocio servicoNegocio = new ServicoNegocio();
 
             servico.codServico = Convert.ToInt32(txtCodigo.Text);
-            servico.descricao = txtNome.Text;
+            servico.nome = txtNome.Text;
             servico.valor = Convert.ToDouble(txtValor.Text);
 
             if (cmSituaco.Text == "Selecione")
@@ -88,7 +88,7 @@ namespace Apresentacao
         {
             Servico servico = new Servico();
 
-            servico.descricao = txtNome.Text;
+            servico.nome = txtNome.Text;
             servico.valor = Convert.ToDouble(txtValor.Text);
             if(cmSituaco.Text == "Selecione")
             {

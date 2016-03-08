@@ -133,8 +133,8 @@
             // 
             // colDescricao
             // 
-            this.colDescricao.DataPropertyName = "descricao";
-            this.colDescricao.HeaderText = "Descrição";
+            this.colDescricao.DataPropertyName = "nome";
+            this.colDescricao.HeaderText = "Nome";
             this.colDescricao.Name = "colDescricao";
             this.colDescricao.ReadOnly = true;
             this.colDescricao.Width = 135;

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ObjetoTransferencia
 {
-    public class EventoBrinquedo
+    public class PagamentoFormas
     {
-        public int codEvento { get; set; }
-        public int codBrinquedo { get; set; }
-        public int quantidade { get; set; }
+        public int codPagamento { get; set; }
+        public string nome { get; set; }
+        public float valor { get; set; }
     }
 }

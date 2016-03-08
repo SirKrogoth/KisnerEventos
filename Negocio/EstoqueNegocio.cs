@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AcessoBancoDados;
 using ObjetoTransferencia;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Negocio
 {
@@ -168,6 +169,82 @@ namespace Negocio
                     sqlAlterandoEstoque.ExecuteNonQuery();
                     sqlInserindoHistorico.ExecuteNonQuery();
                 }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public object estoqueDisponivelBrinquedo(int codBrinquedo, DateTime dataEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+            try
+            {
+                conexao.Open();
+                string sql = "SELECT SUM(eb.quantidade) FROM tblEventoBrinquedo AS eb " +
+                    "INNER JOIN tblEvento AS e " +
+                    "ON eb.codEvento = e.codEvento " +
+                    "WHERE eb.codBrinquedo = " + codBrinquedo + " AND e.data_evento = '" + dataEvento.Date + "'";
+                SqlCommand cmd = new SqlCommand(sql, conexao);
+                object retorno = cmd.ExecuteScalar();
+
+                return retorno;
+
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public object estoqueDisponivelDecoracao(int codDecoracao, DateTime dataEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+            try
+            {
+                conexao.Open();
+                string sql = "SELECT SUM(ed.quantidade) FROM tblEventoDecoracao AS ed " +
+                    "INNER JOIN tblEvento AS e " +
+                    "ON ed.codEvento = e.codEvento " +
+                    "WHERE ed.codDecoracao = " + codDecoracao + " AND e.data_evento = '" + dataEvento.Date + "'";
+                SqlCommand cmd = new SqlCommand(sql, conexao);
+                object retorno = cmd.ExecuteScalar();
+
+                return retorno;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            finally
+            {
+                conexao.Close();
+            }
+        }
+
+        public object estoqueDisponivelServico(int codServico, DateTime dataEvento)
+        {
+            SqlConnection conexao = acessaDados.criarConexaoBanco();
+            try
+            {
+                conexao.Open();
+                string sql = "SELECT SUM(es.quantidade) FROM tblEventoServico AS es " +
+                    "INNER JOIN tblEvento AS e " +
+                    "ON es.codEvento = e.codEvento " +
+                    "WHERE es.codServico = " + codServico + " AND e.data_evento = '" + dataEvento.Date + "'";
+                SqlCommand cmd = new SqlCommand(sql, conexao);
+                object retorno = cmd.ExecuteScalar();
+
+                return retorno;
             }
             catch (Exception e)
             {
