@@ -77,7 +77,7 @@
             this.cbSituacao.Items.AddRange(new object[] {
             "Ativo",
             "Inativo"});
-            this.cbSituacao.Location = new System.Drawing.Point(20, 142);
+            this.cbSituacao.Location = new System.Drawing.Point(23, 142);
             this.cbSituacao.MaxDropDownItems = 3;
             this.cbSituacao.Name = "cbSituacao";
             this.cbSituacao.Size = new System.Drawing.Size(121, 21);
@@ -171,7 +171,7 @@
             // txtValor
             // 
             this.txtValor.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.txtValor.Location = new System.Drawing.Point(20, 103);
+            this.txtValor.Location = new System.Drawing.Point(23, 106);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(121, 20);
             this.txtValor.TabIndex = 2;
